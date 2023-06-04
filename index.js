@@ -75,6 +75,7 @@ app.get("/", async(req, res, next)=>{
         console.log(e);
         res.send("fail");
     }
+    
 });
 
 const PORT = process.env.PORT || 4000;
