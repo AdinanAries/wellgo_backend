@@ -1,10 +1,4 @@
 const constants = require("../constants");
-const { Duffel } = require('@duffel/api');
-
-const DUFFEL_ACCESS_TOKEN = process.env.DUFFEL_API_TOKEN;
-const duffel = new Duffel({
-    token: DUFFEL_ACCESS_TOKEN
-});
 
 //Application Helpers
 //Flight Search Object Function
@@ -16,7 +10,7 @@ const get_flights = async(req, res, next)=>{
 
     try{
         if(process.env.DATA_PROVIDER===constants.duffel){
-            offers= await duffel.offerRequests.create(return_flight_search_obj());
+            offers = await require("../flight_providers/duffel").createOfferRequest(return_flight_search_obj());
         }else{
             //Error message here
         }
