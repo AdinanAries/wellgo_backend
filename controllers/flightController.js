@@ -1,13 +1,15 @@
 const constants = require("../constants");
 
-//Application Helpers
-//Flight Search Object Function
+// Import application helpers
 const { return_flight_search_obj } = require("../helpers/construct_search_obj");
 
+/**
+ * @desc Get flight offers from data provider
+ * @path POST /api/flights/
+ * @access private
+ */
 const get_flights = async(req, res, next)=>{
-    
     let offers;
-
     try{
         if(process.env.DATA_PROVIDER===constants.duffel){
             offers = await require("../flight_providers/duffel").createOfferRequest(return_flight_search_obj());
@@ -20,7 +22,6 @@ const get_flights = async(req, res, next)=>{
         console.log(e);
         res.send("fail");
     }
-    
 }
 
 module.exports = {
