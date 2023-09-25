@@ -20,8 +20,8 @@ const get_flights = async(req, res, next)=>{
         console.log(offers);
         res.send('success');
     }catch(e){
-        console.log(e);
-        res.send("fail");
+        console.log(e.message);
+        res.send(e.message);
     }
 }
 
