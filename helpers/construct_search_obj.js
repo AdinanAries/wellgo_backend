@@ -75,7 +75,7 @@ const return_flight_search_obj = (req_body) => {
     if(process.env.DATA_PROVIDER === constants.duffel){
         return get_duffel_search_obj(req_body);
     }else{
-        //error to be returned here
+        throw new Error("No data provider has been set");
     }
 }
 
