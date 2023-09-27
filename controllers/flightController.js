@@ -63,7 +63,7 @@ const get_offer_info = async (req, res, next) => {
             throw new Error("No data provider has been set");
         }
     }catch(e){
-        console.log(e.message);
+        console.log(e);
         res.status(500).send(e.message);
     }
 }
