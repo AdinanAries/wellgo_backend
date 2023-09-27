@@ -26,7 +26,12 @@ const listOffers = async (offer_request_id_p, sort_p="total_amount", limit_p=1, 
     return await duffel.offers.list(api_send_obj);
 }
 
+const getOffer = async (id, return_available_services=true) => {
+    return await duffel.offers.get(id, { return_available_services });
+}
+
 module.exports = {
     createOfferRequest,
-    listOffers
+    listOffers,
+    getOffer
 }
