@@ -19,8 +19,8 @@ const get_flights = async(req, res, next)=>{
             throw new Error("No data provider has been set");
         }
     }catch(e){
-        console.log(e.message);
-        res.status(500).send(e.message);
+        console.log(e);
+        res.status(500).send(e);
     }
 }
 
@@ -41,8 +41,8 @@ const list_flight_offers = async (req, res, next) => {
             throw new Error("No data provider has been set");
         }
     }catch(e){
-        console.log(e.message);
-        res.status(500).send(e.message);
+        console.log(e);
+        res.status(500).send(e);
     }
 }
 
@@ -64,7 +64,7 @@ const get_offer_info = async (req, res, next) => {
         }
     }catch(e){
         console.log(e);
-        res.status(500).send(e.message);
+        res.status(500).send(e);
     }
 }
 
