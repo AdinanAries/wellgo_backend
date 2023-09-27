@@ -61,7 +61,7 @@ const get_duffel_search_obj = (obj) => {
                 "fare_type": "contract_bulk_child"
             }
         ],
-        "max_connections": 0,
+        "max_connections": 1,
         "cabin_class": "economy"
     };
 }
