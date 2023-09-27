@@ -4,16 +4,18 @@ const constants = require("../constants");
 const { return_flight_search_obj } = require("../helpers/construct_search_obj");
 
 /**
- * @desc Get flight offer requests from data provider
+ * @desc Get list of flights from data provider
  * @path POST /api/flights/
  * @access private
+ * @type controller
  */
 const get_flights = async(req, res, next)=>{
-    let offers;
+    let offer_list;
     try{
         if(process.env.DATA_PROVIDER===constants.duffel){
-            offers = await require("../flight_providers/duffel").createOfferRequest(return_flight_search_obj());
-            res.status(200).json(offers);
+            let offer_request = await require("../flight_providers/duffel").createOfferRequest(return_flight_search_obj());
+            offer_list = await require("../flight_providers/duffel").listOffers(offer_request.data.id);
+            res.status(200).json(offer_list);
         }else{
             res.status(500);
             throw new Error("No data provider has been set");
@@ -28,6 +30,7 @@ const get_flights = async(req, res, next)=>{
  * @desc Lists all flight offers for a selected offer request
  * @path POST /api/flights/list/offers/
  * @access private
+ * @type controller
  */
 const list_flight_offers = async (req, res, next) => {
     let offer_list;
@@ -50,6 +53,7 @@ const list_flight_offers = async (req, res, next) => {
  * @desc Get complete, up-to-date information about an offer
  * @path GET /api/flights/offers/:id
  * @access private
+ * @type controller
  */
 const get_offer_info = async (req, res, next) => {
     let offer;
