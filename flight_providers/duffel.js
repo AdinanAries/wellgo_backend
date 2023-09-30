@@ -27,17 +27,14 @@ const createOfferRequest = async (search_obj) => {
  * @returns Offer ....
  * @type library
  */
-const listOffers = async (offer_request_id_p, 
-                            sort_p = duffel_sort_total_amount, 
-                            limit_p = default_pagination_page_limit, 
-                            max_connections_p = duffel_max_connections, 
-                            after_p="", 
-                            before_p="") => {
-    
-    //after_p = "g2wAAAACbQAAABBBZXJvbWlzdC1LaGFya2l2bQAAAB="; //for testing
-    //before_p = "g2wAAAACbQAAABBBZXJvbWlzdC1LaGFya2l2bQAAAB="; //for testing
-    //offer_request_id_p="orq_00009htyDGjIfajdNBZRlw"; //for testing
-
+const listOffers = async (
+        offer_request_id_p, 
+        sort_p = duffel_sort_total_amount, 
+        limit_p = default_pagination_page_limit, 
+        max_connections_p = duffel_max_connections, 
+        after_p="", 
+        before_p=""
+) => {
     let api_send_obj={
         limit: limit_p,
         offer_request_id: offer_request_id_p,
