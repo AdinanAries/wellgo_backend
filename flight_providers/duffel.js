@@ -57,8 +57,20 @@ const getOffer = async (id, return_available_services=true) => {
     return await duffel.offers.get(id, { return_available_services });
 }
 
+/**
+ * @desc ...
+ * @param {*} id
+ * @param {*}
+ * @returns ....
+ * @type library
+ */
+const createOrder = async (payload) => {
+    return await duffel.orders.create(payload)
+}
+
 module.exports = {
     createOfferRequest,
     listOffers,
-    getOffer
+    getOffer,
+    createOrder
 }
