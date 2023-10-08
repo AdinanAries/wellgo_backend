@@ -10,6 +10,7 @@ const { return_flight_search_obj, return_duffel_order_payload  } = require("../h
  * @type controller
  */
 const get_flights = async(req, res, next)=>{
+    console.log(req.body);
     let offer_list;
     try{
         if(process.env.DATA_PROVIDER===constants.duffel){
