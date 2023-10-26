@@ -5,7 +5,7 @@
  */
 const get_duffel_search_obj = (arg_obj) => {
     /**
-     *  Example object from frontend
+     *  @desc Example object from frontend
      * {
             type: 'round-trip',
             itinerary: {
@@ -34,7 +34,7 @@ const get_duffel_search_obj = (arg_obj) => {
 const return_passengers_params = (passenger_param) => {
 
     let adults = [];
-    for(let i=0;i<passenger_param.adults;i++){
+    for (let i=0;i<passenger_param.adults;i++) {
         adults.push({
             "family_name": "",
             "given_name": "",
@@ -49,14 +49,14 @@ const return_passengers_params = (passenger_param) => {
     }
 
     let children = [];
-    for(let j=0;j<passenger_param.children;j++){
+    for (let j=0;j<passenger_param.children;j++) {
         children.push({
             "age": 14
         });
     }
 
     let infants = [];
-    for(let k=0;k<passenger_param.infants;k++){
+    for (let k=0;k<passenger_param.infants;k++) {
         infants.push({
             "age": 2
         })
@@ -69,7 +69,7 @@ const return_passengers_params = (passenger_param) => {
     ];
 
     /**
-     * Other passenger types
+     * @desc Other passenger types
      *  {
             "fare_type": "student"
         }
@@ -101,6 +101,7 @@ const return_private_fairs_params = () => {
 
 const return_slices_param = (itinerary) => {
     /**
+     * @desc Parameter from parent function
      * type: 'round-trip',
             itinerary: {
                 departure: { airport: 'JFK', date: '2023-10-26' },
