@@ -12,6 +12,7 @@ const { return_flight_search_obj, return_duffel_order_payload  } = require("../h
 const get_flights = async(req, res, next)=>{
     //console.log(req.body);
     console.log(return_flight_search_obj(req.body));
+    console.log("Currency:", req.body.currency);
     let offer_list;
     try{
         if(process.env.DATA_PROVIDER===constants.duffel){
