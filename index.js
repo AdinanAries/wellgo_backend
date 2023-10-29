@@ -20,7 +20,11 @@ app.use(express.urlencoded({ extended: false }));
 
 // Routes
 app.use("/api/flights", require("./routes/flightRoutes"));
-app.use("/", (req, res, next)=>{res.send("it works!")})
+app.use("/api/users", require("./routes/userRoutes"));
+app.use("/api/bookings", require("./routes/bookingRoutes"));
+app.use("/api/passports", require("./routes/passportRoutes"));
+app.use("/api/payment-cards", require("./routes/paymentCardRoutes"));
+app.use("/", (req, res, next)=>{res.send("Oops! This route doesn't exist")});
 
 // Use Error Handler
 app.use(errorHandler);
