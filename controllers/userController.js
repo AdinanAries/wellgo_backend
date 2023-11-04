@@ -1,5 +1,12 @@
 const User = require('../models/user'); 
 
+/**
+ * @desc Registers new user
+ * @param {Object} req 
+ * @param {Object} res 
+ * @param {Function} next 
+ * @access Public
+ */
 const signup = (req, res, next) => {
     const {
         password,
@@ -31,6 +38,13 @@ const signup = (req, res, next) => {
     });
 }
 
+/**
+ * @desc User login
+ * @param {Object} req 
+ * @param {Object} res 
+ * @param {Function} next 
+ * @access Public
+ */
 const login = (req, res, next) => {
     const {email, password } = req.body;
     console.log('email:', email);
@@ -42,7 +56,7 @@ const login = (req, res, next) => {
  * @desc Get currently logged-in user information from MongoDB
  * @param {Object} req 
  * @param {Object} res 
- * @param {Object} next
+ * @param {Function} next
  * @access Private
  */
 const getUserDetails = (req, res, next) => {
