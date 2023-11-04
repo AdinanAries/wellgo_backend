@@ -39,23 +39,12 @@ const login = (req, res, next) => {
 }
 
 /**
- * 
- * {
-        id: "001",
-        first_name: "Mohammedu",
-        middle_name: "",
-        last_name: "Adinan",
-        dob: "03-23-1992",
-        email: "m.adinan@yahoo.com",
-        mobile: "+1 7327999546",
-        gender: "male"
-    }
- * 
- * @param {*} req 
- * @param {*} res 
- * @param {*} next 
+ * @desc Get currently logged-in user information from MongoDB
+ * @param {Object} req 
+ * @param {Object} res 
+ * @param {Object} next
+ * @access Private
  */
-
 const getUserDetails = (req, res, next) => {
     console.log(req.params.id);
     const id=req.params.id;
@@ -66,17 +55,7 @@ const getUserDetails = (req, res, next) => {
     .catch((err) => {
         console.log(err);
         res.status(500).send("Error");
-    });
-    /*let usr = {
-        first_name: "John",
-        middle_name: "Doe",
-        last_name: "Driven",
-        dob: "1992-03-23",
-        gender: "male",
-        phone: "+17327999546",
-        email: "johndoe@email.com",
-        password: "password"
-    }*/  
+    }); 
 }
 
 const updateUserDetails = (req, res, next) => {
