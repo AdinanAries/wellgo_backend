@@ -20,6 +20,24 @@ const login = (req, res, next) => {
     res.status(200).send({status: true});
 }
 
+/**
+ * 
+ * {
+        id: "001",
+        first_name: "Mohammedu",
+        middle_name: "",
+        last_name: "Adinan",
+        dob: "03-23-1992",
+        email: "m.adinan@yahoo.com",
+        mobile: "+1 7327999546",
+        gender: "male"
+    }
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ * @param {*} next 
+ */
+
 const getUserDetails = (req, res, next) => {
     console.log(req.params.id);
     let usr = {
