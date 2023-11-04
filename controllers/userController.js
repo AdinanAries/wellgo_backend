@@ -1,3 +1,5 @@
+const User = require('../models/user'); 
+
 const signup = (req, res, next) => {
     const {
         password,
@@ -9,8 +11,24 @@ const signup = (req, res, next) => {
         phone,
         email
     } = req.body;
-
-    res.status(200).send(req.body);
+    const user = new User({
+        first_name: first_name,
+        middle_name: middle_name,
+        last_name: last_name,
+        dob: dob,
+        gender: gender,
+        phone: phone,
+        email: email,
+        password: password
+    });
+    user.save().then((result) => {
+        console.log(result);
+        console.log("data");
+        res.status(200).send(result);
+    }).catch((err) => {
+        console.log(err);
+        res.status(500).send("Error");
+    });
 }
 
 const login = (req, res, next) => {
@@ -40,16 +58,25 @@ const login = (req, res, next) => {
 
 const getUserDetails = (req, res, next) => {
     console.log(req.params.id);
-    let usr = {
+    const id=req.params.id;
+    User.findOne({_id: id})
+    .then((user) => {
+        res.status(200).send(user);
+    })
+    .catch((err) => {
+        console.log(err);
+        res.status(500).send("Error");
+    });
+    /*let usr = {
         first_name: "John",
         middle_name: "Doe",
         last_name: "Driven",
         dob: "1992-03-23",
         gender: "male",
         phone: "+17327999546",
-        email: "johndoe@email.com"
-    }
-    res.status(200).send(usr);
+        email: "johndoe@email.com",
+        password: "password"
+    }*/  
 }
 
 const updateUserDetails = (req, res, next) => {

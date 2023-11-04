@@ -2,6 +2,18 @@ const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
 const app = express();
+const mongoose = require("mongoose");
+
+// Connect to DB
+mongoose
+  .connect(process.env.MONGO_DB_URL)
+  .then((result) => {
+    console.log('Database Connected!');
+    app.listen(3000);
+  })
+  .catch((err) => {
+    console.log(err);
+});
 
 // Error Handler
 const { errorHandler } = require("./middlewares/errorMiddleware");
