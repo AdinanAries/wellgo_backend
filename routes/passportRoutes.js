@@ -4,8 +4,8 @@ const router = express.Router();
 // Controllers
 const { addPassport, getPassport, getPassports } = require("../controllers/passportController");
 
-router.get("/single/:id", getPassports);
-router.get("/all/:user_id", getPassport);
+router.get("/single/:id", getPassport);
+router.get("/all/:user_id", getPassports);
 router.post("/add/", addPassport);
 
 module.exports = router;

@@ -37,6 +37,7 @@ const getPassports = (req, res, next) => {
             holder_birth_city: "New York"
         }
     ]);
+    // res.send([]);
 }
 
 module.exports = {
