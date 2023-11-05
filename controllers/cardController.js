@@ -1,13 +1,57 @@
+const PaymentCard = require("../models/paymentCard");
+
 const addCard = (req, res, next) => {
-    res.status(200).send("Add Payment Card");
+    const {
+        user_id,
+        card_number,
+        holder_name,
+        exp_date,
+        sec_code,
+        billing,
+    } = req.body;
+    const card = new PaymentCard({
+        user_id: user_id,
+        card_number: card_number,
+        holder_name: holder_name,
+        exp_date: exp_date,
+        sec_code: sec_code,
+        billing: billing,
+    });
+    card.save().then((result) => {
+        console.log("-----------------PAYMENT CARD----------------");
+        console.log(result);
+        console.log("-----------------PAYMENT CARD----------------");
+        res.status(200).send(result);
+    }).catch((err) => {
+        console.log(err);
+        res.status(500).send("PAYMENT CARD ERROR!");
+    });
 }
 
 const getCard = (req, res, next) => {
-    res.status(200).send("Get Payment Card");
+    console.log(req.params.id);
+    const id=req.params.id;
+    PaymentCard.findOne({_id: id})
+    .then((card) => {
+        res.status(200).send(card);
+    })
+    .catch((err) => {
+        console.log(err);
+        res.status(500).send("Error");
+    });
 }
 
 const getCards = (req, res, next) => {
-    res.status(200).send([
+    const user_id=req.params.user_id;
+    PaymentCard.find({user_id: user_id})
+    .then((cards) => {
+        res.status(200).send(cards);
+    })
+    .catch((err) => {
+        console.log(err);
+        res.status(500).send("Error");
+    }); 
+    /*res.status(200).send([
         {
             id: "001",
             user_id: "001",
@@ -38,7 +82,7 @@ const getCards = (req, res, next) => {
                 zip_code: "10453"
             }
         }
-    ]);
+    ]);*/
 }
 
 module.exports = { 
