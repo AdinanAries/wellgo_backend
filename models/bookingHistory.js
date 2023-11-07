@@ -21,8 +21,9 @@ const bookingHistorySchema = new Schema({
         required: true
     },
     user_id: {
-        type: String,
-        required: true
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: "User"
     },
     airline: {
         type: String,
@@ -72,6 +73,9 @@ const bookingHistorySchema = new Schema({
         type: String,
         required: true
     },
+},
+{
+    timestamps: true
 });
 
 module.exports = mongoose.model('BookingHistory', bookingHistorySchema);

@@ -5,8 +5,9 @@ const SchemaTypes = mongoose.SchemaTypes;
 
 const paymentCardSchema = new Schema({
     user_id: {
-        type: String,
-        required: true
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: "User"
     },
     card_number: {
         type: String,
@@ -46,6 +47,9 @@ const paymentCardSchema = new Schema({
             required: true
         }
     }
+},
+{
+    timestamps: true
 });
 
 module.exports = mongoose.model('PaymentCard', paymentCardSchema);

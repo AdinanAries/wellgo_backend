@@ -1,4 +1,7 @@
 const User = require('../models/user'); 
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
+const asyncHandler = require("express-async-handler");
 
 /**
  * @desc Registers new user
@@ -7,7 +10,7 @@ const User = require('../models/user');
  * @param {Function} next 
  * @access Public
  */
-const signup = (req, res, next) => {
+const signup = asyncHandler(async (req, res, next) => {
     const {
         password,
         first_name,
@@ -18,6 +21,25 @@ const signup = (req, res, next) => {
         phone,
         email
     } = req.body;
+
+    if(!first_name || !last_name || !email || !password ){
+        res.status(400);
+        throw new Error('Please add mandatory user fields');
+    }
+
+    // Check if user exists
+    const userExists = await User.findOne({email});
+
+    if(userExists) {
+        res.status(400);
+        throw new Error('User already exist');
+    }
+
+    // Hash password
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+    // Create user
     const user = new User({
         first_name: first_name,
         middle_name: middle_name,
@@ -26,17 +48,27 @@ const signup = (req, res, next) => {
         gender: gender,
         phone: phone,
         email: email,
-        password: password
+        password: hashedPassword
     });
     user.save().then((result) => {
         console.log(result);
-        console.log("data");
-        res.status(200).send(result);
+        res.status(201).send({
+            _id: result._id,
+            first_name: result.first_name,
+            middle_name: result.middle_name,
+            last_name: result.last_name,
+            dob: result.dob,
+            phone: result.phone,
+            email: result.email,
+            password: result.password,
+            token: generateToken(result._id)
+        });
     }).catch((err) => {
         console.log(err);
-        res.status(500).send("Error");
+        res.status(500);
+        throw new Error('User could not be created');
     });
-}
+})
 
 /**
  * @desc User login
@@ -45,12 +77,32 @@ const signup = (req, res, next) => {
  * @param {Function} next 
  * @access Public
  */
-const login = (req, res, next) => {
+const login = asyncHandler(async (req, res, next) => {
     const {email, password } = req.body;
-    console.log('email:', email);
-    console.log('password:', password);
-    res.status(200).send({status: true});
-}
+
+    if(!email || !password){
+        res.status(400);
+        throw new Error('Please provide user credentials');
+    }
+
+    const user = await User.findOne({email});
+    if(user && (await bcrypt.compare(password, user.password))){
+        res.status(201).send({
+            _id: user._id,
+            first_name: user.first_name,
+            middle_name: user.middle_name,
+            last_name: user.last_name,
+            dob: user.dob,
+            phone: user.phone,
+            email: user.email,
+            password: user.password,
+            token: generateToken(user._id)
+        });
+    }else{
+        res.status(400);
+        throw new Error('Invalid Login Credentials');
+    }
+})
 
 /**
  * @desc Get currently logged-in user information from MongoDB
@@ -60,8 +112,8 @@ const login = (req, res, next) => {
  * @access Private
  */
 const getUserDetails = (req, res, next) => {
-    console.log(req.params.id);
-    const id=req.params.id;
+    console.log(req.user.id);
+    const id=req.user.id;
     User.findOne({_id: id})
     .then((user) => {
         res.status(200).send(user);
@@ -75,6 +127,13 @@ const getUserDetails = (req, res, next) => {
 const updateUserDetails = (req, res, next) => {
     console.log(req.body);
     res.status(200).send(req.body);
+}
+
+// Generate JWT
+const generateToken = (id) => {
+    return jwt.sign({id}, process.env.JWT_SECRETE, {
+        expiresIn: "14d"
+    });
 }
 
 module.exports = {

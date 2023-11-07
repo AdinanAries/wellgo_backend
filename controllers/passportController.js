@@ -2,7 +2,6 @@ const Passport = require('../models/passport');
 
 const addPassport = (req, res, next) => {
     const {
-        user_id,
         passport_number,
         issue_date,
         exp_date,
@@ -15,7 +14,7 @@ const addPassport = (req, res, next) => {
         holder_birth_city 
     } = req.body;
     const passport = new Passport({
-        user_id: user_id,
+        user_id: req.user.id,
         passport_number: passport_number,
         issue_date: issue_date,
         exp_date: exp_date,
@@ -52,8 +51,8 @@ const getPassport = (req, res, next) => {
 }
 
 const getPassports = (req, res, next) => {
-    const user_id=req.params.user_id;
-    Passport.find({user_id: user_id})
+    const user_id=req.user.id;
+    Passport.find({user_id})
     .then((passports) => {
         res.status(200).send(passports);
     })

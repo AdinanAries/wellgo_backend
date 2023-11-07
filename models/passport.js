@@ -4,8 +4,9 @@ const Schema = mongoose.Schema;
 
 const passportSchema = new Schema({
     user_id: {
-        type: String,
-        required: true
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: "User"
     },
     passport_number: {
         type: String,
@@ -47,6 +48,9 @@ const passportSchema = new Schema({
         type: String,
         required: true
     }
+},
+{
+    timestamps: true
 });
 
 module.exports = mongoose.model('Passport', passportSchema);

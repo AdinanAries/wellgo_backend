@@ -2,7 +2,6 @@ const PaymentCard = require("../models/paymentCard");
 
 const addCard = (req, res, next) => {
     const {
-        user_id,
         card_number,
         holder_name,
         exp_date,
@@ -10,7 +9,7 @@ const addCard = (req, res, next) => {
         billing,
     } = req.body;
     const card = new PaymentCard({
-        user_id: user_id,
+        user_id: req.user.id,
         card_number: card_number,
         holder_name: holder_name,
         exp_date: exp_date,
@@ -42,7 +41,7 @@ const getCard = (req, res, next) => {
 }
 
 const getCards = (req, res, next) => {
-    const user_id=req.params.user_id;
+    const user_id=req.user.id;
     PaymentCard.find({user_id: user_id})
     .then((cards) => {
         res.status(200).send(cards);

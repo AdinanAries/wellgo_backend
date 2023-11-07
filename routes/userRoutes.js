@@ -2,14 +2,14 @@ const express = require("express");
 const router = express.Router();
 
 // Authentication
-const { passport, isLoggedIn } = require("../middlewares/authMiddleware");
+const { protect } = require("../middlewares/authMiddleware");
 
 // Controllers
 const { getUserDetails, login, signup, updateUserDetails } = require("../controllers/userController");
 
-router.get("/me/:id", /*isLoggedIn,*/ getUserDetails);
-router.post("/login/", passport.authenticate("local"), login);
+router.get("/me/", protect, getUserDetails);
+router.post("/login/", login);
 router.post("/register/", signup);
-router.put("/me/edit/:id", isLoggedIn, updateUserDetails);
+router.put("/me/edit/", protect, updateUserDetails);
 
 module.exports = router;

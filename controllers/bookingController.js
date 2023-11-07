@@ -6,7 +6,6 @@ const addLog = (req, res, next) => {
         providerBookingID,
         originPayloads,
         type,
-        user_id,
         airline,
         ariline_code,
         trip_type,
@@ -25,7 +24,7 @@ const addLog = (req, res, next) => {
         providerBookingID: providerBookingID,
         originPayloads: originPayloads,
         type: type,
-        user_id: user_id,
+        user_id: req.user.id,
         airline: airline,
         ariline_code: ariline_code,
         trip_type: trip_type,
@@ -64,7 +63,7 @@ const getLog = (req, res, next) => {
 }
 
 const getLogs = (req, res, next) => {
-    const user_id=req.params.user_id;
+    const user_id=req.user.id;
     BookingHistory.find({user_id: user_id})
     .then((bookings) => {
         res.status(200).send(bookings);
