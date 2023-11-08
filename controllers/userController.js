@@ -124,10 +124,66 @@ const getUserDetails = (req, res, next) => {
     }); 
 }
 
-const updateUserDetails = (req, res, next) => {
-    console.log(req.body);
-    res.status(200).send(req.body);
-}
+const updateUserDetails = asyncHandler( async (req, res, next) => {
+    const {
+        id,
+        password,
+        first_name,
+        middle_name,
+        last_name,
+        dob,
+        gender,
+        phone,
+        email
+    } = req.body;
+
+    if(!first_name || !last_name || !email || !password ){
+        res.status(400);
+        throw new Error('Please add mandatory user fields');
+    }
+
+    // Check if user exists
+    const user = await User.findById(id);
+
+    if(!user) {
+        res.status(400);
+        throw new Error('User does not exist');
+    }
+
+    // Hash password
+    // const salt = await bcrypt.genSalt(10);
+    // const hashedPassword = await bcrypt.hash(password, salt);
+
+    // Update user
+    user.first_name=first_name;
+    user.middle_name=middle_name;
+    user.last_name=last_name;
+    user.dob=dob;
+    user.gender=gender;
+    user.phone=phone;
+    user.email=email;
+    user.password=password;
+
+    const user_updated = new User(user);
+    user_updated.save().then((result) => {
+        console.log(result);
+        res.status(201).send({
+            _id: result._id,
+            first_name: result.first_name,
+            middle_name: result.middle_name,
+            last_name: result.last_name,
+            dob: result.dob,
+            phone: result.phone,
+            email: result.email,
+            password: result.password,
+            token: generateToken(result._id)
+        });
+    }).catch((err) => {
+        console.log(err);
+        res.status(500);
+        throw new Error('User could not be updated');
+    });
+});
 
 // Generate JWT
 const generateToken = (id) => {

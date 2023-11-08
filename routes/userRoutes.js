@@ -10,6 +10,6 @@ const { getUserDetails, login, signup, updateUserDetails } = require("../control
 router.get("/me/", protect, getUserDetails);
 router.post("/login/", login);
 router.post("/register/", signup);
-router.put("/me/edit/", protect, updateUserDetails);
+router.put("/edit/", protect, updateUserDetails);
 
 module.exports = router;
