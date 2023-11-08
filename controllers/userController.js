@@ -112,7 +112,6 @@ const login = asyncHandler(async (req, res, next) => {
  * @access Private
  */
 const getUserDetails = (req, res, next) => {
-    console.log(req.user.id);
     const id=req.user.id;
     User.findOne({_id: id})
     .then((user) => {
@@ -124,9 +123,15 @@ const getUserDetails = (req, res, next) => {
     }); 
 }
 
+/**
+ * @desc Updating user account information
+ * @param {Object} req 
+ * @param {Object} res 
+ * @param {Function} next
+ * @access Private
+ */
 const updateUserDetails = asyncHandler( async (req, res, next) => {
     const {
-        id,
         password,
         first_name,
         middle_name,
@@ -143,16 +148,12 @@ const updateUserDetails = asyncHandler( async (req, res, next) => {
     }
 
     // Check if user exists
-    const user = await User.findById(id);
+    const user = await User.findById(req.user.id);
 
     if(!user) {
         res.status(400);
         throw new Error('User does not exist');
     }
-
-    // Hash password
-    // const salt = await bcrypt.genSalt(10);
-    // const hashedPassword = await bcrypt.hash(password, salt);
 
     // Update user
     user.first_name=first_name;
@@ -176,12 +177,88 @@ const updateUserDetails = asyncHandler( async (req, res, next) => {
             phone: result.phone,
             email: result.email,
             password: result.password,
-            token: generateToken(result._id)
         });
     }).catch((err) => {
         console.log(err);
         res.status(500);
         throw new Error('User could not be updated');
+    });
+});
+
+/**
+ * @desc Changes user password
+ * @param {Object} req 
+ * @param {Object} res 
+ * @param {Function} next
+ * @access Private
+ */
+const updateUserPassword = asyncHandler( async (req, res, next) => {
+    const {
+        new_password,
+        old_password,
+        first_name,
+        middle_name,
+        last_name,
+        dob,
+        gender,
+        phone,
+        email
+    } = req.body;
+
+    if(!new_password || !old_password){
+        res.status(400);
+        throw new Error("Either your old password or the new one or both are have not been provided");
+    }
+
+    if(new_password===old_password){
+        res.status(400);
+        throw new Error("Both old and new passwords are the same");
+    }
+
+    if(!first_name || !last_name || !email ){
+        res.status(400);
+        throw new Error('Please add mandatory user fields');
+    }
+
+    // Check if user exists
+    const user = await User.findById(req.user.id);
+
+    if(!user) {
+        res.status(400);
+        throw new Error('User does not exist');
+    }
+
+    if((await bcrypt.compare(old_password, user.password))){
+        // old password is correct!
+    } else {
+        res.status(400);
+        throw new Error('Please make sure your old password is correct');
+    }
+
+    // Hash new password
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(new_password, salt);
+
+    // Update user password
+    user.password=hashedPassword;
+
+    const user_updated = new User(user);
+    user_updated.save().then((result) => {
+        console.log(result);
+        res.status(201).send({
+            _id: result._id,
+            first_name: result.first_name,
+            middle_name: result.middle_name,
+            last_name: result.last_name,
+            dob: result.dob,
+            phone: result.phone,
+            email: result.email,
+            password: result.password,
+        });
+    }).catch((err) => {
+        console.log(err);
+        res.status(500);
+        throw new Error('Password could not be changed');
     });
 });
 
@@ -196,5 +273,6 @@ module.exports = {
     getUserDetails,
     login,
     signup,
-    updateUserDetails
+    updateUserDetails,
+    updateUserPassword
 }
