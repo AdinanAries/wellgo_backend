@@ -1,4 +1,5 @@
 const PaymentCard = require("../models/paymentCard");
+const asyncHandler = require("express-async-handler");
 
 const addCard = (req, res, next) => {
     const {
@@ -17,13 +18,12 @@ const addCard = (req, res, next) => {
         billing: billing,
     });
     card.save().then((result) => {
-        console.log("-----------------PAYMENT CARD----------------");
         console.log(result);
-        console.log("-----------------PAYMENT CARD----------------");
         res.status(200).send(result);
     }).catch((err) => {
         console.log(err);
-        res.status(500).send("PAYMENT CARD ERROR!");
+        res.status(500);
+        throw new Error("Server Error:", err.message);
     });
 }
 
@@ -49,43 +49,81 @@ const getCards = (req, res, next) => {
     .catch((err) => {
         console.log(err);
         res.status(500).send("Error");
-    }); 
-    /*res.status(200).send([
-        {
-            id: "001",
-            user_id: "001",
-            card_number: "***3424",
-            holder_name: "Mohammed Adinan",
-            exp_date: "03-23-2025",
-            sec_code: "009",
-            billing: {
-                street: "956 Anderson Ave, 1A",
-                city: "Bronx",
-                state: "NY",
-                country: "United States",
-                zip_code: "10453"
-            }
-        },
-        {
-            id: "001",
-            user_id: "001",
-            card_number: "***4532",
-            holder_name: "Emmanuel Poku",
-            exp_date: "06-19-2025",
-            sec_code: "136",
-            billing: {
-                street: "956 Anderson Ave, 1A",
-                city: "Bronx",
-                state: "NY",
-                country: "United States",
-                zip_code: "10453"
-            }
-        }
-    ]);*/
+    });
 }
+
+const editCard = asyncHandler(async (req, res, next) => {
+    const {
+        id,
+        card_number,
+        holder_name,
+        exp_date,
+        sec_code,
+        billing,
+    } = req.body;
+
+    let card = await PaymentCard.findById(id);
+
+    if(!card){
+        res.status(400);
+        throw new Error("Card not found");
+    }
+
+    // Updating card information    
+    card.card_number = card_number;
+    card.holder_name = holder_name;
+    card.exp_date = exp_date;
+    card.sec_code = sec_code;
+    card.billing = billing;
+
+    const updated_card = new PaymentCard(card);
+    updated_card.save().then((result) => {
+        console.log(result);
+        res.status(200).send(result);
+    }).catch((err) => {
+        console.log(err);
+        res.status(500);
+        throw new Error("Server Error:", err.message);
+    });
+});
+
+const deleteCard = asyncHandler(async (req, res, next) => {
+    const {
+        id,
+        card_number,
+        holder_name,
+        exp_date,
+        sec_code,
+    } = req.body;
+
+    let card = await PaymentCard.findOne({
+        _id: id,
+        user_id: req.user.id,
+        card_number: card_number,
+        holder_name: holder_name,
+        exp_date: exp_date,
+        sec_code: sec_code
+    });
+
+    if(!card){
+        res.status(400);
+        throw new Error("Card not found");
+    }
+
+    PaymentCard.deleteOne(card).then((result) => {
+        console.log(result);
+        res.status(200).send(result);
+    }).catch((err) => {
+        console.log(err);
+        res.status(500);
+        throw new Error("Server Error:", err.message);
+    });
+});
 
 module.exports = { 
     addCard,
     getCard,
-    getCards
+    getCards,
+    editCard,
+    deleteCard
 }
