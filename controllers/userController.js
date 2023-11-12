@@ -142,7 +142,9 @@ const updateUserDetails = asyncHandler( async (req, res, next) => {
         email
     } = req.body;
 
-    if(!first_name || !last_name || !email || !password ){
+    console.log(req.body);
+
+    if(!first_name || !last_name || !email ){
         res.status(400);
         throw new Error('Please add mandatory user fields');
     }
