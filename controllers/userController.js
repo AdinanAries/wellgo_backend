@@ -11,63 +11,69 @@ const asyncHandler = require("express-async-handler");
  * @access Public
  */
 const signup = asyncHandler(async (req, res, next) => {
-    const {
-        password,
-        first_name,
-        middle_name,
-        last_name,
-        dob,
-        gender,
-        phone,
-        email
-    } = req.body;
+    try{
+        const {
+            password,
+            first_name,
+            middle_name,
+            last_name,
+            dob,
+            gender,
+            phone,
+            email
+        } = req.body;
 
-    if(!first_name || !last_name || !email || !password ){
-        res.status(400);
-        throw new Error('Please add mandatory user fields');
-    }
+        if(!first_name || !last_name || !email || !password ){
+            res.status(400);
+            throw new Error('Please add mandatory user fields');
+        }
 
-    // Check if user exists
-    const userExists = await User.findOne({email});
+        // Check if user exists
+        const userExists = await User.findOne({email});
 
-    if(userExists) {
-        res.status(400);
-        throw new Error('User already exist');
-    }
+        if(userExists) {
+            res.status(400);
+            throw new Error('User already exist');
+        }
 
-    // Hash password
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(password, salt);
+        // Hash password
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(password, salt);
 
-    // Create user
-    const user = new User({
-        first_name: first_name,
-        middle_name: middle_name,
-        last_name: last_name,
-        dob: dob,
-        gender: gender,
-        phone: phone,
-        email: email,
-        password: hashedPassword
-    });
-    user.save().then((result) => {
-        console.log(result);
-        res.status(201).send({
-            _id: result._id,
-            first_name: result.first_name,
-            middle_name: result.middle_name,
-            last_name: result.last_name,
-            dob: result.dob,
-            phone: result.phone,
-            email: result.email,
-            password: result.password,
-            token: generateToken(result._id)
+        // Create user
+        const user = new User({
+            first_name: first_name,
+            middle_name: middle_name,
+            last_name: last_name,
+            dob: dob,
+            gender: gender,
+            phone: phone,
+            email: email,
+            password: hashedPassword
         });
-    }).catch((err) => {
-        console.log(err);
+        user.save().then((result) => {
+            console.log(result);
+            res.status(201).send({
+                _id: result._id,
+                first_name: result.first_name,
+                middle_name: result.middle_name,
+                last_name: result.last_name,
+                dob: result.dob,
+                phone: result.phone,
+                email: result.email,
+                password: result.password,
+                token: generateToken(result._id)
+            });
+        }).catch((err) => {
+            console.log(err);
+            res.status(500);
+            throw new Error('User could not be created');
+        });
+    }catch(e){
+        console.log(e);
         res.status(500);
-        throw new Error('User could not be created');
-    });
+        throw new Error("Server error");
+    }
 })
 
 /**
@@ -78,29 +84,35 @@ const signup = asyncHandler(async (req, res, next) => {
  * @access Public
  */
 const login = asyncHandler(async (req, res, next) => {
-    const {email, password } = req.body;
+    try{
+        const {email, password } = req.body;
 
-    if(!email || !password){
-        res.status(400);
-        throw new Error('Please provide user credentials');
-    }
+        if(!email || !password){
+            res.status(400);
+            throw new Error('Please provide user credentials');
+        }
 
-    const user = await User.findOne({email});
-    if(user && (await bcrypt.compare(password, user.password))){
-        res.status(201).send({
-            _id: user._id,
-            first_name: user.first_name,
-            middle_name: user.middle_name,
-            last_name: user.last_name,
-            dob: user.dob,
-            phone: user.phone,
-            email: user.email,
-            password: user.password,
-            token: generateToken(user._id)
-        });
-    }else{
-        res.status(400);
-        throw new Error('Invalid Login Credentials');
+        const user = await User.findOne({email});
+        if(user && (await bcrypt.compare(password, user.password))){
+            res.status(201).send({
+                _id: user._id,
+                first_name: user.first_name,
+                middle_name: user.middle_name,
+                last_name: user.last_name,
+                dob: user.dob,
+                phone: user.phone,
+                email: user.email,
+                password: user.password,
+                token: generateToken(user._id)
+            });
+        }else{
+            res.status(400);
+            throw new Error('Invalid Login Credentials');
+        }
+    }catch(e){
+        console.log(e);
+        res.status(500);
+        throw new Error("Server error");
     }
 })
 
@@ -119,7 +131,7 @@ const getUserDetails = (req, res, next) => {
     })
     .catch((err) => {
         console.log(err);
-        res.status(500).send("Error");
+        res.status(500).send("Server Error");
     }); 
 }
 
@@ -131,60 +143,66 @@ const getUserDetails = (req, res, next) => {
  * @access Private
  */
 const updateUserDetails = asyncHandler( async (req, res, next) => {
-    const {
-        password,
-        first_name,
-        middle_name,
-        last_name,
-        dob,
-        gender,
-        phone,
-        email
-    } = req.body;
+    try{
+        const {
+            password,
+            first_name,
+            middle_name,
+            last_name,
+            dob,
+            gender,
+            phone,
+            email
+        } = req.body;
 
-    console.log(req.body);
+        console.log(req.body);
 
-    if(!first_name || !last_name || !email ){
-        res.status(400);
-        throw new Error('Please add mandatory user fields');
-    }
+        if(!first_name || !last_name || !email ){
+            res.status(400);
+            throw new Error('Please add mandatory user fields');
+        }
 
-    // Check if user exists
-    const user = await User.findById(req.user.id);
+        // Check if user exists
+        const user = await User.findById(req.user.id);
 
-    if(!user) {
-        res.status(400);
-        throw new Error('User does not exist');
-    }
+        if(!user) {
+            res.status(400);
+            throw new Error('User does not exist');
+        }
 
-    // Update user
-    user.first_name=first_name;
-    user.middle_name=middle_name;
-    user.last_name=last_name;
-    user.dob=dob;
-    user.gender=gender;
-    user.phone=phone;
-    user.email=email;
-    user.password=password;
+        // Update user
+        user.first_name=first_name;
+        user.middle_name=middle_name;
+        user.last_name=last_name;
+        user.dob=dob;
+        user.gender=gender;
+        user.phone=phone;
+        user.email=email;
+        user.password=password;
 
-    const user_updated = new User(user);
-    user_updated.save().then((result) => {
-        console.log(result);
-        res.status(201).send({
-            _id: result._id,
-            first_name: result.first_name,
-            middle_name: result.middle_name,
-            last_name: result.last_name,
-            dob: result.dob,
-            phone: result.phone,
-            email: result.email,
-            password: result.password,
+        const user_updated = new User(user);
+        user_updated.save().then((result) => {
+            console.log(result);
+            res.status(201).send({
+                _id: result._id,
+                first_name: result.first_name,
+                middle_name: result.middle_name,
+                last_name: result.last_name,
+                dob: result.dob,
+                phone: result.phone,
+                email: result.email,
+                password: result.password,
+            });
+        }).catch((err) => {
+            console.log(err);
+            res.status(500);
+            throw new Error('User could not be updated');
         });
-    }).catch((err) => {
-        console.log(err);
+    }catch(e){
+        console.log(e);
         res.status(500);
-        throw new Error('User could not be updated');
-    });
+        throw new Error("Server error");
+    }
 });
 
 /**
@@ -195,73 +213,79 @@ const updateUserDetails = asyncHandler( async (req, res, next) => {
  * @access Private
  */
 const updateUserPassword = asyncHandler( async (req, res, next) => {
-    const {
-        new_password,
-        old_password,
-        first_name,
-        middle_name,
-        last_name,
-        dob,
-        gender,
-        phone,
-        email
-    } = req.body;
+    try{
+        const {
+            new_password,
+            old_password,
+            first_name,
+            middle_name,
+            last_name,
+            dob,
+            gender,
+            phone,
+            email
+        } = req.body;
 
-    if(!new_password || !old_password){
-        res.status(400);
-        throw new Error("Either your old password or the new one or both are have not been provided");
-    }
+        if(!new_password || !old_password){
+            res.status(400);
+            throw new Error("Either your old password or the new one or both are have not been provided");
+        }
 
-    if(new_password===old_password){
-        res.status(400);
-        throw new Error("Both old and new passwords are the same");
-    }
+        if(new_password===old_password){
+            res.status(400);
+            throw new Error("Both old and new passwords are the same");
+        }
 
-    if(!first_name || !last_name || !email ){
-        res.status(400);
-        throw new Error('Please add mandatory user fields');
-    }
+        if(!first_name || !last_name || !email ){
+            res.status(400);
+            throw new Error('Please add mandatory user fields');
+        }
 
-    // Check if user exists
-    const user = await User.findById(req.user.id);
+        // Check if user exists
+        const user = await User.findById(req.user.id);
 
-    if(!user) {
-        res.status(400);
-        throw new Error('User does not exist');
-    }
+        if(!user) {
+            res.status(400);
+            throw new Error('User does not exist');
+        }
 
-    if((await bcrypt.compare(old_password, user.password))){
-        // old password is correct!
-    } else {
-        res.status(400);
-        throw new Error('Please make sure your old password is correct');
-    }
+        if((await bcrypt.compare(old_password, user.password))){
+            // old password is correct!
+        } else {
+            res.status(400);
+            throw new Error('Please make sure your old password is correct');
+        }
 
-    // Hash new password
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(new_password, salt);
+        // Hash new password
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(new_password, salt);
 
-    // Update user password
-    user.password=hashedPassword;
+        // Update user password
+        user.password=hashedPassword;
 
-    const user_updated = new User(user);
-    user_updated.save().then((result) => {
-        console.log(result);
-        res.status(201).send({
-            _id: result._id,
-            first_name: result.first_name,
-            middle_name: result.middle_name,
-            last_name: result.last_name,
-            dob: result.dob,
-            phone: result.phone,
-            email: result.email,
-            password: result.password,
+        const user_updated = new User(user);
+        user_updated.save().then((result) => {
+            console.log(result);
+            res.status(201).send({
+                _id: result._id,
+                first_name: result.first_name,
+                middle_name: result.middle_name,
+                last_name: result.last_name,
+                dob: result.dob,
+                phone: result.phone,
+                email: result.email,
+                password: result.password,
+            });
+        }).catch((err) => {
+            console.log(err);
+            res.status(500);
+            throw new Error('Password could not be changed');
         });
-    }).catch((err) => {
-        console.log(err);
+    }catch(e){
+        console.log(e);
         res.status(500);
-        throw new Error('Password could not be changed');
-    });
+        throw new Error("Server error")
+    }
 });
 
 // Generate JWT
