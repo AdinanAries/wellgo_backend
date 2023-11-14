@@ -24,7 +24,7 @@ const userSchema = new Schema({
         required: false
     },
     phone: {
-        type: Number,
+        type: String,
         required: [true, "Please add phone"]
     },
     email: {
