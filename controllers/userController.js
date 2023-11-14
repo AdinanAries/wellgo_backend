@@ -23,7 +23,7 @@ const signup = asyncHandler(async (req, res, next) => {
             email
         } = req.body;
 
-        if(!first_name || !last_name || !email || !password ){
+        if(!first_name || !last_name || !email || !password || !phone ){
             res.status(400);
             throw new Error('Please add mandatory user fields');
         }
