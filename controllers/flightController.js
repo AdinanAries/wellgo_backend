@@ -94,7 +94,8 @@ const create_flight_order = async (req, res, next) => {
         }
     }catch(e){
         console.log(e);
-        res.status(500).send(e);
+        res.status(500);
+        throw new Error("Server Error!");
     }
 }
 
