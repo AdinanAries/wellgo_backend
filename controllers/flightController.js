@@ -86,6 +86,7 @@ const create_flight_order = async (req, res, next) => {
     try{
         if(process.env.DATA_PROVIDER===constants.duffel){
             let payload = return_duffel_order_payload(req.body);
+            console.log("Checkout Payload:", payload);
             flight_order = await require("../flight_providers/duffel").createOrder(payload);
             res.status(200).json(flight_order);
         }else{
