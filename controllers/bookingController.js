@@ -39,13 +39,11 @@ const addLog = (req, res, next) => {
         return_date: return_date
     });
     booking.save().then((result) => {
-        console.log("-----------------BOOKING HISTORY----------------");
         console.log(result);
-        console.log("-----------------BOOKING HISTORY----------------");
         res.status(200).send(result);
     }).catch((err) => {
         console.log(err);
-        res.status(500).send("BOOKING HISTORY ERROR!");
+        res.status(500).send({message: err.message});
     });
 }
 
