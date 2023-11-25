@@ -47,10 +47,70 @@ const addLog = (req, res, next) => {
     });
 }
 
+const addLogAnonymous = (req, res, next) => {
+    const {
+        apiProvider,
+        providerBookingID,
+        originPayloads,
+        type,
+        airline,
+        ariline_code,
+        trip_type,
+        travellers,
+        takeoff_airport,
+        takeoff_airport_code,
+        takeoff_city,
+        destination_airport,
+        destination_airport_code,
+        destination_city,
+        departure_date,
+        return_date 
+    } = req.body;
+    const booking = new BookingHistory({
+        apiProvider: apiProvider,
+        providerBookingID: providerBookingID,
+        originPayloads: originPayloads,
+        type: type,
+        user_id: "",
+        airline: airline,
+        ariline_code: ariline_code,
+        trip_type: trip_type,
+        travellers: travellers,
+        takeoff_airport: takeoff_airport,
+        takeoff_airport_code: takeoff_airport_code,
+        takeoff_city: takeoff_city,
+        destination_airport: destination_airport,
+        destination_airport_code: destination_airport_code,
+        destination_city: destination_city,
+        departure_date: departure_date,
+        return_date: return_date
+    });
+    booking.save().then((result) => {
+        console.log(result);
+        res.status(200).send(result);
+    }).catch((err) => {
+        console.log(err);
+        res.status(500).send({message: err.message});
+    });
+}
+
 const getLog = (req, res, next) => {
     console.log(req.params.id);
     const id=req.params.id;
     BookingHistory.findOne({_id: id})
+    .then((booking) => {
+        res.status(200).send(booking);
+    })
+    .catch((err) => {
+        console.log(err);
+        res.status(500).send("Error");
+    }); 
+}
+
+const getLogAnonymous = (req, res, next) => {
+    console.log(req.params.id);
+    const id=req.params.id;
+    BookingHistory.findOne({})
     .then((booking) => {
         res.status(200).send(booking);
     })
@@ -126,6 +186,8 @@ const getLogs = (req, res, next) => {
 
 module.exports = {
     addLog,
+    addLogAnonymous,
     getLog,
+    getLogAnonymous,
     getLogs
 }
