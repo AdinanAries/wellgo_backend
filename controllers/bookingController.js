@@ -108,8 +108,9 @@ const getLog = (req, res, next) => {
 }
 
 const getLogAnonymous = (req, res, next) => {
-    console.log(req.params.id);
-    const id=req.params.id;
+    console.log(req.params);
+    const REF_NUMBER=req.params.ref;
+    const EMAIL=req.params.email;
     BookingHistory.findOne({})
     .then((booking) => {
         res.status(200).send(booking);
