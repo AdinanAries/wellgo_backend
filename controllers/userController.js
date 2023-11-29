@@ -25,7 +25,7 @@ const signup = asyncHandler(async (req, res, next) => {
 
         if(!first_name || !last_name || !email || !password || !phone ){
             res.status(400);
-            throw new Error('Please add mandatory user fields');
+            res.send({message: "Please add mandatory user fields"});
         }
 
         // Check if user exists
@@ -33,7 +33,7 @@ const signup = asyncHandler(async (req, res, next) => {
 
         if(userExists) {
             res.status(400);
-            throw new Error('User already exist');
+            res.send({message: "User already exist"});
         }
 
         // Hash password
@@ -67,14 +67,14 @@ const signup = asyncHandler(async (req, res, next) => {
         }).catch((err) => {
             console.log(err);
             res.status(500);
-            throw new Error('User could not be created');
+            res.send({message: 'User could not be created'});
         });
     }catch(e){
         console.log(e);
         res.status(500);
-        throw new Error("Server error");
+        res.send({message: "Server error"});
     }
-})
+});
 
 /**
  * @desc User login
@@ -89,7 +89,7 @@ const login = asyncHandler(async (req, res, next) => {
 
         if(!email || !password){
             res.status(400);
-            throw new Error('Please provide user credentials');
+            res.send({message: "Please provide user credentials"});
         }
 
         const user = await User.findOne({email});
@@ -107,12 +107,13 @@ const login = asyncHandler(async (req, res, next) => {
             });
         }else{
             res.status(400);
-            throw new Error('Invalid Login Credentials');
+            res.send({message: "Invalid Login Credentials"});
         }
     }catch(e){
         console.log(e);
         res.status(500);
-        throw new Error("Server error");
+        res.send({message: "Server error"});
+        //throw new Error("Server error");
     }
 })
 
@@ -131,7 +132,7 @@ const getUserDetails = (req, res, next) => {
     })
     .catch((err) => {
         console.log(err);
-        res.status(500).send("Server Error");
+        res.status(500).send({message: "Server Error"});
     }); 
 }
 
@@ -159,7 +160,7 @@ const updateUserDetails = asyncHandler( async (req, res, next) => {
 
         if(!first_name || !last_name || !email ){
             res.status(400);
-            throw new Error('Please add mandatory user fields');
+            res.send({message: 'Please add mandatory user fields'});
         }
 
         // Check if user exists
@@ -167,7 +168,7 @@ const updateUserDetails = asyncHandler( async (req, res, next) => {
 
         if(!user) {
             res.status(400);
-            throw new Error('User does not exist');
+            res.send({message: 'User does not exist'});
         }
 
         // Update user
@@ -196,12 +197,12 @@ const updateUserDetails = asyncHandler( async (req, res, next) => {
         }).catch((err) => {
             console.log(err);
             res.status(500);
-            throw new Error('User could not be updated');
+            res.send({message: 'User could not be updated'});
         });
     }catch(e){
         console.log(e);
         res.status(500);
-        throw new Error("Server error");
+        res.send({message: "Server error"});
     }
 });
 
@@ -228,17 +229,17 @@ const updateUserPassword = asyncHandler( async (req, res, next) => {
 
         if(!new_password || !old_password){
             res.status(400);
-            throw new Error("Either your old password or the new one or both are have not been provided");
+            res.send({message: "Either your old password or the new one or both are have not been provided"});
         }
 
         if(new_password===old_password){
             res.status(400);
-            throw new Error("Both old and new passwords are the same");
+            res.send({message: "Both old and new passwords are the same"});
         }
 
         if(!first_name || !last_name || !email ){
             res.status(400);
-            throw new Error('Please add mandatory user fields');
+            res.send({message: 'Please add mandatory user fields'});
         }
 
         // Check if user exists
@@ -246,14 +247,14 @@ const updateUserPassword = asyncHandler( async (req, res, next) => {
 
         if(!user) {
             res.status(400);
-            throw new Error('User does not exist');
+            res.send({message: 'User does not exist'});
         }
 
         if((await bcrypt.compare(old_password, user.password))){
             // old password is correct!
         } else {
             res.status(400);
-            throw new Error('Please make sure your old password is correct');
+            res.send({message: 'Please make sure your old password is correct'});
         }
 
         // Hash new password
@@ -279,12 +280,12 @@ const updateUserPassword = asyncHandler( async (req, res, next) => {
         }).catch((err) => {
             console.log(err);
             res.status(500);
-            throw new Error('Password could not be changed');
+            res.send({message: 'Password could not be changed'});
         });
     }catch(e){
         console.log(e);
         res.status(500);
-        throw new Error("Server error")
+        res.send({message: "Server error"});
     }
 });
 

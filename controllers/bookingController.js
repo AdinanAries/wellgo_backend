@@ -122,6 +122,7 @@ const getLogAnonymous = (req, res, next) => {
 }
 
 const getLogs = (req, res, next) => {
+    console.log(req.query);
     const user_id=req.user.id;
     BookingHistory.find({user_id: user_id})
     .then((bookings) => {
