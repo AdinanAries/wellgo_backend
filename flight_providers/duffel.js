@@ -49,12 +49,16 @@ const listOffers = async (
 /**
  * @desc ...
  * @param {*} id 
- * @param {*} return_available_services 
+ * @param {*} include_services 
  * @returns ...
  * @type library
  */
-const getOffer = async (id, return_available_services=true) => {
-    return await duffel.offers.get(id, { return_available_services });
+const getOffer = async (id, include_services=true) => {
+    return await duffel.offers.get(
+        id, {
+            return_available_services: include_services
+        }
+    );
 }
 
 /**
