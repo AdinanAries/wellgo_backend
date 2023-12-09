@@ -24,6 +24,9 @@ const bookingHistorySchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
     },
+    anonymous_id: {
+        type: String
+    },
     airline: {
         type: String,
         required: true
