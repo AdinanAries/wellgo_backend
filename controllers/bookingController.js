@@ -2,6 +2,7 @@ const BookingHistory = require("../models/bookingHistory");
 
 const addLog = (req, res, next) => {
     const {
+        anonymous_id,
         apiProvider,
         providerBookingID,
         originPayloads,
@@ -20,6 +21,7 @@ const addLog = (req, res, next) => {
         return_date 
     } = req.body;
     const booking = new BookingHistory({
+        anonymous_id: anonymous_id,
         apiProvider: apiProvider,
         providerBookingID: providerBookingID,
         originPayloads: originPayloads,
@@ -49,6 +51,7 @@ const addLog = (req, res, next) => {
 
 const addLogAnonymous = (req, res, next) => {
     const {
+        anonymous_id,
         apiProvider,
         providerBookingID,
         originPayloads,
@@ -67,6 +70,7 @@ const addLogAnonymous = (req, res, next) => {
         return_date 
     } = req.body;
     const booking = new BookingHistory({
+        anonymous_id: anonymous_id,
         apiProvider: apiProvider,
         providerBookingID: providerBookingID,
         originPayloads: originPayloads,
