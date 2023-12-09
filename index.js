@@ -36,6 +36,8 @@ app.use("/api/users", require("./routes/userRoutes"));
 app.use("/api/bookings", require("./routes/bookingRoutes"));
 app.use("/api/passports", require("./routes/passportRoutes"));
 app.use("/api/payment-cards", require("./routes/paymentCardRoutes"));
+app.use("/api/sessions", require("./routes/sessionRoutes"));
+app.use("/api/activities", require("./routes/activityRoutes"));
 app.use("/", (req, res, next)=>{res.send("Oops! This route doesn't exist")});
 
 // Use Error Handler
