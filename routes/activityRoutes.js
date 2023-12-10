@@ -9,6 +9,6 @@ const { logActivity, logError, logFailedBookings } = require("../controllers/act
 
 router.post("/log/", logActivity);
 router.post("/error/", logError);
-router.post("/failed_bookings/", logFailedBookings);
+router.post("/failed-booking/", logFailedBookings);
 
 module.exports = router;
