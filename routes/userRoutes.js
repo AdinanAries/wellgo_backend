@@ -5,12 +5,20 @@ const router = express.Router();
 const { protect } = require("../middlewares/authMiddleware");
 
 // Controllers
-const { getUserDetails, login, signup, updateUserDetails, updateUserPassword } = require("../controllers/userController");
+const { 
+    getUserDetails,
+    login, 
+    signup, 
+    updateUserDetails, 
+    updateUserPassword, 
+    subScribeToPriceAlerts 
+} = require("../controllers/userController");
 
 router.get("/me/", protect, getUserDetails);
 router.post("/login/", login);
 router.post("/register/", signup);
 router.put("/edit/", protect, updateUserDetails);
 router.put("/edit/password", protect, updateUserPassword);
+router.post("/price-alerts/subscribe", subScribeToPriceAlerts);
 
 module.exports = router;

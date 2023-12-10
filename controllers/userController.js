@@ -1,4 +1,5 @@
 const User = require('../models/user'); 
+const PriceAlertSubscriber = require("../models/priceAlertSubscriber");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const asyncHandler = require("express-async-handler");
@@ -289,6 +290,43 @@ const updateUserPassword = asyncHandler( async (req, res, next) => {
     }
 });
 
+/**
+ * @desc Add new user subscribtion for price alerts
+ * @param {Object} req 
+ * @param {Object} res 
+ * @param {Function} next
+ * @access Public
+ */
+const subScribeToPriceAlerts = asyncHandler( async (req, res, next) => {
+    try{
+        const {
+            client,
+            email
+        } = req.body;
+        const subscriber = new PriceAlertSubscriber({
+            client: client,
+            email: email
+        });
+        subscriber.save().then((result) => {
+            console.log(result);
+            res.status(201).send({
+                _id: result._id,
+                client: result.client,
+                email: result.email
+            });
+        }).catch((err) => {
+            console.log(err);
+            res.status(500);
+            res.send({message: 'Subscriber not be saved'});
+        });
+    }catch(e){
+        console.log(e);
+        res.status(500);
+        res.send({message: "Server error"});
+    }
+
+});
+
 // Generate JWT
 const generateToken = (id) => {
     return jwt.sign({id}, process.env.JWT_SECRETE, {
@@ -301,5 +339,6 @@ module.exports = {
     login,
     signup,
     updateUserDetails,
-    updateUserPassword
+    updateUserPassword,
+    subScribeToPriceAlerts
 }
