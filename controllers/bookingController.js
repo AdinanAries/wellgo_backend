@@ -75,7 +75,6 @@ const addLogAnonymous = (req, res, next) => {
         providerBookingID: providerBookingID,
         originPayloads: originPayloads,
         type: type,
-        user_id: "",
         airline: airline,
         ariline_code: ariline_code,
         trip_type: trip_type,
