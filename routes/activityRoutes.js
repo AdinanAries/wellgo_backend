@@ -5,10 +5,10 @@ const router = express.Router();
 const { protect } = require("../middlewares/authMiddleware");
 
 // Controllers
-const { logActivity, logWarning, logFailedBookings } = require("../controllers/activityController");
+const { logActivity, logError, logFailedBookings } = require("../controllers/activityController");
 
 router.post("/log/", logActivity);
-router.post("/warn/", logWarning);
+router.post("/error/", logError);
 router.post("/failed_bookings/", logFailedBookings);
 
 module.exports = router;
