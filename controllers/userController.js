@@ -306,7 +306,6 @@ const subScribeToPriceAlerts = asyncHandler( async (req, res, next) => {
 
         // Check if subscriber exists
         const subscriberExists = await PriceAlertSubscriber.findOne({email});
-
         if(subscriberExists) {
             res.status(400);
             res.send({status: 400, message: "Subscriber already exist"});
