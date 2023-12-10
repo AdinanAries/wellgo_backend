@@ -35,6 +35,7 @@ const signup = asyncHandler(async (req, res, next) => {
         if(userExists) {
             res.status(400);
             res.send({message: "User already exist"});
+            return;
         }
 
         // Hash password
@@ -309,6 +310,7 @@ const subScribeToPriceAlerts = asyncHandler( async (req, res, next) => {
         if(subscriberExists) {
             res.status(400);
             res.send({status: 400, message: "Subscriber already exist"});
+            return;
         }
 
         // Register subscriber
