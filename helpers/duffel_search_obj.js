@@ -51,14 +51,16 @@ const return_passengers_params = (passenger_param) => {
     let children = [];
     for (let j=0;j<passenger_param.children;j++) {
         children.push({
-            "age": 14
+            /*"age": 14*/
+            "type": "child"
         });
     }
 
     let infants = [];
     for (let k=0;k<passenger_param.infants;k++) {
         infants.push({
-            "age": 2
+            /*"age": 2*/
+            "type": "infant_without_seat"
         })
     }
 
