@@ -10,3 +10,5 @@ const {
 router.get("/", getAllRatedPlace);
 router.get("/:id", getRatedPlace);
 router.get("/:city", getRatedPlacesByCity);
+
+module.exports = router;
