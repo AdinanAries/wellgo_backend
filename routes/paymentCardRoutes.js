@@ -5,7 +5,13 @@ const router = express.Router();
 const { protect } = require("../middlewares/authMiddleware");
 
 // Controllers
-const { addCard, getCard, getCards, editCard, deleteCard } = require("../controllers/cardController");
+const { 
+    addCard, 
+    getCard, 
+    getCards, 
+    editCard, 
+    deleteCard 
+} = require("../controllers/cardController");
 
 router.get("/single/:id", protect, getCard);
 router.get("/all/", protect, getCards);
