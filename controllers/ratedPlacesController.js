@@ -1,4 +1,4 @@
-const RatedPlaces = require("./models/ratedPlaces");
+const RatedPlaces = require("../models/ratedPlaces");
 const wellgo_reviewer = './wellgo_reviewer.jpg';
 const wellgo_reviewer2 = './wellgo_reviewer2.jpg';
 const wellgo_reviewer3 = './wellgo_reviewer3.jpg';
