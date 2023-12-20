@@ -189,10 +189,30 @@ const getLogs = (req, res, next) => {
     ])*/
 }
 
+const setLogUserID = async (req, res, next) => {
+    try{
+        const booking_id=req.params.booking_log_id;
+        const user_id=req.user.id;
+        let booking = await BookingHistory.find({_id: booking_id});
+        if(booking){
+            booking.user_id=user_id;
+            let updated = new BookingHistory(booking);
+            let saved = await updated.save();
+            res.status(201).send(saved);
+        }else{
+            res.status(500).send({message: "booking not found"})
+        }
+    } catch (err) {
+        console.log(err);
+        res.status(500).send({message: "Server Error"});
+    }; 
+}
+
 module.exports = {
     addLog,
     addLogAnonymous,
     getLog,
     getLogAnonymous,
-    getLogs
+    getLogs,
+    setLogUserID
 }
