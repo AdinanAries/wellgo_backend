@@ -136,7 +136,24 @@ const getLogs = (req, res, next) => {
 
     const user_id=req.user.id;
 
-    BookingHistory.find({user_id: user_id})
+    const FIND_OBJ = {
+        user_id: user_id
+    };
+
+    if(TRIP_TYPE && (TRIP_TYPE !== "*")){
+        FIND_OBJ.trip_type=TRIP_TYPE
+    }
+    if(CABIN_TYPE && (CABIN_TYPE !== "*")){
+        FIND_OBJ.cabin_type = CABIN_TYPE;
+    }
+    if(DEPARTURE_DATE){
+        FIND_OBJ.departure_date.trim().split("T")[0]=DEPARTURE_DATE;
+    }
+    if(RETURN_DATE){
+        FIND_OBJ.return_date.trim().split("T")[0]=RETURN_DATE;
+    }
+
+    BookingHistory.find(FIND_OBJ)
     .then((bookings) => {
         res.status(200).send(bookings);
     })

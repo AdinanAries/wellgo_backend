@@ -39,6 +39,10 @@ const bookingHistorySchema = new Schema({
         type: String,
         required: true
     },
+    cabin_type: {
+        type: String,
+        required: true
+    },
     travellers: {
         type: Array,
         required: true
