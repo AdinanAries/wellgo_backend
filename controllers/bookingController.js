@@ -10,6 +10,7 @@ const addLog = (req, res, next) => {
         airline,
         ariline_code,
         trip_type,
+        cabin_type,
         travellers,
         takeoff_airport,
         takeoff_airport_code,
@@ -30,6 +31,7 @@ const addLog = (req, res, next) => {
         airline: airline,
         ariline_code: ariline_code,
         trip_type: trip_type,
+        cabin_type: cabin_type,
         travellers: travellers,
         takeoff_airport: takeoff_airport,
         takeoff_airport_code: takeoff_airport_code,
@@ -59,6 +61,7 @@ const addLogAnonymous = (req, res, next) => {
         airline,
         ariline_code,
         trip_type,
+        cabin_type,
         travellers,
         takeoff_airport,
         takeoff_airport_code,
@@ -78,6 +81,7 @@ const addLogAnonymous = (req, res, next) => {
         airline: airline,
         ariline_code: ariline_code,
         trip_type: trip_type,
+        cabin_type: cabin_type,
         travellers: travellers,
         takeoff_airport: takeoff_airport,
         takeoff_airport_code: takeoff_airport_code,
@@ -139,19 +143,20 @@ const getLogs = (req, res, next) => {
     const FIND_OBJ = {
         user_id: user_id
     };
-    console.log("find object", FIND_OBJ);
+    
     if(TRIP_TYPE && (TRIP_TYPE !== "*")){
-        FIND_OBJ.trip_type=TRIP_TYPE
+        FIND_OBJ.trip_type=TRIP_TYPE.toLowerCase();
     }
     if(CABIN_TYPE && (CABIN_TYPE !== "*")){
         FIND_OBJ.cabin_type = CABIN_TYPE;
     }
     if(DEPARTURE_DATE){
-        FIND_OBJ.departure_date.trim().split("T")[0]=DEPARTURE_DATE;
+        FIND_OBJ.departure_date={$regex: DEPARTURE_DATE};
     }
-    if(RETURN_DATE){
-        FIND_OBJ.return_date.trim().split("T")[0]=RETURN_DATE;
+    if(RETURN_DATE && (TRIP_TYPE.toLowerCase() === "round-trip")){
+        FIND_OBJ.return_date={$regex: RETURN_DATE};
     }
+    console.log("find object", FIND_OBJ);
     BookingHistory.find(FIND_OBJ)
     .then((bookings) => {
         res.status(200).send(bookings);
