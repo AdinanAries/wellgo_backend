@@ -126,7 +126,16 @@ const getLogAnonymous = (req, res, next) => {
 
 const getLogs = (req, res, next) => {
     console.log(req.query);
+    const q = req.query;
+    const PAGE = q.p; // Pagination current page
+    const PAGE_SIZE = q.l; // Pagination page size
+    const DEPARTURE_DATE = q.departure_date; // [ '2024-01-23' ]
+    const TRIP_TYPE = q.trip_type; // ['', '*', 'ROUND-TRIP', 'ONE-WAY']
+    const CABIN_TYPE = q.cabin_type; // [ '', '*', 'economy', 'premium', 'business', 'first_class' ]
+    const RETURN_DATE = q.return_date; // [ '2024-01-26' ]
+
     const user_id=req.user.id;
+
     BookingHistory.find({user_id: user_id})
     .then((bookings) => {
         res.status(200).send(bookings);
