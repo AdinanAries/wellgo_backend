@@ -139,7 +139,7 @@ const getLogs = (req, res, next) => {
     const FIND_OBJ = {
         user_id: user_id
     };
-
+    console.log("find object", FIND_OBJ);
     if(TRIP_TYPE && (TRIP_TYPE !== "*")){
         FIND_OBJ.trip_type=TRIP_TYPE
     }
@@ -152,7 +152,6 @@ const getLogs = (req, res, next) => {
     if(RETURN_DATE){
         FIND_OBJ.return_date.trim().split("T")[0]=RETURN_DATE;
     }
-
     BookingHistory.find(FIND_OBJ)
     .then((bookings) => {
         res.status(200).send(bookings);
