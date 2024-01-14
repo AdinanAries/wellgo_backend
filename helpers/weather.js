@@ -4,7 +4,7 @@ const {
     make_post_request 
 } = require("../fetch_request/fetch_request");
 
-const make_url = (host=CONSTANTS.weather.providers.open_meteo, params) => {
+const make_url = (params, host=CONSTANTS.weather.providers.open_meteo) => {
     let long=params.longitude;
     let lat=params.latitude;
     let url="";
@@ -15,9 +15,17 @@ const make_url = (host=CONSTANTS.weather.providers.open_meteo, params) => {
 }
 
 const get_weather_data = async (params) => {
+    if(
+        !params?.longitude || !params?.latitude
+    ){
+        return {
+            error: true,
+            message: "Longitude and Latitude were not specified"
+        }
+    }
     let url = make_url({
-        longitude: "52.52",
-        latitude: "13.41",
+        longitude: params?.longitude, //"52.52",
+        latitude: params?.latitude, //"13.41",
     });
     const data = await make_get_request(url);;
     return data;

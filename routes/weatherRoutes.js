@@ -3,6 +3,6 @@ const router = express.Router();
 
 const { getWeather } = require("../controllers/weatherController");
 
-router.get("/", getWeather);
+router.get("/:longitude/:latitude", getWeather);
 
 module.exports = router;

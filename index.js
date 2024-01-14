@@ -4,25 +4,6 @@ require('dotenv').config();
 const app = express();
 const mongoose = require("mongoose");
 
-// For testing
-const { make_get_request, make_post_request } = require("./fetch_request/fetch_request");
-
-(async()=>{
-  // Example
-  let todo = {
-    userId: 123,
-    title: "loren impsum doloris",
-    completed: false
-  };
-  let url = "https://jsonplaceholder.typicode.com/users";
-  const res = await make_get_request(url);
-  //const res = await make_post_request("https://jsonplaceholder.typicode.com/todos" , todo)
-  console.log(res);
-})();
-
-// Testing ends here
-
-
 // Connect to DB
 mongoose
   .connect(process.env.MONGO_DB_URL)
@@ -59,7 +40,7 @@ app.use("/api/sessions", require("./routes/sessionRoutes"));
 app.use("/api/activities", require("./routes/activityRoutes"));
 app.use("/api/rated-places", require("./routes/ratedPlacesRoutes"));
 app.use("/api/weather", require("./routes/weatherRoutes"));
-app.use("/", (req, res, next)=>{res.send("Oops! This route doesn't exist")});
+app.use("/", (req, res, next)=>{res.send("Server Works")});
 
 // Use Error Handler
 app.use(errorHandler);
