@@ -31,6 +31,10 @@ const get_weather_data = async (params) => {
     return data;
 }
 
+
+//https://open-meteo.com/en/docs/#hourly=temperature_2m,apparent_temperature,precipitation,rain,showers,snowfall,snow_depth&daily=daylight_duration,sunshine_duration&temperature_unit=fahrenheit&start_date=2024-01-19&end_date=2024-01-19&time_mode=time_interval
+
+
 module.exports = {
     make_url,
     get_weather_data
