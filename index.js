@@ -13,11 +13,14 @@ const { make_get_request, make_post_request } = require("./fetch_request/fetch_r
     userId: 123,
     title: "loren impsum doloris",
     completed: false
-  }
-  //const res = await make_get_request("https://jsonplaceholder.typicode.com/users");
-  const res = await make_post_request("https://jsonplaceholder.typicode.com/todos" , todo)
+  };
+  let url = "https://jsonplaceholder.typicode.com/users";
+  const res = await make_get_request(url);
+  //const res = await make_post_request("https://jsonplaceholder.typicode.com/todos" , todo)
   console.log(res);
 })();
+
+// Testing ends here
 
 
 // Connect to DB
@@ -55,6 +58,7 @@ app.use("/api/payment-cards", require("./routes/paymentCardRoutes"));
 app.use("/api/sessions", require("./routes/sessionRoutes"));
 app.use("/api/activities", require("./routes/activityRoutes"));
 app.use("/api/rated-places", require("./routes/ratedPlacesRoutes"));
+app.use("/api/weather", require("./routes/weatherRoutes"));
 app.use("/", (req, res, next)=>{res.send("Oops! This route doesn't exist")});
 
 // Use Error Handler
