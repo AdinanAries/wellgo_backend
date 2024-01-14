@@ -4,6 +4,22 @@ require('dotenv').config();
 const app = express();
 const mongoose = require("mongoose");
 
+// For testing
+const { make_get_request, make_post_request } = require("./fetch_request/fetch_request");
+
+(async()=>{
+  // Example
+  let todo = {
+    userId: 123,
+    title: "loren impsum doloris",
+    completed: false
+  }
+  //const res = await make_get_request("https://jsonplaceholder.typicode.com/users");
+  const res = await make_post_request("https://jsonplaceholder.typicode.com/todos" , todo)
+  console.log(res);
+})();
+
+
 // Connect to DB
 mongoose
   .connect(process.env.MONGO_DB_URL)
