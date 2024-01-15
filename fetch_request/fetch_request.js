@@ -1,4 +1,5 @@
 const fetch = require('node-fetch');
+global.fetch=fetch;
 
 const make_get_request = async (
     url,
