@@ -13,6 +13,11 @@ const getWeather = async (req, res, next) => {
         });
         return;
     }
+    
+    let dates = {
+        start: params.start_date,
+        end: params.end_date
+    }
     // Checking if Dates Exist
     if(
         !dates?.start || !dates?.end
@@ -24,10 +29,6 @@ const getWeather = async (req, res, next) => {
         return;
     }
 
-    let dates = {
-        start: params.start_date,
-        end: params.end_date
-    }
     console.log(params);
     let weather = await get_and_preprocess_weather_data(params, dates);
     res.status(201).send(weather);
