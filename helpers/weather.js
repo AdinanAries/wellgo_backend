@@ -31,7 +31,6 @@ const get_weather_data = async (
         }
     }
     // Checking if Dates Exist
-    // Checking if Longitude and Latitude exists
     if(
         !dates?.start || !dates?.end
     ){
