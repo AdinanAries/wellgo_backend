@@ -79,10 +79,20 @@ const getCity = async (req, res, next) => {
         return
     }
 
-    const lon = req?.params?.latitude;
+    const lon = req?.params?.longitude;
     const lat = req?.params?.latitude;
 
+    const FOUND_CITIES=[];
+    for(let i=0; i<WORLD_CITIES.length; i++){
+        if(
+            parseFloat(WORLD_CITIES[i].lng).toFixed(0)===parseFloat(lon).toFixed(0)
+            && parseFloat(WORLD_CITIES[i].lat).toFixed(0)===parseFloat(lat).toFixed(0)
+        ){
+            FOUND_CITIES.push(WORLD_CITIES[i]);
+        }
+    }
 
+    res.status(201).send(FOUND_CITIES);
 
 }
 
