@@ -1,4 +1,35 @@
 const { get_and_preprocess_weather_data } = require("../helpers/weather");
+const fs = require("fs");
+const { parse } = require("csv-parse");
+
+const WORLD_CITIES=[];
+let isHeaderRow=true;
+let HEADERS=[];
+fs.createReadStream("./data/worldcities.csv")
+  .pipe(parse({ delimiter: ",", from_line: 1 }))
+  .on("data", function (row) {
+    //console.log(row);
+    if(isHeaderRow){
+        HEADERS=row;
+        isHeaderRow=false;
+    }else{
+        let obj={};
+        for(let i=0; i<row.length; i++){
+            obj[HEADERS[i]]=row[i];
+        }
+        WORLD_CITIES.push(obj);
+    }
+
+    
+  })
+  .on("end", function () {
+    console.log("finished");
+    console.log(WORLD_CITIES[0]);
+    console.log(WORLD_CITIES[1]);
+  })
+  .on("error", function (error) {
+    console.log(error.message);
+  });
 
 const getWeather = async (req, res, next) => {
     try{
@@ -39,6 +70,23 @@ const getWeather = async (req, res, next) => {
     }
 }
 
+const getCity = async (req, res, next) => {
+    if(!req?.params?.longitude || !req?.params?.latitude){
+        res.status(401).send({
+            error: true,
+            message: "longitude and latitude not specified"
+        });
+        return
+    }
+
+    const lon = req?.params?.latitude;
+    const lat = req?.params?.latitude;
+
+
+
+}
+
 module.exports = {
     getWeather,
+    getCity,
 }
