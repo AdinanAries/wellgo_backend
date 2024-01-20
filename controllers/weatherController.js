@@ -85,8 +85,8 @@ const getCity = async (req, res, next) => {
     const FOUND_CITIES=[];
     for(let i=0; i<WORLD_CITIES.length; i++){
         if(
-            parseFloat(WORLD_CITIES[i].lng).toFixed(0)===parseFloat(lon).toFixed(0)
-            && parseFloat(WORLD_CITIES[i].lat).toFixed(0)===parseFloat(lat).toFixed(0)
+            parseFloat(WORLD_CITIES[i].lng).toFixed(4)===parseFloat(lon).toFixed(4)
+            && parseFloat(WORLD_CITIES[i].lat).toFixed(4)===parseFloat(lat).toFixed(4)
         ){
             FOUND_CITIES.push(WORLD_CITIES[i]);
         }
