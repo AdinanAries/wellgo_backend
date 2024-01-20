@@ -79,14 +79,19 @@ const getCity = async (req, res, next) => {
         return
     }
 
-    const lon = req?.params?.longitude;
-    const lat = req?.params?.latitude;
-
+    const lon = (req?.params?.longitude+"");
+    const lat = (req?.params?.latitude+"");
+    let lon_parts = lon.split(".");
+    let lat_parts = lat.split(".");
     const FOUND_CITIES=[];
     for(let i=0; i<WORLD_CITIES.length; i++){
-        if(
-            parseFloat(WORLD_CITIES[i].lng).toString().startsWith(parseFloat(lon).toString().substring(0,4))
-            && parseFloat(WORLD_CITIES[i].lat).toString().startsWith(parseFloat(lat).toString().substring(0,4))
+        let city_lon_parts = (WORLD_CITIES[i].lng+"").split(".");
+        let city_lat_parts = (WORLD_CITIES[i].lat+"").split(".")
+        if(city_lon_parts[0] === lon_parts[0]
+            &&  city_lat_parts[0] === lat_parts[0]
+            &&  (city_lon_parts[1].startsWith(lon_parts[1].substring(0,2))
+                || city_lat_parts[1].startsWith(lat_parts[1].substring(0, 2))
+            )
         ){
             FOUND_CITIES.push(WORLD_CITIES[i]);
         }
