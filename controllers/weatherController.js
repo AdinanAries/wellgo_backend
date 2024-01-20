@@ -89,8 +89,8 @@ const getCity = async (req, res, next) => {
         let city_lat_parts = (WORLD_CITIES[i].lat+"").split(".")
         if(city_lon_parts[0] === lon_parts[0]
             &&  city_lat_parts[0] === lat_parts[0]
-            &&  (city_lon_parts[1].startsWith(lon_parts[1].substring(0,3))
-                || city_lat_parts[1].startsWith(lat_parts[1].substring(0, 3))
+            &&  (city_lon_parts[1].startsWith(lon_parts[1].substring(0,1))
+                || city_lat_parts[1].startsWith(lat_parts[1].substring(0, 1))
             )
         ){
             FOUND_CITIES.push(WORLD_CITIES[i]);
