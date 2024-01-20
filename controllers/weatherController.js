@@ -106,7 +106,7 @@ const getCity = async (req, res, next) => {
                 || city_lat_parts[1].startsWith(lat_parts[1].substring(0,4))
             )
         ){
-            FIRST_FILTER.push(WORLD_CITIES[i]);
+            FOUND_CITIES.push(FIRST_FILTER[i]);
         }
     }
 
@@ -121,7 +121,7 @@ const getCity = async (req, res, next) => {
                         || city_lat_parts[1].startsWith(lat_parts[1].substring(0,3))
                     )
                 ){
-                    FOUND_CITIES.push(WORLD_CITIES[i]);
+                    FOUND_CITIES.push(FIRST_FILTER[i]);
                 }
             }
     }
@@ -137,7 +137,7 @@ const getCity = async (req, res, next) => {
                     || city_lat_parts[1].startsWith(lat_parts[1].substring(0,2))
                 )
             ){
-                FOUND_CITIES.push(WORLD_CITIES[i]);
+                FOUND_CITIES.push(FIRST_FILTER[i]);
             }
         }
     }
@@ -153,7 +153,7 @@ const getCity = async (req, res, next) => {
                     || city_lat_parts[1].startsWith(lat_parts[1].substring(0,2))
                 )
             ){
-                FOUND_CITIES.push(WORLD_CITIES[i]);
+                FOUND_CITIES.push(FIRST_FILTER[i]);
             }
         }
     }
@@ -169,13 +169,13 @@ const getCity = async (req, res, next) => {
                     || city_lat_parts[1].startsWith(lat_parts[1].substring(0,1))
                 )
             ){
-                FOUND_CITIES.push(WORLD_CITIES[i]);
+                FOUND_CITIES.push(FIRST_FILTER[i]);
             }
         }
     }
 
     if(FOUND_CITIES.length<1){
-        FOUND_CITIES=FIRST_FILTER; // Main filter if subsequent filters did not return anything
+        FOUND_CITIES=[...FIRST_FILTER]; // Main filter if subsequent filters did not return anything
     }
 
     res.status(201).send(FOUND_CITIES);
