@@ -84,17 +84,98 @@ const getCity = async (req, res, next) => {
     let lon_parts = lon.split(".");
     let lat_parts = lat.split(".");
     const FOUND_CITIES=[];
+    const FIRST_FILTER=[]; // Will contain subset for further filtering
     for(let i=0; i<WORLD_CITIES.length; i++){
         let city_lon_parts = (WORLD_CITIES[i].lng+"").split(".");
         let city_lat_parts = (WORLD_CITIES[i].lat+"").split(".")
+        if(
+            city_lon_parts[0] === lon_parts[0] &&
+            city_lat_parts[0] === lat_parts[0]
+        ){
+            FIRST_FILTER.push(WORLD_CITIES[i]);
+        }
+    }
+
+    // First pass through
+    for(let i=0; i<FIRST_FILTER.length; i++){
+        let city_lon_parts = (FIRST_FILTER[i].lng+"").split(".");
+        let city_lat_parts = (FIRST_FILTER[i].lat+"").split(".")
         if(city_lon_parts[0] === lon_parts[0]
             &&  city_lat_parts[0] === lat_parts[0]
-            &&  (city_lon_parts[1].startsWith(lon_parts[1].substring(0,1))
-                || city_lat_parts[1].startsWith(lat_parts[1].substring(0,2))
+            &&  (city_lon_parts[1].startsWith(lon_parts[1].substring(0,4))
+                || city_lat_parts[1].startsWith(lat_parts[1].substring(0,4))
             )
         ){
-            FOUND_CITIES.push(WORLD_CITIES[i]);
+            FIRST_FILTER.push(WORLD_CITIES[i]);
         }
+    }
+
+    // Second pass through
+    if(FOUND_CITIES.length<1){
+            for(let i=0; i<FIRST_FILTER.length; i++){
+                let city_lon_parts = (FIRST_FILTER[i].lng+"").split(".");
+                let city_lat_parts = (FIRST_FILTER[i].lat+"").split(".")
+                if(city_lon_parts[0] === lon_parts[0]
+                    &&  city_lat_parts[0] === lat_parts[0]
+                    &&  (city_lon_parts[1].startsWith(lon_parts[1].substring(0,3))
+                        || city_lat_parts[1].startsWith(lat_parts[1].substring(0,3))
+                    )
+                ){
+                    FOUND_CITIES.push(WORLD_CITIES[i]);
+                }
+            }
+    }
+
+    // Third pass through
+    if(FOUND_CITIES.length<1){
+        for(let i=0; i<FIRST_FILTER.length; i++){
+            let city_lon_parts = (FIRST_FILTER[i].lng+"").split(".");
+            let city_lat_parts = (FIRST_FILTER[i].lat+"").split(".")
+            if(city_lon_parts[0] === lon_parts[0]
+                &&  city_lat_parts[0] === lat_parts[0]
+                &&  (city_lon_parts[1].startsWith(lon_parts[1].substring(0,2))
+                    || city_lat_parts[1].startsWith(lat_parts[1].substring(0,2))
+                )
+            ){
+                FOUND_CITIES.push(WORLD_CITIES[i]);
+            }
+        }
+    }
+
+    // Fourth pass through
+    if(FOUND_CITIES.length<1){
+        for(let i=0; i<FIRST_FILTER.length; i++){
+            let city_lon_parts = (FIRST_FILTER[i].lng+"").split(".");
+            let city_lat_parts = (FIRST_FILTER[i].lat+"").split(".")
+            if(city_lon_parts[0] === lon_parts[0]
+                &&  city_lat_parts[0] === lat_parts[0]
+                &&  (city_lon_parts[1].startsWith(lon_parts[1].substring(0,1))
+                    || city_lat_parts[1].startsWith(lat_parts[1].substring(0,2))
+                )
+            ){
+                FOUND_CITIES.push(WORLD_CITIES[i]);
+            }
+        }
+    }
+
+    // Fifth pass through
+    if(FOUND_CITIES.length<1){
+        for(let i=0; i<FIRST_FILTER.length; i++){
+            let city_lon_parts = (FIRST_FILTER[i].lng+"").split(".");
+            let city_lat_parts = (FIRST_FILTER[i].lat+"").split(".")
+            if(city_lon_parts[0] === lon_parts[0]
+                &&  city_lat_parts[0] === lat_parts[0]
+                &&  (city_lon_parts[1].startsWith(lon_parts[1].substring(0,1))
+                    || city_lat_parts[1].startsWith(lat_parts[1].substring(0,1))
+                )
+            ){
+                FOUND_CITIES.push(WORLD_CITIES[i]);
+            }
+        }
+    }
+
+    if(FOUND_CITIES.length<1){
+        FOUND_CITIES=FIRST_FILTER; // Main filter if subsequent filters did not return anything
     }
 
     res.status(201).send(FOUND_CITIES);
