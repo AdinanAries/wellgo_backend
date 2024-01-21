@@ -102,6 +102,20 @@ const getCity = async (req, res, next) => {
         let city_lat_parts = (FIRST_FILTER[i].lat+"").split(".")
         if(city_lon_parts[0] === lon_parts[0]
             &&  city_lat_parts[0] === lat_parts[0]
+            &&  (city_lon_parts[1].startsWith(lon_parts[1].substring(0,5))
+                || city_lat_parts[1].startsWith(lat_parts[1].substring(0,5))
+            )
+        ){
+            FOUND_CITIES.push(FIRST_FILTER[i]);
+        }
+    }
+
+    // First pass through
+    for(let i=0; i<FIRST_FILTER.length; i++){
+        let city_lon_parts = (FIRST_FILTER[i].lng+"").split(".");
+        let city_lat_parts = (FIRST_FILTER[i].lat+"").split(".")
+        if(city_lon_parts[0] === lon_parts[0]
+            &&  city_lat_parts[0] === lat_parts[0]
             &&  (city_lon_parts[1].startsWith(lon_parts[1].substring(0,4))
                 || city_lat_parts[1].startsWith(lat_parts[1].substring(0,4))
             )
