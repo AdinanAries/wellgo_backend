@@ -66,7 +66,7 @@ const getWeather = async (req, res, next) => {
             error: true,
             status: 500,
             message: "Server Error"
-        })
+        });
     }
 }
 
