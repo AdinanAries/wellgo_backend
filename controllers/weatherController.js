@@ -71,128 +71,136 @@ const getWeather = async (req, res, next) => {
 }
 
 const getCity = async (req, res, next) => {
-    if(!req?.params?.longitude || !req?.params?.latitude){
-        res.status(401).send({
-            error: true,
-            message: "longitude and latitude not specified"
-        });
-        return
-    }
-
-    const lon = (req?.params?.longitude+"");
-    const lat = (req?.params?.latitude+"");
-    let lon_parts = lon.split(".");
-    let lat_parts = lat.split(".");
-    const FOUND_CITIES=[];
-    const FIRST_FILTER=[]; // Will contain subset for further filtering
-    for(let i=0; i<WORLD_CITIES.length; i++){
-        let city_lon_parts = (WORLD_CITIES[i].lng+"").split(".");
-        let city_lat_parts = (WORLD_CITIES[i].lat+"").split(".")
-        if(
-            city_lon_parts[0] === lon_parts[0] &&
-            city_lat_parts[0] === lat_parts[0]
-        ){
-            FIRST_FILTER.push(WORLD_CITIES[i]);
+    try{
+        if(!req?.params?.longitude || !req?.params?.latitude){
+            res.status(401).send({
+                error: true,
+                message: "longitude and latitude not specified"
+            });
+            return
         }
-    }
 
-    // First pass through
-    for(let i=0; i<FIRST_FILTER.length; i++){
-        let city_lon_parts = (FIRST_FILTER[i].lng+"").split(".");
-        let city_lat_parts = (FIRST_FILTER[i].lat+"").split(".")
-        if(city_lon_parts[0] === lon_parts[0]
-            &&  city_lat_parts[0] === lat_parts[0]
-            &&  (city_lon_parts[1].startsWith(lon_parts[1].substring(0,5))
-                || city_lat_parts[1].startsWith(lat_parts[1].substring(0,5))
-            )
-        ){
-            FOUND_CITIES.push(FIRST_FILTER[i]);
+        const lon = (req?.params?.longitude+"");
+        const lat = (req?.params?.latitude+"");
+        let lon_parts = lon.split(".");
+        let lat_parts = lat.split(".");
+        const FOUND_CITIES=[];
+        const FIRST_FILTER=[]; // Will contain subset for further filtering
+        for(let i=0; i<WORLD_CITIES.length; i++){
+            let city_lon_parts = (WORLD_CITIES[i].lng+"").split(".");
+            let city_lat_parts = (WORLD_CITIES[i].lat+"").split(".")
+            if(
+                city_lon_parts[0] === lon_parts[0] &&
+                city_lat_parts[0] === lat_parts[0]
+            ){
+                FIRST_FILTER.push(WORLD_CITIES[i]);
+            }
         }
-    }
 
-    // First pass through
-    for(let i=0; i<FIRST_FILTER.length; i++){
-        let city_lon_parts = (FIRST_FILTER[i].lng+"").split(".");
-        let city_lat_parts = (FIRST_FILTER[i].lat+"").split(".")
-        if(city_lon_parts[0] === lon_parts[0]
-            &&  city_lat_parts[0] === lat_parts[0]
-            &&  (city_lon_parts[1].startsWith(lon_parts[1].substring(0,4))
-                || city_lat_parts[1].startsWith(lat_parts[1].substring(0,4))
-            )
-        ){
-            FOUND_CITIES.push(FIRST_FILTER[i]);
+        // First pass through
+        for(let i=0; i<FIRST_FILTER.length; i++){
+            let city_lon_parts = (FIRST_FILTER[i].lng+"").split(".");
+            let city_lat_parts = (FIRST_FILTER[i].lat+"").split(".")
+            if(city_lon_parts[0] === lon_parts[0]
+                &&  city_lat_parts[0] === lat_parts[0]
+                &&  (city_lon_parts[1].startsWith(lon_parts[1].substring(0,5))
+                    || city_lat_parts[1].startsWith(lat_parts[1].substring(0,5))
+                )
+            ){
+                FOUND_CITIES.push(FIRST_FILTER[i]);
+            }
         }
-    }
 
-    // Second pass through
-    if(FOUND_CITIES.length<1){
+        // First pass through
+        for(let i=0; i<FIRST_FILTER.length; i++){
+            let city_lon_parts = (FIRST_FILTER[i].lng+"").split(".");
+            let city_lat_parts = (FIRST_FILTER[i].lat+"").split(".")
+            if(city_lon_parts[0] === lon_parts[0]
+                &&  city_lat_parts[0] === lat_parts[0]
+                &&  (city_lon_parts[1].startsWith(lon_parts[1].substring(0,4))
+                    || city_lat_parts[1].startsWith(lat_parts[1].substring(0,4))
+                )
+            ){
+                FOUND_CITIES.push(FIRST_FILTER[i]);
+            }
+        }
+
+        // Second pass through
+        if(FOUND_CITIES.length<1){
+                for(let i=0; i<FIRST_FILTER.length; i++){
+                    let city_lon_parts = (FIRST_FILTER[i].lng+"").split(".");
+                    let city_lat_parts = (FIRST_FILTER[i].lat+"").split(".")
+                    if(city_lon_parts[0] === lon_parts[0]
+                        &&  city_lat_parts[0] === lat_parts[0]
+                        &&  (city_lon_parts[1].startsWith(lon_parts[1].substring(0,3))
+                            || city_lat_parts[1].startsWith(lat_parts[1].substring(0,3))
+                        )
+                    ){
+                        FOUND_CITIES.push(FIRST_FILTER[i]);
+                    }
+                }
+        }
+
+        // Third pass through
+        if(FOUND_CITIES.length<1){
             for(let i=0; i<FIRST_FILTER.length; i++){
                 let city_lon_parts = (FIRST_FILTER[i].lng+"").split(".");
                 let city_lat_parts = (FIRST_FILTER[i].lat+"").split(".")
                 if(city_lon_parts[0] === lon_parts[0]
                     &&  city_lat_parts[0] === lat_parts[0]
-                    &&  (city_lon_parts[1].startsWith(lon_parts[1].substring(0,3))
-                        || city_lat_parts[1].startsWith(lat_parts[1].substring(0,3))
+                    &&  (city_lon_parts[1].startsWith(lon_parts[1].substring(0,2))
+                        || city_lat_parts[1].startsWith(lat_parts[1].substring(0,2))
                     )
                 ){
                     FOUND_CITIES.push(FIRST_FILTER[i]);
                 }
             }
-    }
+        }
 
-    // Third pass through
-    if(FOUND_CITIES.length<1){
-        for(let i=0; i<FIRST_FILTER.length; i++){
-            let city_lon_parts = (FIRST_FILTER[i].lng+"").split(".");
-            let city_lat_parts = (FIRST_FILTER[i].lat+"").split(".")
-            if(city_lon_parts[0] === lon_parts[0]
-                &&  city_lat_parts[0] === lat_parts[0]
-                &&  (city_lon_parts[1].startsWith(lon_parts[1].substring(0,2))
-                    || city_lat_parts[1].startsWith(lat_parts[1].substring(0,2))
-                )
-            ){
-                FOUND_CITIES.push(FIRST_FILTER[i]);
+        // Fourth pass through
+        if(FOUND_CITIES.length<1){
+            for(let i=0; i<FIRST_FILTER.length; i++){
+                let city_lon_parts = (FIRST_FILTER[i].lng+"").split(".");
+                let city_lat_parts = (FIRST_FILTER[i].lat+"").split(".")
+                if(city_lon_parts[0] === lon_parts[0]
+                    &&  city_lat_parts[0] === lat_parts[0]
+                    &&  (city_lon_parts[1].startsWith(lon_parts[1].substring(0,1))
+                        || city_lat_parts[1].startsWith(lat_parts[1].substring(0,2))
+                    )
+                ){
+                    FOUND_CITIES.push(FIRST_FILTER[i]);
+                }
             }
         }
-    }
 
-    // Fourth pass through
-    if(FOUND_CITIES.length<1){
-        for(let i=0; i<FIRST_FILTER.length; i++){
-            let city_lon_parts = (FIRST_FILTER[i].lng+"").split(".");
-            let city_lat_parts = (FIRST_FILTER[i].lat+"").split(".")
-            if(city_lon_parts[0] === lon_parts[0]
-                &&  city_lat_parts[0] === lat_parts[0]
-                &&  (city_lon_parts[1].startsWith(lon_parts[1].substring(0,1))
-                    || city_lat_parts[1].startsWith(lat_parts[1].substring(0,2))
-                )
-            ){
-                FOUND_CITIES.push(FIRST_FILTER[i]);
+        // Fifth pass through
+        if(FOUND_CITIES.length<1){
+            for(let i=0; i<FIRST_FILTER.length; i++){
+                let city_lon_parts = (FIRST_FILTER[i].lng+"").split(".");
+                let city_lat_parts = (FIRST_FILTER[i].lat+"").split(".")
+                if(city_lon_parts[0] === lon_parts[0]
+                    &&  city_lat_parts[0] === lat_parts[0]
+                    &&  (city_lon_parts[1].startsWith(lon_parts[1].substring(0,1))
+                        || city_lat_parts[1].startsWith(lat_parts[1].substring(0,1))
+                    )
+                ){
+                    FOUND_CITIES.push(FIRST_FILTER[i]);
+                }
             }
         }
-    }
 
-    // Fifth pass through
-    if(FOUND_CITIES.length<1){
-        for(let i=0; i<FIRST_FILTER.length; i++){
-            let city_lon_parts = (FIRST_FILTER[i].lng+"").split(".");
-            let city_lat_parts = (FIRST_FILTER[i].lat+"").split(".")
-            if(city_lon_parts[0] === lon_parts[0]
-                &&  city_lat_parts[0] === lat_parts[0]
-                &&  (city_lon_parts[1].startsWith(lon_parts[1].substring(0,1))
-                    || city_lat_parts[1].startsWith(lat_parts[1].substring(0,1))
-                )
-            ){
-                FOUND_CITIES.push(FIRST_FILTER[i]);
-            }
+        if(FOUND_CITIES.length<1){
+            FOUND_CITIES=[...FIRST_FILTER]; // Main filter if subsequent filters did not return anything
         }
-    }
 
-    if(FOUND_CITIES.length<1){
-        FOUND_CITIES=[...FIRST_FILTER]; // Main filter if subsequent filters did not return anything
+        res.status(201).send(FOUND_CITIES);
+    }catch(e){
+        res.status(500).send({
+            error: true,
+            status: 500,
+            message: "Server Error"
+        });
     }
-
-    res.status(201).send(FOUND_CITIES);
 
 }
 
