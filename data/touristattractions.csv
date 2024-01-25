@@ -1,0 +1,795 @@
+raw,name,url,type,latitude,longitude,rating,description
+"Traunsee  
+FeatureType : waterbody
+Elevation : 420
+Lat/Lng : 47.8667 / 13.8",Traunsee,https://en.wikipedia.org/wiki/Traunsee,waterbody,47.8667,13.8,,"Traunsee is a lake in the Salzkammergut, Austria, located at . Its surface is approximately 24.5 km² and its maximum depth is 191 metres. It is a popular tourist destination, and its attractions include Schloss Ort, a medieval castle (...)"
+"Ajman  
+FeatureType : city
+Elevation : -2
+Lat/Lng : 25.394 / 55.4422",Ajman,https://en.wikipedia.org/wiki/Ajman,city,25.394,55.4422,,"Ajman is the capital of the emirate of Ajman in the United Arab Emirates, located along the Persian Gulf. (...)"
+"Niagara Falls, Ontario  
+FeatureType : city
+Elevation : 178
+Lat/Lng : 43.1053 / -79.0732","Niagara Falls, Ontario",https://en.wikipedia.org/wiki/Niagara_Falls%2C_Ontario,city,43.1053,-79.0732,,"Niagara Falls is a Canadian city on the western bank of the Niagara River in the Golden Horseshoe region of Southern Ontario, with a population of 82,997 at the 2011 census. The municipality was incorporated on 12 June 1903. Across the Niagara River is Niagara Falls, New York (...)"
+"Paimpol  
+FeatureType : city
+Elevation : 6
+Lat/Lng : 48.7786 / -3.0453",Paimpol,https://en.wikipedia.org/wiki/Paimpol,city,48.7786,-3.0453,,"Paimpol is a commune in the Côtes-d'Armor department in Brittany in northwestern France. It is a tourist destination, especially during the summer months when people are attracted by its port and beaches. (...)"
+"Deutschlandsberg  
+FeatureType : landmark
+Elevation : 370
+Lat/Lng : 46.8161 / 15.215",Deutschlandsberg,https://en.wikipedia.org/wiki/Deutschlandsberg,landmark,46.8161,15.215,,"Deutschlandsberg is a town in Deutschlandsberg district of Styria, Austria. It is located in southern Austria, near the border with Slovenia. It is approximately 35 km from Graz. Popular tourist attractions include the Deutschlandsberg Castle. (...)"
+"Bakhchysarai  
+FeatureType : city
+Elevation : 178
+Lat/Lng : 44.7528 / 33.8608",Bakhchysarai,https://en.wikipedia.org/wiki/Bakhchysarai,city,44.7528,33.8608,,"Bakhchysarai is a city in central Crimea, a territory recognized by a majority of countries as part of Ukraine and incorporated by Russia as the Republic of Crimea. It is the administrative center of the Bakhchysarai Raion (district), as well as the former capital of the Crimean Khanate (...)"
+"Colonia del Sacramento  
+FeatureType : city
+Elevation : 22
+Lat/Lng : -34.4697 / -57.8467",Colonia del Sacramento,https://en.wikipedia.org/wiki/Bakhchysarai,city,-34.4697,-57.8467,,"Colonia del Sacramento (; formerly the Portuguese Colónia do Sacramento) is a city in southwestern Uruguay, by the Río de la Plata, facing Buenos Aires, Argentina. It is one of the oldest towns in Uruguay and capital of the Colonia Department. It has a population of around 27,000 (...)"
+"Rimouski  
+FeatureType : city
+Elevation : 25
+Lat/Lng : 48.4494 / -68.525",Rimouski,https://en.wikipedia.org/wiki/Rimouski,city,48.4494,-68.525,,"Rimouski is a Canadian city located in the Bas-Saint-Laurent (Quebec) region at the mouth of the Rimouski River. It has a population of 46,860 (as of 2011) and many tourist, cultural and industrial attractions. Rimouski is the site of Université du Québec à Rimouski (UQAR), the Cégep de Rimouski (...)"
+"Vico Equense  
+FeatureType : adm3rd
+Elevation : 144
+Lat/Lng : 40.6667 / 14.4333",Vico Equense,https://en.wikipedia.org/wiki/Vico_Equense,adm3rd,40.6667,14.4333,,"Vico Equense is a coastal town and comune in the Metropolitan City of Naples, in Italy. (...)"
+"Olinda  
+FeatureType : city
+Elevation : 37
+Lat/Lng : -8.0089 / -34.855",Olinda,https://en.wikipedia.org/wiki/Olinda,city,-8.0089,-34.855,,"Olinda is a historic city in the Brazilian state of Pernambuco, located on the country's northeastern Atlantic Ocean coast, just north of Recife and south of Paulista. It has a population of 397,268 people http://www.ibge.gov.br/home/estatistica/populacao/estimativa2009/POP2009_DOU (...)"
+"Lake Tahoe  
+FeatureType : waterbody
+Elevation : 1898
+Lat/Lng : 39.0917 / -120.0417",Lake Tahoe,https://en.wikipedia.org/wiki/Lake_Tahoe,waterbody,39.0917,-120.0417,,"Lake Tahoe (; Washo: dáʔaw) is a large freshwater lake in the Sierra Nevada of the United States. At a surface elevation of , it is located along the border between California and Nevada, west of Carson City. Lake Tahoe is the largest alpine lake in North America (...)"
+"Gostivar  
+FeatureType : city
+Elevation : 535
+Lat/Lng : 41.7959 / 20.9083",Gostivar,https://en.wikipedia.org/wiki/Gostivar,city,41.7959,20.9083,,"Gostivar , is a city in the Republic of Macedonia, located in the upper Polog valley region. It is one of the largest municipalities in the country with a population of 81,042, and the town also covers . Gostivar has good road and railway connections with the other cities in the region, such as (...)"
+"Lake Balaton  
+FeatureType : waterbody
+Elevation : 100
+Lat/Lng : 46.7823 / 17.5628",Lake Balaton,https://en.wikipedia.org/wiki/Lake_Balaton,waterbody,46.7823,17.5628,,"Lake Balaton (German: Plattensee) is a freshwater lake in the Transdanubian region of Hungary. It is the largest lake in Central Europe, and one of the region's foremost tourist destinations. The Zala River provides the largest inflow of water to the lake, and the canalised Sió is the only outflow (...)"
+"Oberá  
+FeatureType : city
+Elevation : 342
+Lat/Lng : -27.4826 / -55.1195",Oberá,https://en.wikipedia.org/wiki/Ober%C3%A1,city,-27.4826,-55.1195,,"Oberá is a city in the interfluvial province of Misiones, Argentina, and the head town of the Oberá Department. It is located 96 km east of the provincial capital Posadas, on National Route 14, and about 1,150 km north of Buenos Aires. It has about 66,000 inhabitants according to the . (...)"
+"Kórnik  
+FeatureType : city
+Elevation : 66
+Lat/Lng : 52.2367 / 17.0986",Kórnik,https://en.wikipedia.org/wiki/K%C3%B3rnik,city,52.2367,17.0986,,"Kórnik is a town with about 6,800 inhabitants (2006), located in western Poland, approximately south-east of the city of Poznań. It is one of the major tourist attractions of the Wielkopolska (Greater Poland) region (...)"
+"Burgundy  
+FeatureType : adm1st
+Elevation : 595
+Lat/Lng : 47.2475 / 4.1514",Burgundy,https://en.wikipedia.org/wiki/Burgundy,adm1st,47.2475,4.1514,,"Burgundy is a historical territory and a former administrative region of east-central France. Since 1 January 2016, it is part of the new region Bourgogne-Franche-Comté. Burgundy comprises the following four departments: Côte-d'Or, Saône-et-Loire, Yonne and Nièvre (...)"
+"Myrtle Beach, South Carolina  
+FeatureType : city
+Elevation : 3
+Lat/Lng : 33.71 / -78.8836","Myrtle Beach, South Carolina",https://en.wikipedia.org/wiki/Myrtle_Beach%2C_South_Carolina,city,33.71,-78.8836,,"Myrtle Beach is a coastal city on the east coast of the United States in Horry County, South Carolina. It is situated on the center of a large and continuous stretch of beach known as the Grand Strand in northeastern South Carolina (...)"
+"Tlaxcala  
+FeatureType : adm1st
+Elevation : 2481
+Lat/Lng : 19.4289 / -98.1608",Tlaxcala,https://en.wikipedia.org/wiki/Tlaxcala,adm1st,19.4289,-98.1608,,"Tlaxcala (Spanish ; , officially Free and Sovereign State of Tlaxcala , is one of the 31 states which along with the Federal District make up the 32 federative entities of Mexico. It is divided into 60 municipalities and its capital city is Tlaxcala (...)"
+"Sisteron  
+FeatureType : city
+Elevation : 484
+Lat/Lng : 44.1911 / 5.9472",Sisteron,https://en.wikipedia.org/wiki/Sisteron,city,44.1911,5.9472,,Sisteron (in classical norm or Sisteroun in Mistralian norm) is a commune in the Alpes-de-Haute-Provence department in the Provence-Alpes-Côte d'Azur region in southeastern France. Sisteron is situated on the banks of the River Durance just after the confluence of the rivers Buëch and Sasse (...)
+"Cumaná  
+FeatureType : city
+Elevation : 5
+Lat/Lng : 10.45 / -64.18",Cumaná,https://en.wikipedia.org/wiki/Cuman%C3%A1,city,10.45,-64.18,,"Cumaná (824,764 inhabitants) is the capital of Venezuela's Sucre State. It is located 402 km east of Caracas. Cumaná was one of the first settlements founded by Europeans in mainland America; attacks by indigenous peoples meant it had to be refounded several times (...)"
+"Kolding  
+FeatureType : city
+Elevation : 8
+Lat/Lng : 55.49 / 9.47",Kolding,https://en.wikipedia.org/wiki/Kolding,city,55.49,9.47,,"Kolding is a Danish seaport located at the head of Kolding Fjord in the Region of Southern Denmark. It is the seat of Kolding Municipality. It is a transportation, commercial, and manufacturing centre, and has numerous industrial companies, principally geared towards shipbuilding (...)"
+"Prešov  
+FeatureType : null
+Elevation : 258
+Lat/Lng : 48.9986 / 21.24",Prešov,https://en.wikipedia.org/wiki/Prešov,null,48.9986,21.24,,"Prešov is a city in eastern Slovakia. It is the seat of the administrative Prešov Region . With a population of approximately 91,352, it is the third-largest city in the country. There are many tourist attractions in Presov such as castles, pools, churches, and the beautiful city (...)"
+"Copenhagen  
+FeatureType : null
+Elevation : 9
+Lat/Lng : 55.6757 / 12.5787",Copenhagen,https://en.wikipedia.org/wiki/Copenhagen,null,55.6757,12.5787,,"Copenhagen (; (help=no); also known by other alternative names) is the capital and most populated city of Denmark, with a population of 583,348 in the city proper, an urban population of 1,263,698 and a metropolitan population of 2,013,009 (...)"
+"João Pessoa  
+FeatureType : city
+Elevation : 8
+Lat/Lng : -7.0833 / -34.8333",João Pessoa,https://en.wikipedia.org/wiki/Jo%C3%A3o_Pessoa,city,-7.0833,-34.8333,,"João Pessoa is the capital of the state of Paraíba in Brazil. It was founded in 1585 and it is also known as the city where the sun rises first, as it is the easternmost city in the Americas at 34° 47′ 38″ W, 7° 9′ 28″ S. Its easternmost point is known as Ponta do Seixas (...)"
+"Santa Fe, Argentina  
+FeatureType : null
+Elevation : 21
+Lat/Lng : -31.6394 / -60.6953","Santa Fe, Argentina",https://en.wikipedia.org/wiki/Santa_Fe%2C_Argentina,null,-31.6394,-60.6953,,"Santa Fe de la Vera Cruz (usually called just Santa Fe) is the capital city of the province of Santa Fe, Argentina. It is situated in northeastern Argentina, near the junction of the Paraná and Salado rivers. It lies 15 kilometers from the Hernandarias Subfluvial Tunnel that connects it to the city (...)"
+"Petrópolis  
+FeatureType : city
+Elevation : 818
+Lat/Lng : -22.505 / -43.1789",Petrópolis,https://en.wikipedia.org/wiki/Petr%C3%B3polis,city,-22.505,-43.1789,,"Petrópolis , also known as The Imperial City of Brazil, is a municipality in the state of Rio de Janeiro, at a distance of 68 km from the state capital. Nestled among the forested hills of the Serra dos Órgãos, in the valley of the Quitandinha and Piabanha rivers, Petrópolis is a popular winter (...)"
+"Beira, Mozambique  
+FeatureType : null
+Elevation : 9
+Lat/Lng : -19.8278 / 34.8378","Beira, Mozambique",https://en.wikipedia.org/wiki/Beira%2C_Mozambique,null,-19.8278,34.8378,,"Beira is the second largest city in Mozambique. It lies in the central region of the country in Sofala Province, where the Pungue River meets the Indian Ocean. Beira had a population of 412,588 in 1997, which grew to an estimated 546,000 in 2006 (...)"
+"Orihuela  
+FeatureType : city
+Elevation : 33
+Lat/Lng : 38.0856 / -0.9469",Orihuela,https://en.wikipedia.org/wiki/Orihuela,city,38.0856,-0.9469,,"Orihuela (Valencian:)Although Orihuela is in one of the Spanish-speaking areas of the Valencian Community, it also has the Valencian name Oriola. is a city and municipality located at the feet of the Sierra de Orihuela mountains in the province of Alicante, Spain (...)"
+"Lelystad  
+FeatureType : city
+Elevation : -4
+Lat/Lng : 52.5089 / 5.4736",Lelystad,https://en.wikipedia.org/wiki/Lelystad,city,52.5089,5.4736,,"Lelystad is a municipality and a city in the centre of the Netherlands, and it is the capital of the province of Flevoland. The city, built on reclaimed land, was founded in 1967 and was named after Cornelis Lely, who engineered the Afsluitdijk, making the reclamation possible (...)"
+"Ocala, Florida  
+FeatureType : null
+Elevation : 35
+Lat/Lng : 29.1878 / -82.1306","Ocala, Florida",https://en.wikipedia.org/wiki/Ocala%2C_Florida,null,29.1878,-82.1306,,"Ocala is a city located in Northern Florida. As of the 2013 census, its population, estimated by the United States Census Bureau, was 57,468, making it the 45th most populated city in Florida. It is the seat of Marion County and the principal city of the Ocala, Florida Metropolitan Statistical Area, (...)"
+"Sarandë  
+FeatureType : city
+Elevation : 37
+Lat/Lng : 39.8758 / 20.0111",Sarandë,https://en.wikipedia.org/wiki/Sarand%C3%AB,city,39.8758,20.0111,,"Saranda or Sarandë (Agioi Saranda) is a town and municipality in Vlorë County, southern Albania. It is one of the most important tourist attractions of the Albanian Riviera. It is situated on an open sea gulf of the Ionian Sea in the central Mediterranean, about east of the north end of the Greek (...)"
+"Siena  
+FeatureType : adm3rd
+Elevation : 328
+Lat/Lng : 43.3333 / 11.3333",Siena,https://en.wikipedia.org/wiki/Siena,adm3rd,43.3333,11.3333,,"Siena (; in English sometimes spelled Sienna) is a city in Tuscany, Italy. It is the capital of the province of Siena. The historic centre of Siena has been declared by UNESCO a World Heritage Site. It is one of the nation's most visited tourist attractions, with over 163,000 international arrivals (...)"
+"Ząbkowice Śląskie  
+FeatureType : city
+Elevation : 262
+Lat/Lng : 50.5833 / 16.8167",Ząbkowice Śląskie,https://en.wikipedia.org/wiki/Z%C4%85bkowice_%C5%9Al%C4%85skie,city,50.5833,16.8167,,"Ząbkowice Śląskie is a town in Lower Silesian Voivodeship in south-western Poland. It is the seat of Ząbkowice Śląskie County, and of the smaller administrative district (gmina) called Gmina Ząbkowice Śląskie. The town lies approximately south of the regional capital Wrocław (...)"
+"Île-de-Bréhat  
+FeatureType : city
+Elevation : 13
+Lat/Lng : 48.8469 / -2.9986",Île-de-Bréhat,https://en.wikipedia.org/wiki/%C3%8Ele-de-Br%C3%A9hat,city,48.8469,-2.9986,,"Bréhat is an island and commune located near Paimpol, a mile off the northern coast of Brittany. Administratively, it is a commune in the Côtes-d'Armor department in northwestern France. Bréhat is actually an archipelago composed of two main islands, separated only at high tide, and many smaller (...)"
+"Murau  
+FeatureType : city
+Elevation : 802
+Lat/Lng : 47.1119 / 14.1731",Murau,https://en.wikipedia.org/wiki/Murau,city,47.1119,14.1731,,"Murau is the capital of the district of the same name in Styria, located along the Mur river. It has a population of 2,124. (...)"
+"Leucate  
+FeatureType : city
+Elevation : 30
+Lat/Lng : 42.9106 / 3.0294",Leucate,https://en.wikipedia.org/wiki/Leucate,city,42.9106,3.0294,,"Leucate, between the Mediterranean Sea and sea pond, is a community of villages. (...)"
+"Postojna  
+FeatureType : null
+Elevation : 568
+Lat/Lng : 45.7747 / 14.2178",Postojna,https://en.wikipedia.org/wiki/Postojna,null,45.7747,14.2178,,"Postojna is a town in the traditional region of Inner Carniola, from Trieste, in southwestern Slovenia. It is the seat of the Municipality of Postojna. (...)"
+"Kish Island  
+FeatureType : isle
+Elevation : 29
+Lat/Lng : 26.5357 / 53.9674",Kish Island,https://en.wikipedia.org/wiki/Kish_Island,isle,26.5357,53.9674,,"Kish (listen) is a resort island in the Persian Gulf. It is part of the Hormozgān Province of Iran. Due to its free trade zone status it is touted as a consumer's paradise, with numerous malls, shopping centres, tourist attractions, and resort hotels.http://unpan1.un (...)"
+"Kungälv  
+FeatureType : city
+Elevation : 5
+Lat/Lng : 57.8667 / 11.9833",Kungälv,https://en.wikipedia.org/wiki/Kung%C3%A4lv,city,57.8667,11.9833,,"Kungälv is a city and the seat of Kungälv Municipality in Västra Götaland County, Sweden. It had 22,768 inhabitants in 2010. (...)"
+"Jaipur  
+FeatureType : null
+Elevation : 439
+Lat/Lng : 26.926 / 75.8235",Jaipur,https://en.wikipedia.org/wiki/Jaipur,null,26.926,75.8235,,"Jaipur is the capital and largest city of the Indian state of Rajasthan in Northern India. It was founded on 18 November 1727 by Maharaja Jai Singh, the ruler of Amer after whom the city is named. As of 2011, the city has a population of 6 (...)"
+"Fort Myers, Florida  
+FeatureType : null
+Elevation : 8
+Lat/Lng : 26.6317 / -81.8572","Fort Myers, Florida",https://en.wikipedia.org/wiki/Fort_Myers%2C_Florida,null,26.6317,-81.8572,,"Fort Myers is the county seat and commercial center of Lee County, Florida. Fort Myers is a gateway to the Southwest Florida region and a major tourist destination within Florida. The winter homes of Thomas Edison (""Seminole Lodge"") and Henry Ford (""The Mangoes"") are a primary tourist attraction in (...)"
+"Natal, Rio Grande do Norte  
+FeatureType : null
+Elevation : 33
+Lat/Lng : -5.7997 / -35.212","Natal, Rio Grande do Norte",https://en.wikipedia.org/wiki/Natal%2C_Rio_Grande_do_Norte,null,-5.7997,-35.212,,"Natal (The European Portuguese pronunciation is Christmas) is the capital and largest city of Rio Grande do Norte state, located in northeastern Brazil. As of the IBGE July 2014, the city had a total population of 862,044 (1,485,505 in its Greater Natal) (...)"
+"Napier, New Zealand  
+FeatureType : city
+Elevation : 63
+Lat/Lng : -39.4906 / 176.9044","Napier, New Zealand",https://en.wikipedia.org/wiki/Napier%2C_New_Zealand,city,-39.4906,176.9044,,"Napier is a New Zealand city with a seaport, located in Hawke's Bay on the eastern coast of the North Island. The population of Napier is about About 18 kilometres south of Napier is the inland city of Hastings (...)"
+"Bojnice  
+FeatureType : null
+Elevation : 291
+Lat/Lng : 48.7822 / 18.5861",Bojnice,https://en.wikipedia.org/wiki/Bojnice,null,48.7822,18.5861,,"Bojnice is a historical town in central Slovakia at the upper Nitra river, near the city of Prievidza. It has population of 4,983 (2005). Bojnice is best known for its tourist attractions: the oldest zoo in Slovakia, the most visited castle, and one of the oldest spa towns in Slovakia (...)"
+"Lillehammer  
+FeatureType : city
+Lat/Lng : 61.1255 / 10.4873",Lillehammer,https://en.wikipedia.org/wiki/Lillehammer,city,61.1255,10.4873,,"Lillehammer is a town and municipality in Oppland county, Norway. It is part of the traditional region of Gudbrandsdal. The administrative centre of the municipality is the town of Lillehammer. As of May 2011, the population of the town of Lillehammer was 26,639 (...)"
+"Annaba  
+FeatureType : city
+Elevation : 6
+Lat/Lng : 36.9042 / 7.7519",Annaba,https://en.wikipedia.org/wiki/Annaba,city,36.9042,7.7519,,"Annaba , (', formerly Bône or Bona, historically Hippo or Hippo Regius) is a city in the northeastern corner of Algeria near the Seybouse River. It is located in Annaba Province. With a population of 257,359 (2008), it is the fourth largest city in Algeria (...)"
+"Balıkesir Province  
+FeatureType : adm1st
+Elevation : 374
+Lat/Lng : 39.7408 / 27.8192",Balıkesir Province,https://en.wikipedia.org/wiki/Bal%C4%B1kesir_Province,adm1st,39.7408,27.8192,,"Balıkesir Province is a province in midwestern Turkey, having coastlines on both the Sea of Marmara and the Aegean. Its adjacent provinces are Çanakkale to the west, İzmir to the southwest, Manisa to the south, Kütahya to the southeast, and Bursa to the east. The provincial capital is Balıkesir City (...)"
+"Nova Friburgo  
+FeatureType : city
+Elevation : 858
+Lat/Lng : -22.2819 / -42.5311",Nova Friburgo,https://en.wikipedia.org/wiki/Nova_Friburgo,city,-22.2819,-42.5311,,"Nova Friburgo is a municipality in the state of Rio de Janeiro in southeastern Brazil. It is located in the mountainous region, in the Center Mesoregion of the state, at 22º16'55"" South latitude and 42º31'52""West longitude, from its capital Rio de Janeiro (...)"
+"Ushuaia  
+FeatureType : null
+Lat/Lng : -54.8158 / -68.3178",Ushuaia,https://en.wikipedia.org/wiki/Ushuaia,null,-54.8158,-68.3178,,"Ushuaia is the capital of Tierra del Fuego, Antártida e Islas del Atlántico Sur Province, Argentina. It is commonly regarded as the southernmost city in the world. Ushuaia is located in a wide bay on the southern coast of Isla Grande de Tierra del Fuego, bounded on the north by the Martial mountain (...)"
+"Dubuque, Iowa  
+FeatureType : null
+Elevation : 259
+Lat/Lng : 42.5044 / -90.6869","Dubuque, Iowa",https://en.wikipedia.org/wiki/Dubuque%2C_Iowa,null,42.5044,-90.6869,,"Dubuque is a city in and the county seat of Dubuque County, Iowa, United States, located along the Mississippi River. In 2013, its population was 58,253, making it the tenth-largest city in the state The city lies at the junction of three states: Iowa, Illinois, and Wisconsin, a region locally known (...)"
+"Alappuzha  
+FeatureType : null
+Elevation : 8
+Lat/Lng : 9.4977 / 76.3385",Alappuzha,https://en.wikipedia.org/wiki/Alappuzha,null,9.4977,76.3385,,"Alappuzha (pronunciation), also known as Alleppey, is the administrative headquarters of Alappuzha District of Kerala state of southern India. Alappuzha is the sixth largest city in Kerala with an urban population of 177,029 (...)"
+"Harrogate  
+FeatureType : city
+Elevation : 124
+Lat/Lng : 53.993 / -1.5324",Harrogate,https://en.wikipedia.org/wiki/Harrogate,city,53.993,-1.5324,,"Harrogate is a spa town in North Yorkshire, England. Historically in the West Riding of Yorkshire, the town is a tourist destination and its visitor attractions include its spa waters and RHS Harlow Carr gardens. Nearby is the Yorkshire Dales national park and the Nidderdale AONB (...)"
+"Nevada Test Site  
+FeatureType : landmark
+Elevation : 1278
+Lat/Lng : 37.1167 / -116.05",Nevada Test Site,https://en.wikipedia.org/wiki/Nevada_Test_Site,landmark,37.1167,-116.05,,"The Nevada National Security Site (NNSS), previously the Nevada Test Site (NTS), is a United States Department of Energy reservation located in southeastern Nye County, Nevada, about 65 miles (105 km) northwest of the city of Las Vegas (...)"
+"Gran Canaria  
+FeatureType : isle
+Elevation : 1651
+Lat/Lng : 27.9586 / -15.5925",Gran Canaria,https://en.wikipedia.org/wiki/Gran_Canaria,isle,27.9586,-15.5925,,"Gran Canaria (; originally meaning ""Great of Dogs"") is the second most populous island of the Canary Islands, a Spanish archipelago, with a population of 838,397 which constitutes approximately 40% of the population of the archipelago (...)"
+"Grand Central Terminal  
+FeatureType : landmark
+Elevation : 17
+Lat/Lng : 40.7528 / -73.9765",Grand Central Terminal,https://en.wikipedia.org/wiki/Grand_Central_Terminal,landmark,40.7528,-73.9765,,"Grand Central Terminal (GCT; also referred to as Grand Central Station) is a commuter (and former intercity) railroad terminal at 42nd Street and Park Avenue in Midtown Manhattan in New York City, United States (...)"
+"Matsuyama, Ehime  
+FeatureType : null
+Elevation : 29
+Lat/Lng : 33.8333 / 132.7667","Matsuyama, Ehime",https://en.wikipedia.org/wiki/Matsuyama%2C_Ehime,null,33.8333,132.7667,,"is the capital city of Ehime Prefecture on the island of Shikoku in Japan and also Shikoku's largest city, with a population of 516,459 as of December 1, 2014. It is located on the northeastern portion of the Dōgo Plain. Its name means ""pine mountain"". The city was founded on December 15, 1889 (...)"
+"Bangkok  
+FeatureType : city
+Elevation : 9
+Lat/Lng : 13.75 / 100.5",Bangkok,https://en.wikipedia.org/wiki/Bangkok,city,13.75,100.5,,"Bangkok is the capital and most populous city of Thailand. It is known in Thai as Krung Thep Maha Nakhon (pronounced) or simply Krung Thep. The city occupies in the Chao Phraya River delta in Central Thailand, and has a population of over 8 million, or 12.6 percent of the country's population (...)"
+"Vorarlberg  
+FeatureType : adm1st
+Elevation : 1178
+Lat/Lng : 47.2436 / 9.8939",Vorarlberg,https://en.wikipedia.org/wiki/Vorarlberg,adm1st,47.2436,9.8939,,"Vorarlberg is the westernmost federal state (Bundesland) of Austria. Although it has the second-smallest area (Vienna is the smallest) and population (Burgenland is less populated), it has the second-highest population density (after Vienna) (...)"
+"Vágar  
+FeatureType : null
+Lat/Lng : 62.0833 / -7.2667",Vágar,https://en.wikipedia.org/wiki/V%C3%A1gar,null,62.0833,-7.2667,,"Vágar is one of the 18 islands in the archipelago of the Faroe Islands and the most westerly of the large islands. With a size of (about 70 sq. miles), it ranks number three, behind Streymoy and Eysturoy. The Vagar island shape is very distinct, since it resembles a dog's head (...)"
+"Orlando, Florida  
+FeatureType : city
+Elevation : 32
+Lat/Lng : 28.5336 / -81.3685","Orlando, Florida",https://en.wikipedia.org/wiki/Orlando%2C_Florida,city,28.5336,-81.3685,,"Orlando is a city in the U.S. state of Florida, and the county seat of Orange County. Located in Central Florida, it is the center of the Orlando metropolitan area, which had a population of 2,134,411 at the 2010 census, making it the 26th largest metropolitan area in the United States, the sixth (...)"
+"Douarnenez  
+FeatureType : city
+Elevation : 35
+Lat/Lng : 48.0928 / -4.3292",Douarnenez,https://en.wikipedia.org/wiki/Douarnenez,city,48.0928,-4.3292,,"Douarnenez, , is a commune in the Finistère department of Brittany in north-western France. It lies at the mouth of the Pouldavid estuary on the southern shore of Douarnenez Bay in the Atlantic Ocean, (15 miles) north-west of Quimper (...)"
+"Santa Cruz, Chile  
+FeatureType : city
+Elevation : 174
+Lat/Lng : -34.6372 / -71.3631","Santa Cruz, Chile",https://en.wikipedia.org/wiki/Santa_Cruz%2C_Chile,city,-34.6372,-71.3631,,"Santa Cruz is a Chilean city and commune, located in the Colchagua valley, in the O'Higgins Region, located on the southern shore of the Tinguiririca river, 110 miles from Santiago, Chile's capital city and 27 miles from San Fernando. (...)"
+"Knott's Berry Farm  
+FeatureType : landmark
+Elevation : 28
+Lat/Lng : 33.8442 / -118.0003",Knott's Berry Farm,https://en.wikipedia.org/wiki/Knott%27s_Berry_Farm,landmark,33.8442,-118.0003,,"Knott's Berry Farm is a amusement park in Buena Park, California, owned by Cedar Fair. The 2014 Global Attractions Attendance Report states Knott's Berry Farm is the 13th most visited theme park in North America. The park employs approximately 10,000 seasonal and full-time employees.http://www (...)"
+"Nunspeet  
+FeatureType : null
+Elevation : 30
+Lat/Lng : 52.3333 / 5.7833",Nunspeet,https://en.wikipedia.org/wiki/Nunspeet,null,52.3333,5.7833,,"Nunspeet is a municipality and town in the central Netherlands. It has been an agricultural site since prehistoric times. The municipality contains a number of villages, namely Hulshorst, Elspeet, and Vierhouten. Nunspeet has a vivid historical foundation, called Nuwenspete (...)"
+"Mar del Plata  
+FeatureType : null
+Elevation : 12
+Lat/Lng : -38.0033 / -57.5528",Mar del Plata,https://en.wikipedia.org/wiki/Mar_del_Plata,null,-38.0033,-57.5528,,Mar del Plata is an Argentine city in the southeast part of Buenos Aires Province located on the coast of the Atlantic Ocean. It is the head of General Pueyrredón Partido. Mar del Plata is the second largest city in Buenos Aires Province (...)
+"Piran  
+FeatureType : city
+Elevation : 4
+Lat/Lng : 45.5284 / 13.5685",Piran,https://en.wikipedia.org/wiki/Piran,city,45.5284,13.5685,,"Piran is a town in southwestern Slovenia on the Gulf of Piran on the Adriatic Sea. It is one of the three major towns of Slovenian Istria. The town has much medieval architecture, with narrow streets and compact houses (...)"
+"Żary  
+FeatureType : city
+Elevation : 158
+Lat/Lng : 51.6333 / 15.1333",Żary,https://en.wikipedia.org/wiki/%C5%BBary,city,51.6333,15.1333,,"Żary is a town in western Poland with about 39,900 inhabitants (2006), situated in the Lubusz Voivodeship (since 1999, previously in Zielona Góra Voivodeship (1975–1998)). It is the administrative seat of the Gmina Żary, although not part of it (...)"
+"Scarborough, North Yorkshire  
+FeatureType : city
+Elevation : 46
+Lat/Lng : 54.2825 / -0.4072","Scarborough, North Yorkshire",https://en.wikipedia.org/wiki/Scarborough%2C_North_Yorkshire,city,54.2825,-0.4072,,"Scarborough (or) is a town on the North Sea coast of North Yorkshire, England. Historically part of the North Riding of Yorkshire, the town lies between 10–230 feet (3–70 m) above sea level, rising steeply northward and westward from the harbour on to limestone cliffs (...)"
+"Malé  
+FeatureType : city
+Elevation : 6
+Lat/Lng : 4.1748 / 73.5098",Malé,https://en.wikipedia.org/wiki/Mal%C3%A9,city,4.1748,73.5098,,"Malé is the capital and most populous city in the Republic of Maldives. With a population of 153,379 and an area of 5.8km2, it is also one of the most densely populated cities in the world. The city is geographically located at the southern edge of North Malé Atoll (Kaafu Atoll) (...)"
+"Weymouth, Dorset  
+FeatureType : null
+Elevation : 0
+Lat/Lng : 50.613 / -2.457","Weymouth, Dorset",https://en.wikipedia.org/wiki/Weymouth%2C_Dorset,null,50.613,-2.457,,"Weymouth is a seaside town in Dorset, England, situated on a sheltered bay at the mouth of the River Wey on the English Channel coast. The town is south of Dorchester and north of the Isle of Portland. The town's population is 52,323 (2011) (...)"
+"Sanya  
+FeatureType : city
+Elevation : 23
+Lat/Lng : 18.2533 / 109.5036",Sanya,https://en.wikipedia.org/wiki/Sanya,city,18.2533,109.5036,,"Sanya is the southernmost city on Hainan Island, and one of the four prefecture-level cities of Hainan Province, in Southeast China. According to the 2010 Census, the population of Sanya is of 685,408 inhabitants, Compilation by LianXin website. living in an area of (...)"
+"Suzhou  
+FeatureType : city
+Elevation : 10
+Lat/Lng : 31.3039 / 120.6164",Suzhou,https://en.wikipedia.org/wiki/Suzhou,city,31.3039,120.6164,,"Suzhou (; Mandarin: ; Suzhou Wu:), formerly romanized as Soochow, is a major city located in southeastern Jiangsu Province of East China, about northwest of Shanghai. It is a major economic centre and focal point of trade and commerce, and the second largest city in the province after its capital (...)"
+"Kalimpong  
+FeatureType : null
+Elevation : 1170
+Lat/Lng : 27.06 / 88.47",Kalimpong,https://en.wikipedia.org/wiki/Kalimpong,null,27.06,88.47,,Kalimpong (kālēbuṅg; kālimpôṅg; Tibetan: ཀ་སྦུག) is a hill station in the Indian state of West Bengal. It is located at an average elevation of . The town is set to be the headquarters of the announced district of Kalimpong (...)
+"Schönbrunn Palace  
+FeatureType : null
+Elevation : 190
+Lat/Lng : 48.1845 / 16.3119",Schönbrunn Palace,https://en.wikipedia.org/wiki/Sch%C3%B6nbrunn_Palace,null,48.1845,16.3119,,"Schönbrunn Palace is a former imperial summer residence located in Vienna, Austria. The 1,441-room Baroque palace is one of the most important architectural, cultural and historical monuments in the country. Since the mid-1950s it has been a major tourist attraction (...)"
+"Tandil  
+FeatureType : null
+Elevation : 203
+Lat/Lng : -37.3286 / -59.1369",Tandil,https://en.wikipedia.org/wiki/Tandil,null,-37.3286,-59.1369,,"Tandil is the main city of the homonymous partido (department), located in Argentina, in the southeast of Buenos Aires Province, just north-northwest of the Tandilia hills. (...)"
+"Zvolen  
+FeatureType : null
+Elevation : 307
+Lat/Lng : 48.5831 / 19.1331",Zvolen,https://en.wikipedia.org/wiki/Zvolen,null,48.5831,19.1331,,"Zvolen (pronunciation; Hungarian: Zólyom) is a town in central Slovakia, situated on the confluence of Hron and Slatina rivers, close to Banská Bystrica. With its ancient castle, the town has a historical center, which represents the seat of an okres (Zvolen District) (...)"
+"Banjul  
+FeatureType : null
+Elevation : 4
+Lat/Lng : 13.4531 / -16.5775",Banjul,https://en.wikipedia.org/wiki/Banjul,null,13.4531,-16.5775,,"Banjul, officially the City of Banjul and formerly known as Bathurst, is the capital of the Gambia and is in a division of the same name. The population of the city proper is only 34,828, with the Greater Banjul Area, which includes the City of Banjul and the Kanifing Municipal Council, at a (...)"
+"Bad Ischl  
+FeatureType : city
+Elevation : 526
+Lat/Lng : 47.7203 / 13.6333",Bad Ischl,https://en.wikipedia.org/wiki/Bad_Ischl,city,47.7203,13.6333,,"Bad Ischl is a spa town in Austria. It lies in the southern part of Upper Austria, at the Traun River in the centre of the Salzkammergut region. The town consists of the Katastralgemeinden Ahorn, Bad Ischl, Haiden, Jainzen, Kaltenbach, Lauffen, Lindau, Pfandl, Perneck, Reiterndorf and Rettenbach (...)"
+"Biella  
+FeatureType : adm3rd
+Elevation : 377
+Lat/Lng : 45.5667 / 8.0667",Biella,https://en.wikipedia.org/wiki/Biella,adm3rd,45.5667,8.0667,,"Biella is a town and comune in the northern Italian region of Piedmont, the capital of the province of the same name, with a population of 45,016 as of 2014. It is located about northeast of Turin and about west-northwest of Milan (...)"
+"Bielawa  
+FeatureType : city
+Elevation : 320
+Lat/Lng : 50.6831 / 16.6111",Bielawa,https://en.wikipedia.org/wiki/Bielawa,city,50.6831,16.6111,,"Bielawa , population 31,988 (2010), is a town in southwestern Poland. Since 1999, it has been situated in Dzierżoniów County, Lower Silesian Voivodeship. From 1975–1998, it was part of the Wałbrzych Voivodeship, and from the 13th century up to 1945 was inside of Germany territory (...)"
+"Cần Thơ  
+FeatureType : null
+Elevation : 9
+Lat/Lng : 10.0324 / 105.7841",Cần Thơ,https://en.wikipedia.org/wiki/C%E1%BA%A7n_Th%C6%A1,null,10.0324,105.7841,,"Cần Thơ (help=no) is the fourth-largest city in Vietnam, and the largest city in the Mekong Delta. It is noted for its floating market, rice paper-making village, and picturesque rural canals. It had a population of 1 (...)"
+"Piura  
+FeatureType : city
+Elevation : 29
+Lat/Lng : -5.2008 / -80.6253",Piura,https://en.wikipedia.org/wiki/Piura,city,-5.2008,-80.6253,,"Piura is a city in northwestern Peru. It is the capital of the Piura Region, travelsradiate.com, accessed March 25th, 2011. and the Piura Province. The population is 377,496. It was here that Spanish Conqueror Francisco Pizarro founded the third Spanish city in South America and first in Peru, San (...)"
+"Tatabánya  
+FeatureType : null
+Elevation : 147
+Lat/Lng : 47.5862 / 18.3949",Tatabánya,https://en.wikipedia.org/wiki/Tatab%C3%A1nya,null,47.5862,18.3949,,"Tatabánya is a city of 67,753 inhabitants in northwestern Hungary, in the Central Transdanubian region. It is the capital of Komárom-Esztergom County. (...)"
+"Lower Silesian Voivodeship  
+FeatureType : adm1st
+Elevation : 154
+Lat/Lng : 51.0872 / 16.4078",Lower Silesian Voivodeship,https://en.wikipedia.org/wiki/Lower_Silesian_Voivodeship,adm1st,51.0872,16.4078,,"Lower Silesian Voivodeship or Lower Silesia ProvinceArkadiusz Belczyk, , 2002-2006. (in Polish, województwo dolnośląskie), is one of the 16 voivodeships (provinces) into which Poland is currently divided. It lies in southwestern Poland (...)"
+"Mainau  
+FeatureType : isle
+Elevation : 425
+Lat/Lng : 47.7053 / 9.1947",Mainau,https://en.wikipedia.org/wiki/Mainau,isle,47.7053,9.1947,,"Mainau is an island in Lake Constance (on the south shore of the Überlinger See near the city of Konstanz, Baden-Württemberg, Germany). It is maintained as a garden island and a model of excellent environmental practices (...)"
+"Drumheller  
+FeatureType : city
+Elevation : 687
+Lat/Lng : 51.4636 / -112.7194",Drumheller,https://en.wikipedia.org/wiki/Drumheller,city,51.4636,-112.7194,,"Drumheller is a town (formerly a city) within the Red Deer River valley in the badlands of east-central Alberta, Canada. It is located northeast of Calgary. The Drumheller portion of the Red Deer River valley, often referred to as Dinosaur Valley, has an approximate width of and an approximate (...)"
+"Gaspra  
+FeatureType : null
+Elevation : 74
+Lat/Lng : 44.4306 / 34.1133",Gaspra,https://en.wikipedia.org/wiki/Gaspra,null,44.4306,34.1133,,"Gaspra (officially transliterated Haspra; ;) is a spa town, an urban-type settlement in Yalta Municipality in the Autonomous Republic of Crimea, a territory recognized by a majority of countries as part of Ukraine and incorporated by Russia as the Republic of Crimea (...)"
+"Mokra Gora  
+FeatureType : city
+Elevation : 573
+Lat/Lng : 43.7925 / 19.5069",Mokra Gora,https://en.wikipedia.org/wiki/Mokra_Gora,city,43.7925,19.5069,,"Mokra Gora (Serbian: Мокра Гора), meaning the Wet Mountain in English, is a village in Serbia on the northern slopes of mountain Zlatibor. Emphasis on historical reconstruction has made it into a popular tourist center with unique attractions (...)"
+"Huangshan City  
+FeatureType : city
+Elevation : 133
+Lat/Lng : 29.71 / 118.3",Huangshan City,https://en.wikipedia.org/wiki/Huangshan_City,city,29.71,118.3,,"Huangshan , is a prefecture-level city in southern Anhui province, People's Republic of China. Huangshan means Yellow Mountain in Chinese and the city is named after the famously scenic Yellow Mountains which cover much of the city's vast geographic expanse (...)"
+"Agios Nikolaos, Crete  
+FeatureType : null
+Lat/Lng : 35.1833 / 25.7167","Agios Nikolaos, Crete",https://en.wikipedia.org/wiki/Agios_Nikolaos%2C_Crete,null,35.1833,25.7167,,"Agios Nikolaos or Aghios Nikolaos is a coastal town on the Greek island of Crete, lying east of the island's capital Heraklion, north of the town of Ierapetra and west of the town of Sitia. In the year 2011, the Municipality of Agios Nikolaos, which takes in part of the surrounding villages, claimed (...)"
+"Kayseri  
+FeatureType : null
+Elevation : 1054
+Lat/Lng : 38.7322 / 35.4853",Kayseri,https://en.wikipedia.org/wiki/Kayseri,null,38.7322,35.4853,,"Kayseri is a large and industrialized city in Central Anatolia, Turkey. It is the seat of Kayseri Province. The city of Kayseri, as defined by the boundaries of Kayseri Metropolitan Municipality, is structurally composed of five metropolitan districts, the two core districts of Kocasinan and (...)"
+"Gorzów Wielkopolski  
+FeatureType : city
+Elevation : 30
+Lat/Lng : 52.7333 / 15.2333",Gorzów Wielkopolski,https://en.wikipedia.org/wiki/Gorz%C3%B3w_Wielkopolski,city,52.7333,15.2333,,"Gorzów Wielkopolski (abbreviated Gorzów Wlkp.; ;) is a city in western Poland, on the Warta river. It is the biggest city in the Lubusz Voivodeship with 125,149 inhabitants (June 2009) and one of its two capitals with a seat of a Voivodeship governor (the other is Zielona Góra) (...)"
+"Jaisalmer  
+FeatureType : null
+Elevation : 256
+Lat/Lng : 26.9133 / 70.9139",Jaisalmer,https://en.wikipedia.org/wiki/Jaisalmer,null,26.9133,70.9139,,"Jaisalmer pronunciation , nicknamed ""The Golden city"", is a city in the Indian state of Rajasthan, located west of the state capital Jaipur. Once known as Jaisalmer state it is a World Heritage Site. The town stands on a ridge of yellowish sandstone, crowned by a fort, which contains the palace and (...)"
+"Al Ain  
+FeatureType : null
+Elevation : 268
+Lat/Lng : 24.2075 / 55.7447",Al Ain,https://en.wikipedia.org/wiki/Al_Ain,null,24.2075,55.7447,,"Al Ain (literally The Spring), also known as the Garden City due to its greenery, is the second largest city in the Emirate of Abu Dhabi and the fourth largest city in the United Arab Emirates. With a population of 568,221 (2010), it is located approximately east of the capital Abu Dhabi and about (...)"
+"Maseru  
+FeatureType : city
+Elevation : 1570
+Lat/Lng : -29.3156 / 27.502",Maseru,https://en.wikipedia.org/wiki/Maseru,city,-29.3156,27.502,,"Maseru is the capital and largest city of Lesotho. It is also the capital of the Maseru District. Located on the Caledon River, Maseru lies directly on the Lesotho-South Africa border. Maseru is Lesotho's capital city with a population of approximately 227,880 (2006) (...)"
+"Fredericton  
+FeatureType : city
+Elevation : 12
+Lat/Lng : 45.9576 / -66.6444",Fredericton,https://en.wikipedia.org/wiki/Fredericton,city,45.9576,-66.6444,,"Fredericton is the capital of the Canadian province of New Brunswick. The city is situated in the west-central portion of the province along the Saint John River, which flows west to east as it bisects the city; it is the dominant natural feature of the area (...)"
+"Asbury Park, New Jersey  
+FeatureType : city
+Elevation : 9
+Lat/Lng : 40.2229 / -74.0102","Asbury Park, New Jersey",https://en.wikipedia.org/wiki/Asbury_Park%2C_New_Jersey,city,40.2229,-74.0102,,"Asbury Park is a city in Monmouth County, New Jersey, United States, located on the Jersey Shore and part of the New York City Metropolitan Area. As of the 2010 United States Census, the city's population was 16,116, reflecting a decline of 814 (−4 (...)"
+"Oahu  
+FeatureType : isle
+Elevation : 266
+Lat/Lng : 21.4667 / -157.9833",Oahu,https://en.wikipedia.org/wiki/Oahu,isle,21.4667,-157.9833,,"Oahu or Oahu , known as ""The Gathering Place"", is the third largest of the Hawaiian Islands; however, it is home to about two-thirds of the population of the U.S. state of Hawaii, and is the home of Honolulu International Airport. The state capital, Honolulu, is on Oahu's southeast coast (...)"
+"Caxias do Sul  
+FeatureType : city
+Elevation : 767
+Lat/Lng : -29.1688 / -51.1892",Caxias do Sul,https://en.wikipedia.org/wiki/Caxias_do_Sul,city,-29.1688,-51.1892,,"Caxias do Sul is a city in Rio Grande do Sul, Southern Brazil, situated in the state's mountainous Serra Gaúcha region. Coordinates: 29°10′0″ S, 51°11′0″ W. It was established by Italian immigrants on June 20, 1890. Today it is the second largest city in the state of Rio Grande do Sul (...)"
+"Varaždin  
+FeatureType : null
+Elevation : 176
+Lat/Lng : 46.3083 / 16.3384",Varaždin,https://en.wikipedia.org/wiki/Vara%C5%BEdin,null,46.3083,16.3384,,"Vȁraždīn (or ; also known by other alternative names) is a city in Northern Croatia, north of Zagreb on the highway A4. The total population is 46,946, with 38,839 on of the city settlement itself (2011). The centre of Varaždin County is located near the Drava river, at (...)"
+"Salta  
+FeatureType : null
+Elevation : 1185
+Lat/Lng : -24.79 / -65.41",Salta,https://en.wikipedia.org/wiki/Salta,null,-24.79,-65.41,,"Salta is a city located in the Lerma Valley, at 1,152 metres (3780 feet) above sea level in the northwest part of Argentina. It is also the name for the capital city of Salta Province. Along with its metropolitan area, it has a population of 619,000 inhabitants, which makes it the second most (...)"
+"Sopot  
+FeatureType : city
+Elevation : 27
+Lat/Lng : 54.4375 / 18.5569",Sopot,https://en.wikipedia.org/wiki/Sopot,city,54.4375,18.5569,,"Sopot (Kashubian: Sopòt; German: Zoppot) is a seaside resort town in Eastern Pomerania on the southern coast of the Baltic Sea in northern Poland, with a population of approximately 40,000. Sopot is a town with powiat (county) status, in Pomeranian Voivodeship (...)"
+"Kanyakumari  
+FeatureType : null
+Elevation : 29
+Lat/Lng : 8.0875 / 77.5492",Kanyakumari,https://en.wikipedia.org/wiki/Kanyakumari,null,8.0875,77.5492,,"Kanyakumari ; also known as Kanniyakumari pronunciation), formerly known as Cape Comorin, is a town in Kanyakumari District in the state of Tamil Nadu in India. The name comes from the temple, Devi Kanya Kumari Temple in the region. It is the southernmost tip of peninsular India (...)"
+"Bermeo  
+FeatureType : city
+Elevation : 29
+Lat/Lng : 43.4208 / -2.7214",Bermeo,https://en.wikipedia.org/wiki/Bermeo,city,43.4208,-2.7214,,"Bermeo is a town and municipality in the sub-region of Busturialdea. It is in the wider province of Biscay, part of the autonomous region of the Basque Country, in northern Spain. Bermeo has 17,159 inhabitants and is the most important fishing port of the Basque Country (...)"
+"Anaheim, California  
+FeatureType : city
+Elevation : 55
+Lat/Lng : 33.8361 / -117.8897","Anaheim, California","https://en.wikipedia.org/wiki/Anaheim,_California",city,33.8361,-117.8897,,"Anaheim (pronounced) is a city in Orange County, California, part of the Los Angeles metropolitan area. As of the 2010 United States Census, the city had a population of 336,265, making it the most populous city in Orange County and the 10th most populous city in California (...)"
+"Djibouti (city)  
+FeatureType : city
+Population : 623,891
+Elevation : 4
+Lat/Lng : 11.5883 / 43.145",Djibouti (city),https://en.wikipedia.org/wiki/Djibouti_%28city%29,city,11.5883,43.145,,"Djibouti City is the capital and largest city of Djibouti, which is named after it. It is located in the coastal Djibouti Region on the Gulf of Tadjoura. Home to around 600,000 inhabitants, the city contains over 60% of the nation's population (...)"
+"Barbados  
+FeatureType : country
+Elevation : 193
+Lat/Lng : 13.1667 / -59.5667",Barbados,https://en.wikipedia.org/wiki/Barbados,country,13.1667,-59.5667,,"Barbados (or) is a sovereign island country in the Lesser Antilles, in the Americas. It is in length and up to in width, covering an area of . It is situated in the western area of the North Atlantic and 100 kilometres (62 mi) east of the Windward Islands and the Caribbean Sea; – U.S (...)"
+"Santa Catalina Island, California  
+FeatureType : city
+Elevation : 456
+Lat/Lng : 33.3833 / -118.4167","Santa Catalina Island, California",https://en.wikipedia.org/wiki/Santa_Catalina_Island%2C_California,city,33.3833,-118.4167,,"Santa Catalina Island, often called Catalina Island, or just Catalina, is a rocky island off the coast of the U.S. state of California in the Gulf of Santa Catalina. The island is long and across at its greatest width. The island is located about south-southwest of Los Angeles, California (...)"
+"Shimla  
+FeatureType : null
+Elevation : 2129
+Lat/Lng : 31.1033 / 77.1722",Shimla,https://en.wikipedia.org/wiki/Shimla,null,31.1033,77.1722,,"Shimla , also known as Simla, is the capital city of the Indian state of Himachal Pradesh, located in northern India. Shimla is bounded by Mandi and Kullu in the north, Kinnaur in the east, the state of Uttarakhand in the south-east, and Solan and Sirmaur (...)"
+"Punta del Este  
+FeatureType : city
+Elevation : 14
+Lat/Lng : -34.9647 / -54.9453",Punta del Este,https://en.wikipedia.org/wiki/Punta_del_Este,city,-34.964,-54.9453,,"Punta del Este is a city and resort on the Atlantic Coast in the Maldonado Department of southeastern Uruguay. Although the city has a year-round population of about 9,280, the summer tourist boom adds to this a very large number of non-residents (...)"
+"Funchal  
+FeatureType : city
+Elevation : 44
+Lat/Lng : 32.651 / -16.9096",Funchal,https://en.wikipedia.org/wiki/Funchal,city,32.651,-16.9096,,"Funchal (In European Portuguese. The Brazilian Portuguese pronunciation is) is the largest city, the municipal seat and the capital of Portugal's Autonomous Region of Madeira. The city has a population of 111,892, Nuno Pires Soares, Instituto Geográfico Português (Geographic Institute of Portugal) (...)"
+"Gifu Prefecture  
+FeatureType : adm1st
+Elevation : 50
+Lat/Lng : 35.4831 / 136.9",Gifu Prefecture,https://en.wikipedia.org/wiki/Gifu_Prefecture,adm1st,35.4831,136.9,,"is a prefecture in the Chūbu region of central Japan.Nussbaum, Louis-Frédéric. (2005). ""Gifu-ken"" in ; ""Chūbu"" in Its capital is the city of Gifu.Nussbaum, ""Gifu"" in Located in the center of Japan, it has long played an important part as the crossroads of Japan, connecting the east to the west (...)"
+"Port of Spain  
+FeatureType : city
+Elevation : 16
+Lat/Lng : 10.6555 / -61.508",Port of Spain,https://en.wikipedia.org/wiki/Port_of_Spain,city,10.6555,-61.508,,"Port of Spain, also written as Port-of-Spain, is the capital city of the Republic of Trinidad and Tobago and the country's third-largest municipality, after Chaguanas and San Fernando. The city has a municipal population of 36,963 (2011 census),It became the new capital of Tinidad & Tobago (...)"
+"Canary Islands  
+FeatureType : null
+Lat/Lng : 28.1 / -15.4",Canary Islands,https://en.wikipedia.org/wiki/Canary_Islands,null,28.1,-15.4,,"The Canary Islands , also known as the Canaries , are a Spanish archipelago located just off the southern coast of Morocco, west of its southern border. The Canaries constitute one of Spain's 17 autonomous communities and are among the outermost regions (OMR) of the European Union proper (...)"
+"Molde  
+FeatureType : city
+Lat/Lng : 62.7375 / 7.1631",Molde,https://en.wikipedia.org/wiki/Molde,city,62.7375,7.1631,,"Molde is a city and municipality in Romsdal in Møre og Romsdal county, Norway. The municipality is located on the Romsdal Peninsula, surrounding the Fannefjord and Moldefjord. The city is located on the northern shore of the Romsdalsfjord (...)"
+"Chios  
+FeatureType : null
+Elevation : 227
+Lat/Lng : 38.4 / 26.0167",Chios,https://en.wikipedia.org/wiki/Chios,null,38.4,26.0167,,"Chios (; , ; alternative transliterations Khíos and Híos) is the fifth largest of the Greek islands, situated in the Aegean Sea, off the Anatolian coast. The island is separated from Turkey by the Çeşme Strait. Chios is notable for its exports of mastic gum and its nickname is The mastic island (...)"
+"Lahore  
+FeatureType : city
+Population : 9,700,000
+Elevation : 224
+Lat/Lng : 31.5497 / 74.3436",Lahore,https://en.wikipedia.org/wiki/Lahore,city,31.5497,74.3436,,"Lahore (; ALA-LC: ; (; Punjabi: Shahmukhi: لہور ALA-LC:) is the capital city of the province of Punjab, the second largest metropolitan area in Pakistan and 16th most populous city in the world. It is an important historical centre in South Asia (...)"
+"Durban  
+FeatureType : city
+Elevation : 23
+Lat/Lng : -29.86 / 31.0208",Durban,https://en.wikipedia.org/wiki/Durban,city,-29.86,31.0208,,"Durban (from itheku meaning ""bay/lagoon"") is the largest city in the South African province of KwaZulu-Natal. After Johannesburg, the Durban Metropolitan Area ranks second among the most populous urban areas in South Africa, virtually ex-aequo with Cape Town (...)"
+"Rotorua  
+FeatureType : city
+Elevation : 294
+Lat/Lng : -38.1369 / 176.2489",Rotorua,https://en.wikipedia.org/wiki/Rotorua,city,-38.1369,176.2489,,"Rotorua (from , ""The second great lake of Kahumatamomoe"") is a city on the southern shores of the lake of the same name, in the Bay of Plenty Region of New Zealand's North Island. It is the seat of the Rotorua District, a territorial authority encompassing Rotorua and several other nearby towns (...)"
+"Piccadilly Circus  
+FeatureType : landmark
+Elevation : 36
+Lat/Lng : 51.5099 / -0.1345",Piccadilly Circus,https://en.wikipedia.org/wiki/Piccadilly_Circus,landmark,51.5099,-0.1345,,"Piccadilly Circus is a road junction and public space of London's West End in the City of Westminster, built in 1819 to connect Regent Street with Piccadilly. In this context, a circus, from the Latin word meaning ""circle"", is a round open space at a street junction (...)"
+"Quintana Roo  
+FeatureType : adm1st
+Elevation : 10
+Lat/Lng : 19.5956 / -87.9131",Quintana Roo,https://en.wikipedia.org/wiki/Quintana_Roo,adm1st,19.5956,-87.9131,,"Quintana Roo , officially Free and Sovereign State of Quintana Roo , is one of the 31 states which, with the Federal District, make up the 32 federal entities of Mexico. It is divided into ten municipalities and its capital city is Chetumal (...)"
+"Pompeii  
+FeatureType : city
+Elevation : 31
+Lat/Lng : 40.7511 / 14.49",Pompeii,https://en.wikipedia.org/wiki/Pompeii,city,40.7511,14.49,,"Pompeii was an ancient Roman town-city near modern Naples, in the Campania region of Italy, in the territory of the comune of Pompei. Pompeii, along with Herculaneum and many villas in the surrounding area, was mostly destroyed and buried under of volcanic ash and pumice in the eruption of Mount (...)"
+"Alice Springs  
+FeatureType : city
+Elevation : 581
+Lat/Lng : -23.7022 / 133.8767",Alice Springs,https://en.wikipedia.org/wiki/Alice_Springs,city,-23.7022,133.8767,,"Alice Springs (Arrernte: Mparntwe) is the third largest town in the Northern Territory, Australia. Popularly known as ""the Alice"" or simply ""Alice"", Alice Springs is situated in the geographic centre of Australia. ""Officially, there is no centre of Australia (...)"
+"Huế  
+FeatureType : null
+Elevation : 9
+Lat/Lng : 16.4694 / 107.5778",Huế,https://en.wikipedia.org/wiki/Hu%E1%BA%BF,null,16.4694,107.5778,,"Huế (help=no) Northern accent is the capital city of Thừa Thiên–Huế Province, Vietnam. Between 1802 and 1945, it was the imperial capital of the Nguyễn dynasty. (...)"
+"Saitama Prefecture  
+FeatureType : adm1st
+Elevation : 15
+Lat/Lng : 35.95 / 139.55",Saitama Prefecture,https://en.wikipedia.org/wiki/Saitama_Prefecture,adm1st,35.95,139.55,,"is a prefecture of Japan located in the Kantō region of the island of Honshu.Nussbaum, Louis-Frédéric. (2005). ""Saitama prefecture"" in ; ""Kantō"" in . The capital is the city of Saitama. This prefecture is part of the Greater Tokyo Area, and most of Saitama's cities can be described as suburbs of (...)"
+"Alkmaar  
+FeatureType : city
+Elevation : 3
+Lat/Lng : 52.6344 / 4.7464",Alkmaar,https://en.wikipedia.org/wiki/Alkmaar,city,52.6344,4.7464,,"Alkmaar is a municipality and a city in the Netherlands, in the province of North Holland. Alkmaar is well known for its traditional cheese market. For tourists, it is a popular cultural destination. (...)"
+"Osorno, Chile  
+FeatureType : null
+Elevation : 30
+Lat/Lng : -40.5735 / -73.1401","Osorno, Chile",https://en.wikipedia.org/wiki/Osorno%2C_Chile,null,-40.5735,-73.1401,,"Osorno is a city and commune in southern Chile and capital of Osorno Province in the Los Lagos Region. It had a population of 145,475, as of the 2002 census. It is located south of the national capital of Santiago, north of the regional capital of Puerto Montt and west of the Argentine city of San (...)"
+"Banff, Alberta  
+FeatureType : city
+Elevation : 1388
+Lat/Lng : 51.1784 / -115.5708","Banff, Alberta",https://en.wikipedia.org/wiki/Banff%2C_Alberta,city,51.1784,-115.5708,,"Banff is a town within Banff National Park in Alberta, Canada. It is located in Alberta's Rockies along the Trans-Canada Highway, approximately west of Calgary and east of Lake Louise. At an elevation of to , Banff is the community with the second highest elevation in Alberta after Lake Louise (...)"
+"Karlsruhe  
+FeatureType : city
+Elevation : 118
+Lat/Lng : 49.014 / 8.4043",Karlsruhe,https://en.wikipedia.org/wiki/Karlsruhe,city,49.014,8.4043,,"Karlsruhe (; formerly Carlsruhe) is the second-largest city in the state of Baden-Württemberg, in southwest Germany, near the Franco-German border. It has a population of 296,033. Karlsruhe Palace was built in 1715, and the city is now the seat of the two highest courts in Germany: the Federal (...)"
+"Indianapolis  
+FeatureType : null
+Elevation : 248
+Lat/Lng : 39.768 / -86.1581",Indianapolis,https://en.wikipedia.org/wiki/Indianapolis,null,39.768,-86.1581,,"Indianapolis is the capital of the U.S. state of Indiana and the county seat of Marion County. With an estimated population of 848,788 in 2014, Indianapolis is the largest city in Indiana, second largest in the American Midwest, and 14th largest in the U.S (...)"
+"Utrera  
+FeatureType : adm3rd
+Elevation : 50
+Lat/Lng : 37.1825 / -5.7817",Utrera,https://en.wikipedia.org/wiki/Utrera,adm3rd,37.1825,-5.7817,,"Utrera is a municipality in south-west Spain. It is in the province of Seville, in the autonomous community of Andalusia. As of 2008 it has a population close to 50,202. The town is of great historical interest (...)"
+"Lorsch  
+FeatureType : city
+Elevation : 102
+Lat/Lng : 49.6539 / 8.5678",Lorsch,https://en.wikipedia.org/wiki/Lorsch,city,49.6539,8.5678,,"Lorsch is a town in the Bergstraße district in Hessen, Germany, 60 km south of Frankfurt. Lorsch is well known for the Lorsch Abbey, which has been named a World Heritage Site. In 1991, the town hosted the 31st Hessentag state festival. (...)"
+"Karlskrona  
+FeatureType : city
+Elevation : 16
+Lat/Lng : 56.1608 / 15.5861",Karlskrona,https://en.wikipedia.org/wiki/Karlskrona,city,56.1608,15.5861,,"Karlskrona is a locality and the seat of Karlskrona Municipality, Blekinge County, Sweden with 35,212 inhabitants in 2010. It is also the capital of Blekinge County. Karlskrona is known as Sweden's only baroque city and is host to Sweden's only remaining naval base and the headquarters of the (...)"
+"Alba, Piedmont  
+FeatureType : null
+Elevation : 178
+Lat/Lng : 44.7008 / 8.0353","Alba, Piedmont",https://en.wikipedia.org/wiki/Alba%2C_Piedmont,null,44.7008,8.0353,,"Alba is a town and comune of Piedmont, Italy, in the province of Cuneo. It is considered the capital of the UNESCO Human Heritage hilly area of Langhe, and is famous for its white truffle, peach and wine production. The confectionery group Ferrero is based there. (...)"
+"Monreale  
+FeatureType : adm3rd
+Elevation : 472
+Lat/Lng : 38.0833 / 13.2833",Monreale,https://en.wikipedia.org/wiki/Monreale,adm3rd,38.0833,13.2833,,"Monreale (Sicilian: Murriali""Monreale"" is a contraction of monte-reale, ""royal mountain"", so-called from a palace built here by Roger I of Sicily) is a town and comune in the province of Palermo, in Sicily, Italy, on the slope of Monte Caputo, overlooking the very fertile valley called ""La Conca (...)"
+"Warsaw  
+FeatureType : city
+Elevation : 110
+Lat/Lng : 52.2323 / 21.0084",Warsaw,https://en.wikipedia.org/wiki/Warsaw,city,52.2323,21.0084,,"Warsaw (; see also other names) is the capital and largest city of Poland. It stands on the Vistula River in east-central Poland, roughly from the Baltic Sea and from the Carpathian Mountains. Its population is estimated at 1.740 million residents within a greater metropolitan area of 2 (...)"
+"New Hampshire  
+FeatureType : adm1st
+Elevation : 659
+Lat/Lng : 44.0 / -71.5",New Hampshire,https://en.wikipedia.org/wiki/New_Hampshire,adm1st,44,-71.5,,"New Hampshire is a state in the New England region of the northeastern United States. It is bordered by Massachusetts to the south, Vermont to the west, Maine and the Atlantic Ocean to the east, and the Canadian province of Quebec to the north (...)"
+"Bogor  
+FeatureType : city
+Elevation : 262
+Lat/Lng : -6.6 / 106.8",Bogor,https://en.wikipedia.org/wiki/Bogor,city,-6.6,106.8,,"Bogor (Dutch: Buitenzorg) is a city on the island of Java in the West Java province of Indonesia. The city is located in the center of the Bogor Regency , south of the Indonesian capital Jakarta, although it is administratively independent from that regency (...)"
+"Almería  
+FeatureType : city
+Elevation : 16
+Lat/Lng : 36.83 / -2.43",Almería,https://en.wikipedia.org/wiki/Almer%C3%ADa,city,36.83,-2.43,,"Almería is a city in Andalusia, Spain, situated in the southeast of Spain on the Mediterranean Sea. It is the capital of the province of the same name. (...)"
+"Rarotonga  
+FeatureType : isle
+Elevation : 83
+Lat/Lng : -21.2538 / -159.7893",Rarotonga,https://en.wikipedia.org/wiki/Rarotonga,isle,-21.2538,-159.7893,,"Rarotonga is the most populous island of the Cook Islands, with a population of 10,572 (census 2011), out of the country's total resident population of 14,974. Captain John Dibbs, master of the colonial brig Endeavour, is credited as the European discoverer on 25 August 1823, while transporting the (...)"
+"Romania  
+FeatureType : country
+Elevation : 543
+Lat/Lng : 46.09 / 25.51",Romania,https://en.wikipedia.org/wiki/Romania,country,46.09,25.51,,"RomaniaIn English, Romania was formerly often spelled Rumania or sometimes Roumania. See the etymology section. is a unitary semi-presidential republic located in Southeastern Europe, bordering the Black Sea, between Bulgaria and Ukraine. It also borders Hungary, Serbia, and Moldova (...)"
+"Edinburgh  
+FeatureType : city
+Elevation : 129
+Lat/Lng : 55.9496 / -3.1603",Edinburgh,https://en.wikipedia.org/wiki/Edinburgh,city,55.9496,-3.1603,,"Edinburgh is the capital city of Scotland, located in Lothian on the southern shore of the Firth of Forth. It is the second most populous city in Scotland and the seventh most populous in the United Kingdom. The most recent official population estimates are 464,990 for the city of Edinburgh itself (...)"
+"Haiti  
+FeatureType : country
+Elevation : 38
+Lat/Lng : 18.5392 / -72.3364",Haiti,https://en.wikipedia.org/wiki/Haiti,country,18.5392,-72.3364,,"Haiti , officially the Republic of Haiti , is a country in the western hemisphere, and is located on the island of Hispaniola, in the Greater Antilles archipelago of the Caribbean. It occupies the western three-eighths of the island which it shares with the Dominican Republic (...)"
+"Valencia  
+FeatureType : city
+Elevation : 19
+Lat/Lng : 39.4702 / -0.3768",Valencia,https://en.wikipedia.org/wiki/Valencia,city,39.4702,-0.3768,,"Valencia , or València , is the capital of the autonomous community of Valencia and the third largest city in Spain after Madrid and Barcelona, with around 800,000 inhabitants in the administrative centre. Its urban area extends beyond the administrative city limits with a population of around 1 (...)"
+"Krasnodar  
+FeatureType : null
+Elevation : 27
+Lat/Lng : 45.0333 / 38.9833",Krasnodar,https://en.wikipedia.org/wiki/Krasnodar,null,45.0333,38.9833,,"Krasnodar is a city and the administrative center of Krasnodar Krai, Russia, located on the Kuban River, approximately northeast of the Black Sea port of Novorossiysk. As of the 2010 Census, its population was 744,995. (...)"
+"Angkor  
+FeatureType : landmark
+Elevation : 20
+Lat/Lng : 13.4333 / 103.8333",Angkor,https://en.wikipedia.org/wiki/Angkor,landmark,13.4333,103.8333,,"Angkor (""Capital City"")Headly, Robert K.; Chhor, Kylin; Lim, Lam Kheng; Kheang, Lim Hak; Chun, Chen. 1977. Cambodian-English Dictionary. Bureau of Special Research in Modern Languages. The Catholic University of America Press. Washington, D.C (...)"
+"Garanhuns  
+FeatureType : city
+Elevation : 855
+Lat/Lng : -8.8903 / -36.4928",Garanhuns,https://en.wikipedia.org/wiki/Garanhuns,city,-8.8903,-36.4928,,"Garanhuns is a city in the Brazilian state of Pernambuco. Located in the Borborema Plateau, the town is known as the ""Suíça Pernambucana"" (Pernambucan Switzerland) due to its pleasant weather during summer and low temperatures during winter, something rather unusual for the region (...)"
+"Moquegua  
+FeatureType : city
+Elevation : 1417
+Lat/Lng : -17.1937 / -70.9348",Moquegua,https://en.wikipedia.org/wiki/Moquegua,city,-17.1937,-70.9348,,"Moquegua (founded by the Spanish colonists as Villa de Santa Catalina de Guadalcázar del Valle de Moquegua) is a city in southern Peru, located in the Moquegua Region, of which it is the capital. It is also capital of Mariscal Nieto Province and Moquegua District (...)"
+"Khövsgöl Province  
+FeatureType : null
+Elevation : 1285
+Lat/Lng : 49.6333 / 100.167",Khövsgöl Province,https://en.wikipedia.org/wiki/Kh%C3%B6vsg%C3%B6l_Province,null,49.6333,100.167,,Khövsgöl is the northernmost of the 21 aimags (provinces) of Mongolia. The name is derived from Lake Khövsgöl. (...)
+"La Boca  
+FeatureType : city
+Elevation : 4
+Lat/Lng : -34.6333 / -58.3667",La Boca,https://en.wikipedia.org/wiki/La_Boca,city,-34.6333,-58.3667,,"La Boca is a neighborhood, or barrio of the Argentine capital, Buenos Aires. It retains a strong European flavour, with many of its early settlers being from the Italian city of Genoa. (...)"
+"Tanga, Tanzania  
+FeatureType : city
+Lat/Lng : -5.0667 / 39.1","Tanga, Tanzania",https://en.wikipedia.org/wiki/Tanga%2C_Tanzania,city,-5.0667,39.1,,"Tanga is both the name of the most northerly seaport city of Tanzania, and the surrounding Tanga Region. It is the Regional Headquarters of the region. With a population of 243,580 in 2002, Tanga is one of the largest cities in the country (...)"
+"Esch-sur-Alzette  
+FeatureType : null
+Elevation : 298
+Lat/Lng : 49.4967 / 5.9822",Esch-sur-Alzette,https://en.wikipedia.org/wiki/Esch-sur-Alzette,null,49.4967,5.9822,,"Esch-sur-Alzette (or Esch-an-der-Alzig) is a commune with city status in south-western Luxembourg. It is the country's second city, and its second-most populous commune, with a population of 33,286 inhabitants. It lies in the south-west of the country, on the border with France (...)"
+"Ravello  
+FeatureType : null
+Elevation : 380
+Lat/Lng : 40.6506 / 14.6128",Ravello,https://en.wikipedia.org/wiki/Ravello,null,40.6506,14.6128,,"Ravello is a town and comune situated above the Amalfi Coast in the province of Salerno, Campania, southern Italy, with approximately 2,500 inhabitants. Its scenic beauty makes it a popular tourist destination, and earned it a listing as a UNESCO World Heritage Site in 1996 (...)"
+"Baños de Agua Santa  
+FeatureType : city
+Elevation : 1816
+Lat/Lng : -1.3964 / -78.4247",Baños de Agua Santa,https://en.wikipedia.org/wiki/Ba%C3%B1os_de_Agua_Santa,city,-1.3964,-78.4247,,"Baños de Agua Santa , commonly referred to as Baños, is a city in eastern Tungurahua Province, in central Ecuador. Baños is the second most populous city in Tungurahua, after Ambato, the capital, and is a major tourist center (...)"
+"Branson, Missouri  
+FeatureType : city
+Elevation : 278
+Lat/Lng : 36.6378 / -93.255","Branson, Missouri",https://en.wikipedia.org/wiki/Branson%2C_Missouri,city,36.6378,-93.255,,"Branson is a city in Stone and Taney Counties in the U.S. state of Missouri. Most of the city is in Taney County, with a small portion in the west extending into Stone County. Branson is in the Ozark Mountains. The community was named after Ruben Branson, postmaster and operator of a general store (...)"
+"Summer Palace  
+FeatureType : landmark
+Elevation : 69
+Lat/Lng : 39.9975 / 116.2689",Summer Palace,https://en.wikipedia.org/wiki/Summer_Palace,landmark,39.9975,116.2689,,"The Summer Palace , known as Yiheyuan in Chinese, is a vast ensemble of lakes, gardens and palaces in Beijing, China. It serves as a popular tourist destination and recreational park. Mainly dominated by Longevity Hill and Kunming Lake , it covers an expanse of , three-quarters of which is water (...)"
+"Miami International Airport  
+FeatureType : airport
+Elevation : 10
+Lat/Lng : 25.7933 / -80.2906",Miami International Airport,https://en.wikipedia.org/wiki/Miami_International_Airport,airport,25.7933,-80.2906,,"Miami International Airport , also known as MIA and historically Wilcox Field, is the primary airport serving the Miami area, United States. The airport is in an unincorporated area in Miami-Dade County, Florida, eight miles (13 km) northwest of Downtown Miami, in metropolitan Miami, between the (...)"
+"Modesto, California  
+FeatureType : city
+Elevation : 30
+Lat/Lng : 37.6614 / -120.9944","Modesto, California",https://en.wikipedia.org/wiki/Modesto%2C_California,city,37.6614,-120.9944,,"Modesto (Spanish for ""modest""), officially being the City of Modesto, is the county seat and largest city of Stanislaus County, California, United States. With a population of approximately 201,165 at the 2010 census, Modesto ranks as the 18th largest city in the state of California (...)"
+"Redondo Beach, California  
+FeatureType : city
+Elevation : 47
+Lat/Lng : 33.8565 / -118.3771","Redondo Beach, California",https://en.wikipedia.org/wiki/Redondo_Beach%2C_California,city,33.8565,-118.3771,,"Redondo Beach is one of the three Beach Cities located in Los Angeles County, California, United States. The population was 66,748 at the 2010 census, up from 63,261 at the 2000 census. The city is located in the South Bay region of the greater Los Angeles area (...)"
+"Riverside, California  
+FeatureType : city
+Elevation : 256
+Lat/Lng : 33.9481 / -117.3961","Riverside, California",https://en.wikipedia.org/wiki/Riverside%2C_California,city,33.9481,-117.3961,,"Riverside is a city in Riverside County, California, United States, located in the Inland Empire metropolitan area. Riverside is the county seat of the eponymous county and named for its location beside the Santa Ana River.Gunther, pages 427–429 (...)"
+"Bagalkot district  
+FeatureType : null
+Elevation : 576
+Lat/Lng : 16.12 / 75.45",Bagalkot district,https://en.wikipedia.org/wiki/Bagalkot_district,null,16.12,75.45,,"Bāgalkot district (; Kannada: ಬಾಗಲಕೋಟೆ) is an administrative district in the Indian state of Karnataka. The district headquarters is located in the town of Bagalkote. The district is located in northern Karnataka and borders Belgaum, Gadag, Koppal, Raichur and Bijapur (...)"
+"İzmit  
+FeatureType : null
+Elevation : 2
+Lat/Lng : 40.7639 / 29.9417",İzmit,https://en.wikipedia.org/wiki/%C4%B0zmit,null,40.7639,29.9417,,"İzmit (Nikomedeia), traditionally called in English Ismid, is a city in Turkey, the administrative center of the Kocaeli Province as well as the Metropolitan Municipality. It is located at the Gulf of İzmit in the Sea of Marmara, about east of Istanbul, on the northwestern part of Anatolia (...)"
+"Bayankhongor Province  
+FeatureType : null
+Elevation : 1865
+Lat/Lng : 46.1 / 100.683",Bayankhongor Province,https://en.wikipedia.org/wiki/Bayankhongor_Province,null,46.1,100.683,,"Bayankhongor (literally Rich Darling) is one of the 21 aimags (provinces) of Mongolia. It is located in the southwest of the country and, at 116,000 square kilometers, it is one of the largest aimags. The capital of the aimag shares the provincial name, Bayankhongor. (...)"
+"Ardabil  
+FeatureType : null
+Elevation : 1353
+Lat/Lng : 38.2461 / 48.295",Ardabil,https://en.wikipedia.org/wiki/Ardabil,null,38.2461,48.295,,"Ardabil (اردبیل, , also Romanized as Ardabīl and Ardebīl) is an ancient city in north-western Iran. Ardabil is the center of Ardabil Province. At the 2011 census, its population was 564,365, in 156,324 families, where the dominant majority are ethnic Iranian Azerbaijanis (...)"
+"Alwar  
+FeatureType : null
+Elevation : 283
+Lat/Lng : 27.57 / 76.6",Alwar,https://en.wikipedia.org/wiki/Alwar,null,27.57,76.6,,"Alwar is a city and administrative headquarters of Alwar District in the Indian state of Rajasthan. It is located around 160 km south of Delhi, and about 150 km north of Jaipur, the capital of Rajasthan. Alwar is part of National Capital Region (NCR) (...)"
+"Springfield, Illinois  
+FeatureType : city
+Elevation : 170
+Lat/Lng : 39.6983 / -89.6197","Springfield, Illinois",https://en.wikipedia.org/wiki/Springfield%2C_Illinois,city,39.6983,-89.6197,,"Springfield is the capital of the U.S. state of Illinois and the county seat of Sangamon County with a population of 116,250, as of the 2010 U.S. Census, making it the sixth most populated city in the state. It is the largest city in central Illinois (...)"
+"Chełm  
+FeatureType : city
+Elevation : 220
+Lat/Lng : 51.1322 / 23.4778",Chełm,https://en.wikipedia.org/wiki/Che%C5%82m,city,51.1322,23.4778,,"Chełm (meaning a hill) is a city in eastern Poland with 67,702 inhabitants (2007). It is located to the south-east of Lublin, north of Zamość and south of Biała Podlaska, some from the border with Ukraine. Chełm used to be the capital of the Chełm Voivodeship until it became part of the Lublin (...)"
+"Aberystwyth  
+FeatureType : city
+Elevation : 9
+Lat/Lng : 52.4179 / -4.0837",Aberystwyth,https://en.wikipedia.org/wiki/Aberystwyth,city,52.4179,-4.0837,,"Aberystwyth (Mouth of the Ystwyth) is a historic market town, administrative centre and holiday resort within Ceredigion, West Wales. Often colloquially known as Aber, it is located near the confluence of the rivers Ystwyth and Rheidol (...)"
+"Ashland, Oregon  
+FeatureType : city
+Elevation : 595
+Lat/Lng : 42.1914 / -122.7008","Ashland, Oregon",https://en.wikipedia.org/wiki/Ashland%2C_Oregon,city,42.1914,-122.7008,,"Ashland is a city in Jackson County, in the State of Oregon. It lies along Interstate 5 slightly north of the California border and near the south end of the Bear Creek Valley, an arm of the Rogue Valley. As of July 1, 2013, the city's population was estimated to be 20,713 (...)"
+"Świnoujście  
+FeatureType : city
+Elevation : 6
+Lat/Lng : 53.9167 / 14.25",Świnoujście,https://en.wikipedia.org/wiki/Ashland%2C_Oregon,city,53.9167,14.25,,"Świnoujście is a city and seaport on the Baltic Sea and Szczecin Lagoon, located in the extreme north-west of Poland. It is situated mainly on the islands of Usedom and Wolin, but also occupies smaller islands, of which the largest is Karsibór island, once part of Usedom, now separated by the Piast (...)"
+"Eastbourne  
+FeatureType : adm3rd
+Elevation : 8
+Lat/Lng : 50.7665 / 0.2862",Eastbourne,https://en.wikipedia.org/wiki/Eastbourne,adm3rd,50.7665,0.2862,,"Eastbourne (pronunciation) is a large town, seaside resort, and borough in the non-metropolitan county of East Sussex on the south coast of England, east of Brighton. Eastbourne is immediately to the east of Beachy Head, the highest chalk sea cliff in Great Britain (...)"
+"Visakhapatnam  
+FeatureType : null
+Elevation : 12
+Lat/Lng : 17.7027 / 83.2899",Visakhapatnam,https://en.wikipedia.org/wiki/Visakhapatnam,null,17.7027,83.2899,,"Visakhapatnam (nicknamed Vizag) is the largest city, both in terms of area and population in the Indian state of Andhra Pradesh. It is located on the coast of Bay of Bengal in the north eastern region of the state (...)"
+"Dudley  
+FeatureType : city
+Elevation : 210
+Lat/Lng : 52.5119 / -2.0957",Dudley,https://en.wikipedia.org/wiki/Dudley,city,52.5119,-2.0957,,"Dudley is a large town in the West Midlands of England, south-east of Wolverhampton and north-west of Birmingham. The town is the administrative centre of the Metropolitan Borough of Dudley and in 2011 had a population of 83,727.http://ukcensusdata (...)"
+"Iowa City, Iowa  
+FeatureType : city
+Elevation : 213
+Lat/Lng : 41.6558 / -91.525","Iowa City, Iowa",https://en.wikipedia.org/wiki/Iowa_City%2C_Iowa,city,41.6558,-91.525,,"Iowa City is a city in Johnson County, Iowa, United States. It is the only City of Literature in North America, as awarded by UNESCO in 2008. As of the 2010 Census, the city had a total population of about 67,862 (...)"
+"Amarillo, Texas  
+FeatureType : city
+Elevation : 1126
+Lat/Lng : 35.1992 / -101.8453","Amarillo, Texas",https://en.wikipedia.org/wiki/Amarillo%2C_Texas,city,35.1992,-101.8453,,"Amarillo is the fourteenth most populous city in the state of Texas, also the largest city in the Texas Panhandle, and the seat of Potter County. A portion of the city extends into Randall County. The population was 190,695 at the 2010 census (105,486 in Potter County, and 85,209 in Randall) (...)"
+"Palace of Westminster  
+FeatureType : landmark
+Elevation : 18
+Lat/Lng : 51.4993 / -0.1247",Palace of Westminster,https://en.wikipedia.org/wiki/Palace_of_Westminster,landmark,51.4993,-0.1247,,"The Palace of Westminster is the meeting place of the House of Commons and the House of Lords, the two houses of the Parliament of the United Kingdom. Commonly known as the Houses of Parliament after its occupants, the Palace lies on the northern bank of the River Thames in the City of Westminster, (...)"
+"Kota Kinabalu  
+FeatureType : airport
+Elevation : 7
+Lat/Lng : 5.9714 / 116.0952",Kota Kinabalu,https://en.wikipedia.org/wiki/Kota_Kinabalu,airport,5.9714,116.0952,,"Kota Kinabalu (Jawi:), formerly known as Jesselton, is the capital of the state of Sabah, Malaysia. It is also the capital of the West Coast Division of Sabah. The city is located on the northwest coast of Borneo facing the South China Sea (...)"
+"Sandakan  
+FeatureType : city
+Elevation : 11
+Lat/Lng : 5.8465 / 118.0738",Sandakan,https://en.wikipedia.org/wiki/Sandakan,city,5.8465,118.0738,,"Sandakan (Jawi:) formerly known at various times as Elopura, is the second-largest town in Sabah after Kota Kinabalu City, on the north-eastern coast of Borneo in Malaysia. It is located on the east coast of the island in the administrative centre of Sandakan Division and was the former capital of (...)"
+"Columbus, Georgia  
+FeatureType : null
+Elevation : 93
+Lat/Lng : 32.4894 / -84.9403","Columbus, Georgia",https://en.wikipedia.org/wiki/Columbus%2C_Georgia,null,32.4894,-84.9403,,"Columbus is a city in the U.S. state of Georgia and is the county seat of Muscogee County, with which it is consolidated. According to the 2013 estimates from the U.S. Census Bureau, Columbus has a population of 202,824 residents in the city and 316,554 in the Columbus-Phenix City metropolitan area (...)"
+"Gatineau  
+FeatureType : city
+Elevation : 53
+Lat/Lng : 45.4833 / -75.65",Gatineau,https://en.wikipedia.org/wiki/Gatineau,city,45.4833,-75.65,,"Gatineau , officially Ville de Gatineau, is a city in western Quebec, Canada. It is the fourth largest city in the province after Montreal, Quebec City, and Laval. It is located on the northern bank of the Ottawa River, immediately across from Ottawa, together with which it forms Canada's National (...)"
+"Omdurman  
+FeatureType : city
+Elevation : 396
+Lat/Lng : 15.6835 / 32.4629",Omdurman,https://en.wikipedia.org/wiki/Omdurman,city,15.6835,32.4629,,"Omdurman (standard Arabic Umm Durmān أم درمان) is the largest city in Sudan and Khartoum State, lying on the western banks of the River Nile, opposite the capital, Khartoum. Omdurman has a population of 2,395,159 (2008) and is the national centre of commerce (...)"
+"Tralee  
+FeatureType : null
+Elevation : 7
+Lat/Lng : 52.2675 / -9.6962",Tralee,https://en.wikipedia.org/wiki/Tralee,null,52.2675,-9.6962,,"Tralee is the county town of County Kerry in the south-west of Ireland. The town is on the northern side of the neck of the Dingle Peninsula, and is the largest town in County Kerry. The town's population including suburbs was 23,693 census making it the 7th largest town, and 13th largest urban (...)"
+"Ambato, Ecuador  
+FeatureType : null
+Elevation : 2599
+Lat/Lng : -1.2417 / -78.6197","Ambato, Ecuador",https://en.wikipedia.org/wiki/Ambato%2C_Ecuador,null,-1.2417,-78.6197,,"Ambato (full form, San Juan de Ambato) is a city located in the central Andean valley of Ecuador.Columbia Gazetteer of the WorldNew York: Columbia University Press, 1998 Lying on the banks of the Ambato River, the city also sits beneath several tall mountains (...)"
+"Kuching  
+FeatureType : city
+Elevation : 12
+Lat/Lng : 1.5581 / 110.3515",Kuching,https://en.wikipedia.org/wiki/Kuching,city,1.5581,110.3515,,"Kuching (Jawi: ;), officially the City of Kuching, is the capital and the most populous city in the state of Sarawak in Malaysia. It is also the capital of Kuching Division. The city is situated on the Sarawak River at the southwest tip of the state of Sarawak on the island of Borneo and covers an (...)"
+"Bray  
+FeatureType : null
+Elevation : 29
+Lat/Lng : 53.201 / -6.1114",Bray,https://en.wikipedia.org/wiki/Bray,null,53.201,-6.1114,,"Bray (formerly Brí Chualann) is a town in north County Wicklow, Ireland. It is a busy urban centre and seaside resort, with a population of 31,872 making it the ninth largest urban area in Ireland at the 2011 census. It is situated about south of Dublin on the east coast (...)"
+"Lowestoft  
+FeatureType : city
+Elevation : 7
+Lat/Lng : 52.4747 / 1.7536",Lowestoft,https://en.wikipedia.org/wiki/Lowestoft,city,52.4747,1.7536,,"Lowestoft (or) is a town in the English county of Suffolk.OS Explorer Map OL40: The Broads: (1:25 000) : ISBN 0 319 24086 X. The town is on the North Sea coast and is the most easterly settlement of the United Kingdom. It is north-east of London, north-east of Ipswich and south-east of Norwich (...)"
+"Mullingar  
+FeatureType : null
+Elevation : 88
+Lat/Lng : 53.5224 / -7.3378",Mullingar,https://en.wikipedia.org/wiki/Mullingar,null,53.5224,-7.3378,,"Mullingar is the county town of County Westmeath in Ireland. The Counties of Meath and Westmeath Act (Henry VIII 34) of 1543, proclaimed Westmeath (which then included Longford which separated in 1586) a county, separating it from Meath (...)"
+"Cefalù  
+FeatureType : adm3rd
+Elevation : 25
+Lat/Lng : 38.0397 / 14.0222",Cefalù,https://en.wikipedia.org/wiki/Cefal%C3%B9,adm3rd,38.0397,14.0222,,"Cefalù (; ; , Diod., Strabo, or ', Ptol.; , or , Pliny) is a city and comune in the Province of Palermo, located on the northern coast of Sicily, Italy on the Tyrrhenian Sea about east of the provincial capital and west of Messina (...)"
+"Port Royal  
+FeatureType : city
+Elevation : 4
+Lat/Lng : 17.937 / -76.841",Port Royal,https://en.wikipedia.org/wiki/Port_Royal,city,17.937,-76.841,,"Port Royal is a city located at the end of the Palisadoes at the mouth of the Kingston Harbour, in southeastern Jamaica. Founded in 1518, it was the centre of shipping commerce in the Caribbean Sea during the latter half of the 17th century (...)"
+"Mazar-i-Sharif  
+FeatureType : city
+Elevation : 362
+Lat/Lng : 36.71 / 67.11",Mazar-i-Sharif,https://en.wikipedia.org/wiki/Mazar-i-Sharif,city,36.71,67.11,,"Mazar-i-Sharif or Mazar-e-Sharif (Persian/Pashto: مزارِ شریف) is the third-largest city of Afghanistan, with a population of 693,000 (2015). It is the capital of Balkh province and is linked by highways with Kunduz in the east, Kabul in the southeast, Herat in the west and Uzbekistan in the north (...)"
+"Chaozhou  
+FeatureType : city
+Elevation : 21
+Lat/Lng : 23.6667 / 116.6333",Chaozhou,https://en.wikipedia.org/wiki/Chaozhou,city,23.6667,116.6333,,"Chaozhou , alternatively transliterated as Chiuchow,Transliterated from its Cantonese pronunciation Chaochow,From postal romanization or Teochew,Transliterated from the pronunciation of its own local dialect is a city in the eastern Guangdong province of the China (...)"
+"Drottningholm Palace  
+FeatureType : landmark
+Elevation : 16
+Lat/Lng : 59.3217 / 17.8861",Drottningholm Palace,https://en.wikipedia.org/wiki/Drottningholm_Palace,landmark,59.3217,17.8861,,"The Drottningholm Palace is the private residence of the Swedish royal family. It is located in Drottningholm. Built on the island Lovön (in Ekerö Municipality of Stockholm County), it is one of Sweden's Royal Palaces. It was originally built in the late 16th century (...)"
+"Panaji  
+FeatureType : city
+Elevation : 61
+Lat/Lng : 15.4933 / 73.8278",Panaji,https://en.wikipedia.org/wiki/Panaji,city,15.4933,73.8278,,"Panaji (Panaje, pronounced , , Pangim in Portuguese, usually known as Panjim in English) is the capital of the Indian state of Goa and the headquarters of North Goa district. It lies on the banks of the Mandovi River estuary in Tiswadi taluka (...)"
+"Bay of Kotor  
+FeatureType : null
+Lat/Lng : 42.4333 / 18.6582",Bay of Kotor,https://en.wikipedia.org/wiki/Bay_of_Kotor,null,42.4333,18.6582,,"The Bay of Kotor , known simply as Boka, is a winding bay of the Adriatic Sea in southwestern Montenegro. , it could be crossed by a ferryboat. The bay has been inhabited since antiquity. Its well-preserved medieval towns of Kotor, Risan, Tivat, Perast, Prčanj and Herceg Novi, along with their (...)"
+"Cajamarca  
+FeatureType : city
+Elevation : 2724
+Lat/Lng : -7.1569 / -78.5175",Cajamarca,https://en.wikipedia.org/wiki/Cajamarca,city,-7.1569,-78.5175,,"Cajamarca is the capital and largest city of the Cajamarca Region as well as an important cultural and commercial center in the northern Andes. It is located in the northern highlands of Peru at approximately 2,750 m (8,900 ft) above sea levelhttp://www.municaj.gob.pe/_geograf (...)"
+"Oaxaca City  
+FeatureType : city
+Elevation : 1560
+Lat/Lng : 17.0647 / -96.7164",Oaxaca City,https://en.wikipedia.org/wiki/Oaxaca_City,city,17.0647,-96.7164,,"The city and municipality of Oaxaca de Juárez, or simply Oaxaca, is the capital and largest city of the Mexican state of the same name. It is located in the Centro District in the Central Valleys region of the state, on the foothills of the Sierra Madre at the base of the Cerro del Fortín extending (...)"
+"Lanzarote  
+FeatureType : isle
+Elevation : 410
+Lat/Lng : 29.035 / -13.633",Lanzarote,https://en.wikipedia.org/wiki/Lanzarote,isle,29.035,-13.633,,"Lanzarote , a Spanish island, is the easternmost of the autonomous Canary Islands, in the Atlantic Ocean, approximately off the coast of Africa and from the Iberian Peninsula. Covering , it is the fourth largest of the islands (...)"
+"Manhattan  
+FeatureType : city
+Elevation : 36
+Lat/Lng : 40.7283 / -73.9942",Manhattan,https://en.wikipedia.org/wiki/Manhattan,city,40.7283,-73.9942,,"Manhattan is one of the five boroughs of New York City, in the State of New York in the United States. The borough is coterminous with New York County, founded on November 1, 1683 as one of the state's original counties (...)"
+"Munich  
+FeatureType : null
+Elevation : 524
+Lat/Lng : 48.1372 / 11.5756",Munich,https://en.wikipedia.org/wiki/Munich,null,48.1372,11.5756,,"Munich (; also in UK English;) is the capital and largest city of the German state of Bavaria, on the banks of River Isar north of the Bavarian Alps. Munich is the third largest city in Germany, after Berlin and Hamburg and the 12th biggest city of the European Union with a population of above 1 (...)"
+"Roskilde  
+FeatureType : city
+Elevation : 5
+Lat/Lng : 55.65 / 12.0833",Roskilde,https://en.wikipedia.org/wiki/Roskilde,city,55.65,12.0833,,"Roskilde , located west of Copenhagen on the Danish island of Zealand, is the main city in Roskilde Municipality. With a population of 49,297 (as of 1 January 2015), database from Statistics Denmark the city is a business and educational centre for the region and the 10th largest city in Denmark (...)"
