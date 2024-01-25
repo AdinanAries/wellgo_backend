@@ -48,8 +48,8 @@ const getTouristAttraction = (req, res, next) => {
         let FOUND_ATTRACTIONS=[];
         const FIRST_FILTER=[]; // Will contain subset for further filtering
         for(let i=0; i<TOURIST_ATTRACTIONS.length; i++){
-            let _lon_parts = (TOURIST_ATTRACTIONS[i].lng+"").split(".");
-            let _lat_parts = (TOURIST_ATTRACTIONS[i].lat+"").split(".")
+            let _lon_parts = (TOURIST_ATTRACTIONS[i].longitude+"").split(".");
+            let _lat_parts = (TOURIST_ATTRACTIONS[i].latitude+"").split(".")
             if(
                 _lon_parts[0] === lon_parts[0] &&
                 _lat_parts[0] === lat_parts[0]
@@ -60,8 +60,8 @@ const getTouristAttraction = (req, res, next) => {
 
         // First pass through
         for(let i=0; i<FIRST_FILTER.length; i++){
-            let _lon_parts = (FIRST_FILTER[i].lng+"").split(".");
-            let _lat_parts = (FIRST_FILTER[i].lat+"").split(".")
+            let _lon_parts = (FIRST_FILTER[i].longitude+"").split(".");
+            let _lat_parts = (FIRST_FILTER[i].latitude+"").split(".")
             if(_lon_parts[0] === lon_parts[0]
                 &&  _lat_parts[0] === lat_parts[0]
                 &&  (_lon_parts[1].startsWith(lon_parts[1].substring(0,4))
@@ -75,8 +75,8 @@ const getTouristAttraction = (req, res, next) => {
         // Second pass through
         if(FOUND_ATTRACTIONS.length<1){
                 for(let i=0; i<FIRST_FILTER.length; i++){
-                    let _lon_parts = (FIRST_FILTER[i].lng+"").split(".");
-                    let _lat_parts = (FIRST_FILTER[i].lat+"").split(".")
+                    let _lon_parts = (FIRST_FILTER[i].longitude+"").split(".");
+                    let _lat_parts = (FIRST_FILTER[i].latitude+"").split(".")
                     if(_lon_parts[0] === lon_parts[0]
                         &&  _lat_parts[0] === lat_parts[0]
                         &&  (_lon_parts[1].startsWith(lon_parts[1].substring(0,3))
@@ -91,8 +91,8 @@ const getTouristAttraction = (req, res, next) => {
         // Third pass through
         if(FOUND_ATTRACTIONS.length<1){
             for(let i=0; i<FIRST_FILTER.length; i++){
-                let _lon_parts = (FIRST_FILTER[i].lng+"").split(".");
-                let _lat_parts = (FIRST_FILTER[i].lat+"").split(".")
+                let _lon_parts = (FIRST_FILTER[i].longitude+"").split(".");
+                let _lat_parts = (FIRST_FILTER[i].latitude+"").split(".")
                 if(_lon_parts[0] === lon_parts[0]
                     &&  _lat_parts[0] === lat_parts[0]
                     &&  (_lon_parts[1].startsWith(lon_parts[1].substring(0,2))
@@ -107,8 +107,8 @@ const getTouristAttraction = (req, res, next) => {
         // Fourth pass through
         if(FOUND_ATTRACTIONS.length<1){
             for(let i=0; i<FIRST_FILTER.length; i++){
-                let _lon_parts = (FIRST_FILTER[i].lng+"").split(".");
-                let _lat_parts = (FIRST_FILTER[i].lat+"").split(".")
+                let _lon_parts = (FIRST_FILTER[i].longitude+"").split(".");
+                let _lat_parts = (FIRST_FILTER[i].latitude+"").split(".")
                 if(_lon_parts[0] === lon_parts[0]
                     &&  _lat_parts[0] === lat_parts[0]
                     &&  (_lon_parts[1].startsWith(lon_parts[1].substring(0,1))
@@ -123,8 +123,8 @@ const getTouristAttraction = (req, res, next) => {
         // Fifth pass through
         if(FOUND_ATTRACTIONS.length<1){
             for(let i=0; i<FIRST_FILTER.length; i++){
-                let _lon_parts = (FIRST_FILTER[i].lng+"").split(".");
-                let _lat_parts = (FIRST_FILTER[i].lat+"").split(".")
+                let _lon_parts = (FIRST_FILTER[i].longitude+"").split(".");
+                let _lat_parts = (FIRST_FILTER[i].latitude+"").split(".")
                 if(_lon_parts[0] === lon_parts[0]
                     &&  _lat_parts[0] === lat_parts[0]
                     &&  (_lon_parts[1].startsWith(lon_parts[1].substring(0,1))
