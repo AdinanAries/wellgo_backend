@@ -84,7 +84,7 @@ const getCity = async (req, res, next) => {
         const lat = (req?.params?.latitude+"");
         let lon_parts = lon.split(".");
         let lat_parts = lat.split(".");
-        const FOUND_CITIES=[];
+        let FOUND_CITIES=[];
         const FIRST_FILTER=[]; // Will contain subset for further filtering
         for(let i=0; i<WORLD_CITIES.length; i++){
             let city_lon_parts = (WORLD_CITIES[i].lng+"").split(".");
