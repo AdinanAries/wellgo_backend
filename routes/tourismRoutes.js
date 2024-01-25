@@ -3,6 +3,6 @@ const router = express.Router();
 
 const { getTouristAttraction } = require("../controllers/tourismController");
 
-router.get("attraction/:longitude/:latitude/", getTouristAttraction);
+router.get("/attraction/:longitude/:latitude/", getTouristAttraction);
 
 module.exports = router;
