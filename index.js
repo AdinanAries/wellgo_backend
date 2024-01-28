@@ -41,6 +41,7 @@ app.use("/api/activities", require("./routes/activityRoutes"));
 app.use("/api/rated-places", require("./routes/ratedPlacesRoutes"));
 app.use("/api/weather", require("./routes/weatherRoutes"));
 app.use("/api/tourism", require("./routes/tourismRoutes"));
+app.use("/api/email", require("./routes/emailRoutes"));
 app.use("/", (req, res, next)=>{res.send("Server Works")});
 
 // Use Error Handler
