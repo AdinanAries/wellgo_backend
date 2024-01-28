@@ -223,7 +223,7 @@ const setLogUserID = async (req, res, next) => {
     try{
         const booking_id=req.params.booking_log_id;
         const user_id=req.user.id;
-        let booking = await BookingHistory.find({_id: booking_id});
+        let booking = await BookingHistory.findOne({_id: booking_id});
         if(booking){
             booking.user_id=user_id;
             let updated = new BookingHistory(booking);
