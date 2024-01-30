@@ -13,7 +13,6 @@ const getSecret = async (req, res, next) => {
             enabled: true,
             },
         });
-        console.log(res);
         res.json({client_secret: paymentIntent.client_secret});
     } catch (e) {
         console.log(e);
