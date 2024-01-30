@@ -3,7 +3,7 @@ const router = express.Router();
 
 const { getSecret } = require("../controllers/paymentController");
 
-router.get("/secret/", getSecret);
+router.post("/secret/", getSecret);
 
 module.exports = router;
 
