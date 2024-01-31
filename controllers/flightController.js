@@ -87,12 +87,14 @@ const create_flight_order = async (req, res, next) => {
     try{
         if(process.env.DATA_PROVIDER===constants.duffel){
             let pi = req?.body?.meta?.paymentIntent;
-            console.log(pi);
             // Checking payment status with intent before proceeding
             const paymentIntent = await stripe.paymentIntents.retrieve(
                 pi.id
             );
-            console.log(paymentIntent)
+            if(paymentIntent?.status !== 'succeeded'){
+                res.status(500).send({message: "Failed at payment verification"});
+                return;
+            }
 
             let payload = return_duffel_order_payload(req.body.data);
             flight_order = await require("../flight_providers/duffel").createOrder(payload);
