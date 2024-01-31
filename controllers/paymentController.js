@@ -10,7 +10,7 @@ const getSecret = async (req, res, next) => {
             amount: _amount,
             currency: _currency,
             automatic_payment_methods: {
-            enabled: true,
+                enabled: true,
             },
         });
         res.json({client_secret: paymentIntent.client_secret});
