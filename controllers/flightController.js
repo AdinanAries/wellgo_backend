@@ -1,4 +1,5 @@
 const constants = require("../constants");
+const stripe = require('stripe')('sk_test_51OdjZ3An0YMgH2TtcRebcqghzoyfEnf0Ezuo0HKbCvFDcSE2ECddCbGMddcCF5r5incz85NVn43mG5KkPSK9pgzh00E966NRQz');
 
 // Import application helpers
 const { return_flight_search_obj, return_duffel_order_payload  } = require("../helpers/construct_search_obj");
@@ -85,6 +86,14 @@ const create_flight_order = async (req, res, next) => {
     let flight_order;
     try{
         if(process.env.DATA_PROVIDER===constants.duffel){
+            let pi = req?.body?.meta?.paymentIntent;
+            console.log(pi);
+            // Checking payment status with intent before proceeding
+            const paymentIntent = await stripe.paymentIntents.retrieve(
+                pi.id
+            );
+            console.log(paymentIntent)
+
             let payload = return_duffel_order_payload(req.body.data);
             flight_order = await require("../flight_providers/duffel").createOrder(payload);
             res.status(200).json(flight_order);
