@@ -4,7 +4,7 @@ const stripe = require('stripe')('sk_test_51OdjZ3An0YMgH2TtcRebcqghzoyfEnf0Ezuo0
 
 const getSecret = async (req, res, next) => {
     try{
-        let _amount = parseFloat(req?.body?.amount).toFixed(2);
+        let _amount = ((parseFloat(req?.body?.amount).toFixed(0))*100);
         let _currency = req?.body?.currency || 'usd';
         const paymentIntent = await stripe.paymentIntents.create({
             amount: _amount,
