@@ -91,6 +91,11 @@ const create_flight_order = async (req, res, next) => {
             const paymentIntent = await stripe.paymentIntents.retrieve(
                 pi.id
             );
+            if(!paymentIntent){
+                res.status(500).send({message: "Failed at payment verification"});
+                return;
+            }
+
             if(paymentIntent?.status !== 'succeeded'){
                 res.status(500).send({message: "Failed at payment verification"});
                 return;
