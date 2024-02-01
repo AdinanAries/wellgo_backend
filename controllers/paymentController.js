@@ -12,6 +12,11 @@ const getSecret = async (req, res, next) => {
             automatic_payment_methods: {
                 enabled: true,
             },
+            payment_method_options: {
+                card: {
+                    capture_method: 'manual',
+                },
+            }
         });
         res.json({client_secret: paymentIntent.client_secret});
     } catch (e) {
