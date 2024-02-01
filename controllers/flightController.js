@@ -86,8 +86,9 @@ const create_flight_order = async (req, res, next) => {
     let flight_order;
     try{
         if(process.env.DATA_PROVIDER===constants.duffel){
+            
+            // 1. Checking payment status with intent before proceeding
             let pi = req?.body?.meta?.paymentIntent;
-            // Checking payment status with intent before proceeding
             const paymentIntent = await stripe.paymentIntents.retrieve(
                 pi?.id
             );
@@ -95,14 +96,22 @@ const create_flight_order = async (req, res, next) => {
                 res.status(500).send({message: "Failed at payment verification"});
                 return;
             }
-
-            if(paymentIntent?.status !== 'succeeded'){
+            if(paymentIntent?.status !== 'requires_capture'){
                 res.status(500).send({message: "Failed at payment verification"});
                 return;
             }
 
+            // 2. Create order from Duffel
             let payload = return_duffel_order_payload(req.body.data);
             flight_order = await require("../flight_providers/duffel").createOrder(payload);
+
+            // 3. Capture payment with Stripe
+            if(flight_order?.data?.id){
+                const intent = await stripe.paymentIntents.capture(paymentIntent?.id);
+                console.log(intent);
+            }
+
+            // 4. Reply to client
             res.status(200).json(flight_order);
         }else{
             res.status(500);
