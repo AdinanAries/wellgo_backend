@@ -100,6 +100,8 @@ const create_flight_order = async (req, res, next) => {
                 res.status(500).send({message: "Failed at payment verification"});
                 return;
             }
+            // To do: Compare Intent Price Against Flight Order Price
+            // For extra layer of security
 
             // 2. Create order from Duffel
             let payload = return_duffel_order_payload(req.body.data);
