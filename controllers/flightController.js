@@ -108,7 +108,9 @@ const create_flight_order = async (req, res, next) => {
             // 3. Capture payment with Stripe
             if(flight_order?.data?.id){
                 const intent = await stripe.paymentIntents.capture(paymentIntent?.id);
-                console.log(intent);
+                console.log('intent:', intent);
+                // To Do : Check payment status to ensure success if not succeeded then 
+                // Booking Cancellation or Payment retry or other action can be taken
             }
 
             // 4. Reply to client
