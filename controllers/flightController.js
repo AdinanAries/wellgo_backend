@@ -114,7 +114,7 @@ const create_flight_order = async (req, res, next) => {
             if(flight_order?.data?.id){
                 const intent = await stripe.paymentIntents.capture(paymentIntent?.id);
                 if(intent?.status==="succeeded"){
-                    //To Do: Update Booking Intent Here - Status and OrderID, also Clear any Errors
+                    // Updating booking intent statuses and booking id, and also clearing any errors
                     setBookingIntentStatuses(bi._id, "confirmed", intent?.status, flight_order?.data?.id);
                 }else {
                     // To Do: Booking Cancellation or Payment Retry or Other action can be taken
