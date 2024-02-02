@@ -9,6 +9,12 @@ const bookingIntentLogSchema = new Schema({
     booking_status: {
         type: String
     },
+    is_error: { 
+        type: Boolean
+    },
+    error_activity_description: {
+        type: String
+    },
     payment_intent: {
         type: Object
     },
