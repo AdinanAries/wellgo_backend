@@ -28,6 +28,25 @@ const getSecret = async (req, res, next) => {
     }
 }
 
+const getIntentDetailsById = async (req, res, next) => {
+    try{
+        let id = req?.params?.id;
+        const paymentIntent = await stripe.paymentIntents.retrieve(
+            pi?.id
+        );
+        if(paymentIntent?.id){
+            res.status(201).send(paymentIntent);
+            return;
+        }else{
+            res.status(401).send({message: "intent no found"});
+            return;
+        }
+    } catch (e) {
+        res.status(500).send({message: "Server Error!"});
+    }
+}
+
 module.exports = {
     getSecret,
+    getIntentDetailsById,
 }

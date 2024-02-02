@@ -5,10 +5,11 @@ const router = express.Router();
 const { protect } = require("../middlewares/authMiddleware");
 
 // Controllers
-const { logActivity, logError, logFailedBookings } = require("../controllers/activityController");
+const { logActivity, logError, logFailedBookings, createBookingIntent } = require("../controllers/activityController");
 
 router.post("/log/", logActivity);
 router.post("/error/", logError);
 router.post("/failed-booking/", logFailedBookings);
+router.post("/booking-intent/", createBookingIntent);
 
 module.exports = router;

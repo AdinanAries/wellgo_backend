@@ -1,6 +1,7 @@
 const ActivityLog = require('../models/activityLog');
 const ErrorLog = require('../models/errorLog');
 const FailedBookingLog = require('../models/failedBookingLog');
+const BookingIntentLog = require("../models/bookingIntentLog");
 
 const asyncHandler = require("express-async-handler");
 
@@ -151,8 +152,46 @@ const logFailedBookings = asyncHandler( async (req, res, next) => {
     }
 });
 
+const createBookingIntent = asyncHandler( async (req, res, next) =>{
+    try{
+        const {
+            payment_intent,
+            booking_order
+        } = req.body;
+
+        let bookingIntent = new BookingIntentLog({
+            payment_status: "",
+            booking_status: "",
+            payment_intent: payment_intent,
+            booking_order: booking_order,
+        });
+
+        bookingIntent.save().then((result) => {
+            console.log(result);
+            res.status(201).send({
+                _id: result._id,
+                payment_status: result.payment_status,
+                booking_status: result.booking_status,
+                payment_intent: result.payment_intent,
+                booking_order: result.booking_order,
+            });
+        }).catch((err) => {
+            console.log(err);
+            res.status(500).send({
+                message: "Could not create Booking Intent Log"
+            });
+        })
+
+    }catch(e){
+        console.log(e);
+        res.status(500).send({message: "Server Error"});
+    }
+
+});
+
 module.exports = {
     logActivity,
     logError,
     logFailedBookings,
+    createBookingIntent,
 }
