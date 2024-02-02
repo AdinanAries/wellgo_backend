@@ -3,7 +3,7 @@ const stripe = require('stripe')('sk_test_51OdjZ3An0YMgH2TtcRebcqghzoyfEnf0Ezuo0
 
 // Import application helpers
 const { return_flight_search_obj, return_duffel_order_payload  } = require("../helpers/construct_search_obj");
-
+const { setBookingIntentStatuses } = require("../helpers/general");
 /**
  * @desc Get list of flights from data provider
  * @path POST /api/flights/
@@ -88,6 +88,7 @@ const create_flight_order = async (req, res, next) => {
         if(process.env.DATA_PROVIDER===constants.duffel){
             
             let pi = req?.body?.meta?.paymentIntent;
+            let bi = req?.body?.meta?.bookingIntent;
             let payload = return_duffel_order_payload(req.body.data);
 
             // 1. Checking payment status with intent before proceeding
@@ -102,7 +103,7 @@ const create_flight_order = async (req, res, next) => {
                 res.status(500).send({message: "Failed at payment verification"});
                 return;
             }
-            
+
             // To do: Compare Intent Price Against Flight Order Price
             // For extra layer of security
 
@@ -114,6 +115,7 @@ const create_flight_order = async (req, res, next) => {
                 const intent = await stripe.paymentIntents.capture(paymentIntent?.id);
                 if(intent?.status==="succeeded"){
                     //To Do: Update Booking Intent Here - Status and OrderID, also Clear any Errors
+                    setBookingIntentStatuses(bi._id, "confirmed", intent?.status);
                 }else {
                     // To Do: Booking Cancellation or Payment Retry or Other action can be taken
                     // Update Booking Intent Here - Status and OrderID, also set appropriate errors
