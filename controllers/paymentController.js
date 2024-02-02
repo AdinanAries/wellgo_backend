@@ -30,9 +30,8 @@ const getSecret = async (req, res, next) => {
 
 const getIntentDetailsById = async (req, res, next) => {
     try{
-        let id = req?.params?.id;
         const paymentIntent = await stripe.paymentIntents.retrieve(
-            pi?.id
+            (req?.params?.id || "")
         );
         if(paymentIntent?.id){
             res.status(201).send(paymentIntent);
