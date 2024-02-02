@@ -1,8 +1,8 @@
-import bookingIntentLog from "../models/bookingIntentLog";
+const BookingIntentLog = require("../models/bookingIntentLog");
 
 const setBookingIntentStatuses = async (id, booking_status, payment_status, isError=false, errObj={}) => {
     try{
-        let bi = await bookingIntentLog.findById(id);
+        let bi = await BookingIntentLog.findById(id);
 
         if(!bi){
             return{
@@ -24,7 +24,7 @@ const setBookingIntentStatuses = async (id, booking_status, payment_status, isEr
             bi.error_activity_description=errObj.message;
         }
 
-        const updated_bi = new PaymentCard(bi);
+        const updated_bi = new BookingIntentLog(bi);
         updated_bi.save().then((result) => {
             return result
         }).catch((err) => {
