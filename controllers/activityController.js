@@ -160,8 +160,8 @@ const createBookingIntent = asyncHandler( async (req, res, next) =>{
         } = req.body;
 
         let bookingIntent = new BookingIntentLog({
-            payment_status: "",
-            booking_status: "",
+            payment_status: "initiated",
+            booking_status: "initiated",
             payment_intent: payment_intent,
             booking_order: booking_order,
         });
