@@ -113,9 +113,11 @@ const create_flight_order = async (req, res, next) => {
                 console.log('intent:', intent);
                 // To Do : Check payment status to ensure success if not succeeded then 
                 // Booking Cancellation or Payment retry or other action can be taken
+                // Also update Booking Intent Here - Status and OrderID
             }else{
                 // If booking failed, consider cancelling the payment authorization
                 // To Do ---
+                // Also Update Booking Itent Here - Status and Error
             }
 
             // 4. Reply to client
