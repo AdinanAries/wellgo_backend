@@ -1,6 +1,6 @@
 const BookingIntentLog = require("../models/bookingIntentLog");
 
-const setBookingIntentStatuses = async (id, booking_status, payment_status, isError=false, errObj={}) => {
+const setBookingIntentStatuses = async (id, booking_status, payment_status, booking_order_id="", isError=false, errObj={}) => {
     try{
         let bi = await BookingIntentLog.findById(id);
 
@@ -13,6 +13,11 @@ const setBookingIntentStatuses = async (id, booking_status, payment_status, isEr
         // Updating booking intent information    
         bi.booking_status = booking_status;
         bi.payment_status = payment_status;
+
+        // Adding booking order id
+        if(booking_order_id){
+            bi.booking_order.id=booking_order_id;
+        }
 
         // Clearing Errors
         if(!isError){
