@@ -87,8 +87,10 @@ const create_flight_order = async (req, res, next) => {
     try{
         if(process.env.DATA_PROVIDER===constants.duffel){
             
-            // 1. Checking payment status with intent before proceeding
             let pi = req?.body?.meta?.paymentIntent;
+            let payload = return_duffel_order_payload(req.body.data);
+
+            // 1. Checking payment status with intent before proceeding
             const paymentIntent = await stripe.paymentIntents.retrieve(
                 pi?.id
             );
@@ -100,20 +102,22 @@ const create_flight_order = async (req, res, next) => {
                 res.status(500).send({message: "Failed at payment verification"});
                 return;
             }
+            
             // To do: Compare Intent Price Against Flight Order Price
             // For extra layer of security
 
             // 2. Create order from Duffel
-            let payload = return_duffel_order_payload(req.body.data);
             flight_order = await require("../flight_providers/duffel").createOrder(payload);
 
             // 3. Capture payment with Stripe
             if(flight_order?.data?.id){
                 const intent = await stripe.paymentIntents.capture(paymentIntent?.id);
-                console.log('intent:', intent);
-                // To Do : Check payment status to ensure success if not succeeded then 
-                // Booking Cancellation or Payment retry or other action can be taken
-                // Also update Booking Intent Here - Status and OrderID
+                if(intent?.status==="succeeded"){
+                    //To Do: Update Booking Intent Here - Status and OrderID, also Clear any Errors
+                }else {
+                    // To Do: Booking Cancellation or Payment Retry or Other action can be taken
+                    // Update Booking Intent Here - Status and OrderID, also set appropriate errors
+                } 
             }else{
                 // If booking failed, consider cancelling the payment authorization
                 // To Do ---
