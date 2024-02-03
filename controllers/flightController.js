@@ -111,9 +111,11 @@ const create_flight_order = async (req, res, next) => {
                 !== paymentIntent?.amount
             ){
                 res.status(500).send({message: `
-                    Server expects payment of ${(paymentIntent?.amount/100)}, and you submited
-                    ${(markup(payload?.payments[0]?.amount).new_price.toFixed(0))}
-                `});
+                    The payment amount you've submitted for this booking is not adequate
+                `
+                    /*ONLY FOR TESTING: `Server expects payment of ${(paymentIntent?.amount/100)}, and you submited
+                    ${(markup(payload?.payments[0]?.amount).new_price.toFixed(0))}`*/
+                });
                 return;
             }
 
