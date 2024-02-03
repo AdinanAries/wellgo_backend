@@ -148,7 +148,7 @@ const logFailedBookings = asyncHandler( async (req, res, next) => {
 
     } catch (err) {
         console.log(err);
-        res.status(500).send({message: "Server Error"})
+        res.status(500).send({message: "Server Error"});
     }
 });
 
@@ -189,9 +189,39 @@ const createBookingIntent = asyncHandler( async (req, res, next) =>{
 
 });
 
+const addIntentUpdate = asyncHandler( async (req, res, next) => {
+    try{
+
+        let intent = req?.body;
+        let bi = await BookingIntentLog.findById(intent?.id);
+
+        if(!bi){
+            return{
+                message: "booking intent not found"
+            }
+        }
+
+        // Add latest update to intentUpdates    
+        bi?.intentUpdates?.push(intent)
+
+        const updated_bi = new BookingIntentLog(bi);
+        updated_bi.save().then((result) => {
+            return result
+        }).catch((err) => {
+            return{
+                message: err.message
+            };
+        });
+    }catch(e){
+        console.log(e);
+        res.status(500).send({message: "Server Error"});
+    }
+});
+
 module.exports = {
     logActivity,
     logError,
     logFailedBookings,
     createBookingIntent,
+    addIntentUpdate,
 }
