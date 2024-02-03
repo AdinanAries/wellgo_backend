@@ -84,11 +84,8 @@ const get_offer_info = async (req, res, next) => {
  * @type controller
  */
 const create_flight_order = async (req, res, next) => {
-    console.log(req.body);
     let pi = req?.body?.meta?.paymentIntent;
     let bi = req?.body?.meta?.bookingIntent;
-    console.log("pi", pi);
-    console.log("bi", bi);
     let flight_order;
     try{
         if(process.env.DATA_PROVIDER===constants.duffel){
@@ -121,7 +118,6 @@ const create_flight_order = async (req, res, next) => {
                 });
                 return;
             }
-            console.log("-------here");
             // 2. Create order from Duffel
             flight_order = await require("../flight_providers/duffel").createOrder(payload);
 
