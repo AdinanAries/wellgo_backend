@@ -107,11 +107,11 @@ const create_flight_order = async (req, res, next) => {
 
             // To do: Compare Intent Price Against Flight Order Price
             console.log(
-                (markup(payload?.data?.payments[0]?.amount).new_price.toFixed(0)*100),
+                (markup(payload?.payments[0]?.amount).new_price.toFixed(0)*100),
                 paymentIntent?.amount
             )
             if(
-                (markup(payload?.data?.payments[0]?.amount).new_price.toFixed(0)*100)
+                (markup(payload?.payments[0]?.amount).new_price.toFixed(0)*100)
                 !== paymentIntent?.amount
             ){
                 res.status(500).send({message: `
