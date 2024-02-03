@@ -45,7 +45,28 @@ const getIntentDetailsById = async (req, res, next) => {
     }
 }
 
+const updateIntentAmount = async (req, res, next) => {
+    try{
+        let _amount = ((parseFloat(req?.body?.amount).toFixed(0))*100);
+        let _currency = req?.body?.currency || 'usd';
+        let _id = req?.body?.id;
+        const paymentIntent = await stripe.paymentIntents.update(
+            _id,
+            {
+                amount: _amount,
+                currency: _currency,
+            }
+        );
+        res.status(201).send(paymentIntent);
+    }catch(e){
+        console.log(e);
+        res.status(500).send({message: "Server Error"});
+    }
+
+}
+
 module.exports = {
     getSecret,
     getIntentDetailsById,
+    updateIntentAmount,
 }
