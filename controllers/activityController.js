@@ -191,27 +191,18 @@ const createBookingIntent = asyncHandler( async (req, res, next) =>{
 
 const addIntentUpdate = asyncHandler( async (req, res, next) => {
     try{
-
         let intent = req?.body;
-        console.log('booking intent', intent);
         let bi = await BookingIntentLog.findById(intent?._id);
-
         if(!bi){
-            return{
-                message: "booking intent not found"
-            }
+            res.status(500).send({message: "booking intent not found"});
         }
-
         // Add latest update to intentUpdates    
         bi?.intentUpdates?.push(intent)
-
         const updated_bi = new BookingIntentLog(bi);
         updated_bi.save().then((result) => {
-            return result
+            res.status(201).send(result);
         }).catch((err) => {
-            return{
-                message: err.message
-            };
+            res.status(500).send({message: err.message});
         });
     }catch(e){
         console.log(e);
