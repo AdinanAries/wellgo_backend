@@ -18,7 +18,7 @@ const getSecret = async (req, res, next) => {
                 },
             }
         });
-        res.json({client_secret: paymentIntent.client_secret});
+        res.json(paymentIntent);
     } catch (e) {
         console.log(e);
         res.status(500).send({
