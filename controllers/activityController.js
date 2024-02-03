@@ -193,7 +193,7 @@ const addIntentUpdate = asyncHandler( async (req, res, next) => {
     try{
 
         let intent = req?.body;
-        let bi = await BookingIntentLog.findById(intent?.id);
+        let bi = await BookingIntentLog.findById(intent?._id);
 
         if(!bi){
             return{
