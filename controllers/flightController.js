@@ -84,6 +84,7 @@ const get_offer_info = async (req, res, next) => {
  * @type controller
  */
 const create_flight_order = async (req, res, next) => {
+    console.log(req.body);
     let pi = req?.body?.meta?.paymentIntent;
     let bi = req?.body?.meta?.bookingIntent;
     console.log("pi", pi);
