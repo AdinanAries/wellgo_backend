@@ -107,7 +107,7 @@ const create_flight_order = async (req, res, next) => {
 
             // To do: Compare Intent Price Against Flight Order Price
             console.log(
-                payload?.payments[0]?.amount,
+                (markup(payload?.data?.payments[0]?.amount).new_price.toFixed(0)*100),
                 paymentIntent?.amount
             )
             if(
