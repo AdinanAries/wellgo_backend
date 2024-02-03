@@ -118,7 +118,7 @@ const create_flight_order = async (req, res, next) => {
                 });
                 return;
             }
-
+            console.log("-------here");
             // 2. Create order from Duffel
             flight_order = await require("../flight_providers/duffel").createOrder(payload);
 
