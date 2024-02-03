@@ -197,7 +197,9 @@ const addIntentUpdate = asyncHandler( async (req, res, next) => {
             res.status(500).send({message: "booking intent not found"});
         }
         // Add latest update to intentUpdates    
-        bi?.intentUpdates?.push(intent)
+        bi.payment_intent = intent?.payment_intent;
+        bi.payment_status = intent?.payment_intent?.status;
+        bi.booking_order = intent?.booking_order;
         const updated_bi = new BookingIntentLog(bi);
         updated_bi.save().then((result) => {
             res.status(201).send(result);

@@ -21,9 +21,6 @@ const bookingIntentLogSchema = new Schema({
     booking_order: {
         type: Object
     },
-    intentUpdates: {
-        type: Array
-    },
 },
 {
     timestamps: true
