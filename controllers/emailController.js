@@ -3,16 +3,20 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 
 const sendEmail = (req, res, next) => {
-    // Test
-    const msg = {
-        to: 'm.adinan@yahoo.com',
-        from: 'adinanaries@outlook.com',
-        subject: 'Sending with SendGrid is Fun',
-        text: 'and easy to do anywhere, even with Node.js',
-        html: '<strong>and easy to do anywhere, even with Node.js</strong>',
-    };
-    sgMail.send(msg);
-    res.send("Email works!");
+    try{
+        const msg = {
+            to: req?.body?.to,
+            from: 'adinanaries@outlook.com',
+            subject: req?.body?.subject,
+            text: req?.body?.text,
+            html: req?.body?.html,
+        };
+        let sent = sgMail.send(msg);
+        res.status(201).send(sent);
+    }catch(e){
+        console.log(e);
+        res.status(500).send({message: "Server Error"});
+    }
 }
 
 module.exports = {
