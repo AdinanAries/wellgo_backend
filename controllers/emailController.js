@@ -14,7 +14,7 @@ const sendEmail = async (req, res, next) => {
         let sent = await sgMail.send(msg);
         res.status(201).send(sent);
     }catch(e){
-        console.log(e);
+        console.log(e?.response?.body?.errors);
         res.status(500).send({message: "Server Error"});
     }
 }
