@@ -15,7 +15,7 @@ const sendEmail = async (req, res, next) => {
         res.status(201).send(sent);
     }catch(e){
         console.log(e?.response?.body?.errors);
-        res.status(500).send({message: "Server Error"});
+        res.status(500).send(e);
     }
 }
 
