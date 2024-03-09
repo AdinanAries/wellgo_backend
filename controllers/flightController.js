@@ -5,6 +5,7 @@ const stripe = require('stripe')('sk_test_51OdjZ3An0YMgH2TtcRebcqghzoyfEnf0Ezuo0
 const { return_flight_search_obj, return_duffel_order_payload  } = require("../helpers/construct_search_obj");
 const { setBookingIntentStatuses } = require("../helpers/general");
 const { markup } = require("../helpers/Prices");
+const { send_email } = require('../helpers/Email');
 /**
  * @desc Get list of flights from data provider
  * @path POST /api/flights/

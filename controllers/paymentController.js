@@ -1,7 +1,7 @@
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 const stripe = require('stripe')('sk_test_51OdjZ3An0YMgH2TtcRebcqghzoyfEnf0Ezuo0HKbCvFDcSE2ECddCbGMddcCF5r5incz85NVn43mG5KkPSK9pgzh00E966NRQz');
-import { send_email } from '../helpers/Email';
+const { send_email } = require('../helpers/Email');
 
 const getSecret = async (req, res, next) => {
     try{
