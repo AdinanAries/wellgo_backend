@@ -125,34 +125,39 @@ const create_flight_order = async (req, res, next) => {
             // 3. Capture payment with Stripe
             if(flight_order?.data?.id){
 
-                //Send email to admins booking confirmed.
-                const msg = {
-                    to: 'adinanaries@outlook.com',
-                    from: 'adinanaries@outlook.com',
-                    subject: "Welldugo - Flight Booking Confirmed",
-                    text: "New Flight Order Details Below:\n",
-                    html: JSON.stringify(flight_order),
-                };
-                send_email(msg);
-
                 const intent = await stripe.paymentIntents.capture(paymentIntent?.id);
                 if(intent?.status==="succeeded"){
                     // Updating booking intent statuses and booking id, and also clearing any errors
                     setBookingIntentStatuses(bi._id, "confirmed", intent?.status, flight_order?.data?.id);
-                    //Send email to admins Payment Success
-                    const msg = {
-                        to: 'adinanaries@outlook.com',
-                        from: 'adinanaries@outlook.com',
-                        subject: "Welldugo - New Payment Intent Captured",
-                        text: "Captured Payment Intent Details Below:\n",
-                        html: JSON.stringify(intent),
+                    //Send email to admins for Booking and Payment Success
+                    let _html = JSON.stringify(intent);
+                    _html += `<br/><br/>${JSON.stringify(flight_order)}`;
+
+                    const intent_sccs_msg = {
+                        to: constants.email.admins_to,
+                        from: constants.email.automated_from,
+                        subject: "Welldugo - Payment Success & Booking Confirmed",
+                        text: "Captured Payment And Booking Details Below:\n",
+                        html: _html,
                     };
-                    send_email(msg);
+                    send_email(intent_sccs_msg);
                 }else {
-                    // Setting error message for Booking Intent
+                    // Setting error message for Confirmed booking and payment
                     setBookingIntentStatuses(bi._id, "failed", paymentIntent?.status, "", true, {
                         message: "Flight Booking Failure: Not-In-Catch()"
                     });
+
+                    //Send email to admins for confirmed booking and failed payment.
+                    let _html2 = JSON.stringify(paymentIntent);
+                    _html2 += `<br/><br/>${JSON.stringify(flight_order)}`;
+                    const intent_fail_msg = {
+                        to: constants.email.admins_to,
+                        from: constants.email.automated_from,
+                        subject: "Welldugo - Flight Booking Confirmed",
+                        text: "New Flight Order Details Below:\n",
+                        html: _html2,
+                    };
+                    send_email(intent_fail_msg);
                 } 
             }else{
                 // Setting error message for Booking Intent

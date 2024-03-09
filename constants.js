@@ -7,5 +7,9 @@ module.exports = {
         providers: {
             open_meteo: "open-meteo",
         }
+    },
+    email: {
+        automated_from: "adinanaries@outlook.com",
+        admins_to: "m.adinan@yahoo.com"
     }
 }

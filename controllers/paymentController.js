@@ -2,6 +2,7 @@
 // See your keys here: https://dashboard.stripe.com/apikeys
 const stripe = require('stripe')('sk_test_51OdjZ3An0YMgH2TtcRebcqghzoyfEnf0Ezuo0HKbCvFDcSE2ECddCbGMddcCF5r5incz85NVn43mG5KkPSK9pgzh00E966NRQz');
 const { send_email } = require('../helpers/Email');
+const constants = require("../constants");
 
 const getSecret = async (req, res, next) => {
     try{
@@ -22,8 +23,8 @@ const getSecret = async (req, res, next) => {
 
         //Send email to admins
         const msg = {
-            to: 'adinanaries@outlook.com',
-            from: 'adinanaries@outlook.com',
+            to: constants.email.admins_to,
+            from: constants.email.automated_from,
             subject: "New Payment Intent Created",
             text: "New Payment Intent Details Below:\n",
             html: JSON.stringify(paymentIntent),
