@@ -22,6 +22,24 @@ const get_stays = async(req, res, next)=>{
     }
 }
 
+const get_rooms_and_rates = async(req, res, next)=>{
+    let rates;
+    try{
+        if(process.env.DATA_PROVIDER===constants.duffel){
+            rates = await require("../../stay_providers/duffel")
+                        .get_all_available_rooms_and_rates((req.params.id));
+            res.status(200).json(rates);
+        }else{
+            res.status(500);
+            throw new Error("No data provider has been set");
+        }
+    }catch(e){
+        console.log(e);
+        res.status(500).send(e);
+    }
+}
+
 module.exports = {
     get_stays,
+    get_rooms_and_rates
 }
