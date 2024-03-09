@@ -5,7 +5,7 @@ const { return_hotel_search_obj  } = require("../../helpers/construct_search_obj
 
 const get_stays = async(req, res, next)=>{
     //console.log(req.body);
-    console.log(return_flight_search_obj(req.body));
+    console.log(return_hotel_search_obj(req.body));
     //console.log("Currency:", req.body.currency);
     let stays;
     try{
