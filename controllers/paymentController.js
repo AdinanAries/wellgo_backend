@@ -1,6 +1,7 @@
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 const stripe = require('stripe')('sk_test_51OdjZ3An0YMgH2TtcRebcqghzoyfEnf0Ezuo0HKbCvFDcSE2ECddCbGMddcCF5r5incz85NVn43mG5KkPSK9pgzh00E966NRQz');
+import { send_email } from '../helpers/Email';
 
 const getSecret = async (req, res, next) => {
     try{
@@ -18,6 +19,17 @@ const getSecret = async (req, res, next) => {
                 },
             }
         });
+
+        //Send email to admins
+        const msg = {
+            to: 'adinanaries@outlook.com',
+            from: 'adinanaries@outlook.com',
+            subject: "New Payment Intent Created",
+            text: "New Payment Intent Details Below:\n",
+            html: JSON.stringify(paymentIntent),
+        };
+        send_email(msg);
+
         res.json(paymentIntent);
     } catch (e) {
         console.log(e);

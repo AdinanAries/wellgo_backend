@@ -123,10 +123,30 @@ const create_flight_order = async (req, res, next) => {
 
             // 3. Capture payment with Stripe
             if(flight_order?.data?.id){
+
+                //Send email to admins booking confirmed.
+                const msg = {
+                    to: 'adinanaries@outlook.com',
+                    from: 'adinanaries@outlook.com',
+                    subject: "Welldugo - Flight Booking Confirmed",
+                    text: "New Flight Order Details Below:\n",
+                    html: JSON.stringify(flight_order),
+                };
+                send_email(msg);
+
                 const intent = await stripe.paymentIntents.capture(paymentIntent?.id);
                 if(intent?.status==="succeeded"){
                     // Updating booking intent statuses and booking id, and also clearing any errors
                     setBookingIntentStatuses(bi._id, "confirmed", intent?.status, flight_order?.data?.id);
+                    //Send email to admins Payment Success
+                    const msg = {
+                        to: 'adinanaries@outlook.com',
+                        from: 'adinanaries@outlook.com',
+                        subject: "Welldugo - New Payment Intent Captured",
+                        text: "Captured Payment Intent Details Below:\n",
+                        html: JSON.stringify(intent),
+                    };
+                    send_email(msg);
                 }else {
                     // Setting error message for Booking Intent
                     setBookingIntentStatuses(bi._id, "failed", paymentIntent?.status, "", true, {
