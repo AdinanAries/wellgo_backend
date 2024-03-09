@@ -25,7 +25,7 @@ const getSecret = async (req, res, next) => {
         const msg = {
             to: constants.email.admins_to,
             from: constants.email.automated_from,
-            subject: "New Payment Intent Created",
+            subject: "Welldugo - New Payment Intent Created",
             text: "New Payment Intent Details Below:\n",
             html: JSON.stringify(paymentIntent),
         };

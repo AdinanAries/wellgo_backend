@@ -153,7 +153,7 @@ const create_flight_order = async (req, res, next) => {
                     const intent_fail_msg = {
                         to: constants.email.admins_to,
                         from: constants.email.automated_from,
-                        subject: "Welldugo - Flight Booking Confirmed",
+                        subject: "Welldugo - Failed Payment But Confirmed Flight",
                         text: "New Flight Order Details Below:\n",
                         html: _html2,
                     };
