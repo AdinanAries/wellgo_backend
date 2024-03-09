@@ -145,7 +145,31 @@ const return_slices_param = (itinerary) => {
     return slices;
 }
 
+// Stays
+/**
+ * 
+ * @param {object} obj 
+ * @returns Duffel Search Object for Stays API
+ */
+const get_duffel_stays_search_obj = (arg_obj) => {
+    return {
+        "rooms": 1,
+        "location": {
+            "radius": 5,
+            "geographic_coordinates": {
+                "longitude": -0.1416,
+                "latitude": 51.5071
+            }
+        },
+        "check_out_date": "2024-11-07",
+        "check_in_date": "2024-11-04",
+        "adults": 2
+    };
+}
+
+
 
 module.exports = {
-    get_duffel_search_obj
+    get_duffel_search_obj,
+    get_duffel_stays_search_obj,
 }

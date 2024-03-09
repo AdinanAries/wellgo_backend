@@ -30,7 +30,7 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// Routes
+// Flights Routes
 app.use("/api/flights", require("./routes/flightRoutes"));
 app.use("/api/users", require("./routes/userRoutes"));
 app.use("/api/bookings", require("./routes/bookingRoutes"));
@@ -42,7 +42,12 @@ app.use("/api/rated-places", require("./routes/ratedPlacesRoutes"));
 app.use("/api/weather", require("./routes/weatherRoutes"));
 app.use("/api/tourism", require("./routes/tourismRoutes"));
 app.use("/api/email", require("./routes/emailRoutes"));
-app.use("/api/payment", require("./routes/paymentRoutes"))
+app.use("/api/payment", require("./routes/paymentRoutes"));
+
+// Stays Routes
+app.use("/api/stays", require("./routes/Stays/defaultRoutes"));
+
+// Fallback Routes
 app.use("/", (req, res, next)=>{res.send("Server Works")});
 
 // Use Error Handler

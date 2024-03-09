@@ -1,5 +1,5 @@
 const constants = require("../constants");
-const { get_duffel_search_obj } = require("./duffel_search_obj");
+const { get_duffel_search_obj, get_duffel_stays_search_obj } = require("./duffel_search_obj");
 
 /**
  * 
@@ -12,6 +12,19 @@ const return_flight_search_obj = (req_body) => {
     }else{
         throw new Error("No data provider has been set");
     }
+}
+
+/**
+ * 
+ * @param {Object} req_body 
+ * @returns Flight Search Object based on API Provider Specification
+ */
+const return_hotel_search_obj = (req_body) => {
+  if(process.env.DATA_PROVIDER === constants.duffel){
+      return get_duffel_stays_search_obj(req_body);
+  }else{
+      throw new Error("No data provider has been set");
+  }
 }
 
 /**
@@ -69,7 +82,10 @@ const return_duffel_order_payload_object_example = () => {
 }
 
 module.exports = {
+    // Flights
     return_flight_search_obj,
     return_duffel_order_payload,
-    return_duffel_order_payload_object_example
+    return_duffel_order_payload_object_example,
+    // Stays
+    return_hotel_search_obj,
 }
