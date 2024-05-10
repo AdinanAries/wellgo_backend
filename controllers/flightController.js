@@ -87,6 +87,7 @@ const get_offer_info = async (req, res, next) => {
 const create_flight_order = async (req, res, next) => {
     let pi = req?.body?.meta?.paymentIntent;
     let bi = req?.body?.meta?.bookingIntent;
+    let fees = req?.body?.meta?.totalFees;
     let flight_order;
     try{
         if(process.env.DATA_PROVIDER===constants.duffel){
@@ -119,7 +120,11 @@ const create_flight_order = async (req, res, next) => {
                 });
                 return;
             }
-            // 2. Create order from Duffel
+
+            // 2.0 Remove Internal Fees
+            if(fees)
+                payload.payments[0].amount=(payload?.payments[0]?.amount-fees);
+            // 2.1 Create order from Duffel
             flight_order = await require("../flight_providers/duffel").createOrder(payload);
 
             // 3. Capture payment with Stripe
