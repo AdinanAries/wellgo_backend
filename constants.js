@@ -9,7 +9,7 @@ module.exports = {
         }
     },
     email: {
-        automated_from: "welldugo.btc@gmail.com",
+        automated_from: "adinanaries@outlook.com",
         admins_to: "welldugo.btc@gmail.com",
     }
 }
