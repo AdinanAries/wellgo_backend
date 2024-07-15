@@ -1,0 +1,17 @@
+{
+  "name": "ai",
+  "version": "1.0.0",
+  "description": "ai for welldugo",
+  "main": "openAI.js",
+  "type": "module",
+  "scripts": {
+    "start": "node openAI.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@langchain/community": "^0.2.18",
+    "@langchain/openai": "^0.2.1"
+  }
+}
