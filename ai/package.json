@@ -12,6 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "@langchain/community": "^0.2.18",
-    "@langchain/openai": "^0.2.1"
+    "@langchain/openai": "^0.2.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5"
   }
 }
