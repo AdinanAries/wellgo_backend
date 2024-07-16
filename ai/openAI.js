@@ -13,24 +13,28 @@ console.log(OPENAI_API_KEY)
 const model = new ChatOpenAI({ openAIApiKey: OPENAI_API_KEY, temperature: 0.9 });
 const outputParser = new StringOutputParser();
 
-const getResponse = async (
-    promptReq = ["human", "Tell me a short joke about {topic}"],
-    topic="ice cream"
-) => {
-    const prompt = ChatPromptTemplate.fromMessages([
-        promptReq,
-    ]);
-    const chain = prompt.pipe(model).pipe(outputParser);
-    const response = await chain.invoke({
-        topic,
-    });
-    return response
+const OpenAIModel = {
+    getResponse: async (
+        promptReq = ["human", "Tell me a short joke about {topic}"],
+        topic="ice cream"
+    ) => {
+        const prompt = ChatPromptTemplate.fromMessages([
+            promptReq,
+        ]);
+        const chain = prompt.pipe(model).pipe(outputParser);
+        const response = await chain.invoke({
+            topic,
+        });
+        return response;
+    }
 }
 
 const testDrive = async () => {
-    const res = await getResponse();
+    const res = await OpenAIModel.getResponse();
     console.log(res);
 }
 
 testDrive();
 console.log("ai server initialized!");
+
+export default OpenAIModel;
