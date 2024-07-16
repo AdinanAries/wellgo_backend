@@ -2,9 +2,7 @@ import { ChatOpenAI } from "@langchain/openai";
 import { ChatPromptTemplate } from "@langchain/core/prompts";
 import { StringOutputParser } from "@langchain/core/output_parsers";
 
-import cors from "cors";
 import dotenv from "dotenv";
-
 dotenv.config();
 
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
@@ -29,12 +27,6 @@ const OpenAIModel = {
     }
 }
 
-const testDrive = async () => {
-    const res = await OpenAIModel.getResponse();
-    console.log(res);
-}
-
-testDrive();
 console.log("ai server initialized!");
 
 export default OpenAIModel;
