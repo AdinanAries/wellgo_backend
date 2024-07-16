@@ -34,7 +34,3 @@ const testDrive = async () => {
 
 testDrive();
 console.log("ai server initialized!");
-/**
-Why did the ice cream go to the gym?
-Because it wanted to get a little "cone"ditioning!
- */
