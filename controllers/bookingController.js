@@ -19,7 +19,7 @@ const addLog = (req, res, next) => {
         destination_airport_code,
         destination_city,
         departure_date,
-        return_date 
+        return_date
     } = req.body;
     const booking = new BookingHistory({
         anonymous_id: anonymous_id,
@@ -70,7 +70,7 @@ const addLogAnonymous = (req, res, next) => {
         destination_airport_code,
         destination_city,
         departure_date,
-        return_date 
+        return_date
     } = req.body;
     const booking = new BookingHistory({
         anonymous_id: anonymous_id,
@@ -111,7 +111,7 @@ const getLog = (req, res, next) => {
     .catch((err) => {
         console.log(err);
         res.status(500).send("Error");
-    }); 
+    });
 }
 
 const getLogAnonymous = (req, res, next) => {
@@ -125,7 +125,7 @@ const getLogAnonymous = (req, res, next) => {
     .catch((err) => {
         console.log(err);
         res.status(500).send("Error");
-    }); 
+    });
 }
 
 const getLogs = (req, res, next) => {
@@ -143,7 +143,7 @@ const getLogs = (req, res, next) => {
     const FIND_OBJ = {
         user_id: user_id
     };
-    
+
     if(TRIP_TYPE && (TRIP_TYPE !== "*")){
         FIND_OBJ.trip_type=TRIP_TYPE.toLowerCase();
     }
@@ -158,13 +158,14 @@ const getLogs = (req, res, next) => {
     }
     console.log("find object", FIND_OBJ);
     BookingHistory.find(FIND_OBJ)
+	  .sort({ timestamp: -1 })
     .then((bookings) => {
         res.status(200).send(bookings);
     })
     .catch((err) => {
         console.log(err);
         res.status(500).send("Error");
-    }); 
+    });
     /*res.status(200).send([
         {
             id: "001",
@@ -235,7 +236,7 @@ const setLogUserID = async (req, res, next) => {
     } catch (err) {
         console.log(err);
         res.status(500).send({message: "Server Error"});
-    }; 
+    };
 }
 
 module.exports = {

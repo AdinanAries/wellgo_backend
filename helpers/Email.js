@@ -5,8 +5,10 @@ const send_email = async (payload) => {
     try{
         let sent = await sgMail.send(payload);
         console.log('email sent:', sent);
+        return sent;
     }catch(e){
         console.log(e?.response?.body?.errors);
+        return {isError: true, message: e?.response?.body?.errors}
     }
 }
 

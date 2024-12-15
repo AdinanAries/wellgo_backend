@@ -4,6 +4,8 @@ require('dotenv').config();
 const app = express();
 const mongoose = require("mongoose");
 
+//Link to password reset: https://blog.logrocket.com/implementing-secure-password-reset-node-js/
+
 // Connect to DB
 mongoose
   .connect(process.env.MONGO_DB_URL)
