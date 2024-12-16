@@ -3,6 +3,7 @@ module.exports = {
     duffel_sort_total_amount: "total_amount",
     duffel_max_connections: 1,
     default_pagination_page_limit: 100,
+    client_url: "http://www.welldugo.com",
     weather: {
         providers: {
             open_meteo: "open-meteo",
@@ -15,7 +16,7 @@ module.exports = {
     ai: {
         openai: {
             topics: {
-                
+
             }
         }
     }

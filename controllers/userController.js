@@ -372,7 +372,7 @@ const resetPasswordRequestController = async (req, res, next) => {
     createdAt: Date.now(),
   }).save();
 
-  const link = `http://localhost:3000/password-reset?token=${resetToken}&id=${user._id}`;
+  const link = `${constants.client_url}/password-reset?token=${resetToken}&id=${user._id}`;
 
   const msg = {
       to: user.email,
@@ -389,6 +389,7 @@ const resetPasswordRequestController = async (req, res, next) => {
 };
 
 const resetPasswordController = async (req, res, next) => {
+
   const userId = req.body.userId;
   const token = req.body.token;
   const password = req.body.password;
