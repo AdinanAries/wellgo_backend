@@ -11,7 +11,7 @@ const tokenSchema = new Schema({
   },
   token: {
     type: String,
-    required: true,
+    required: true
   },
   createdAt: {
     type: Date,
