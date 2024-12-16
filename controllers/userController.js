@@ -1,6 +1,6 @@
 const User = require('../models/user');
 const PriceAlertSubscriber = require("../models/priceAlertSubscriber");
-const Token = require("../models/Token");
+const Token = require("../models/token");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const crypto = require("crypto");
