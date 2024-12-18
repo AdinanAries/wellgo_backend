@@ -352,7 +352,7 @@ const resetPasswordRequestController = async (req, res, next) => {
 
   if (!user) {
     res.status(400);
-    res.send({message: 'User does not exist'});
+    res.send({isSuccess: false, message: 'User does not exist'});
     return;
   }
 
@@ -385,7 +385,7 @@ const resetPasswordRequestController = async (req, res, next) => {
   };
 
   const email_res = await send_email(msg);
-  res.send({passwordResetLink: link});
+  res.send({isSuccess: true, passwordResetLink: link});
 };
 
 const resetPasswordController = async (req, res, next) => {
@@ -397,14 +397,14 @@ const resetPasswordController = async (req, res, next) => {
   let passwordResetToken = await Token.findOne({ userId });
   if (!passwordResetToken) {
     res.status(400);
-    res.send({message:"Invalid or expired password reset token"});
+    res.send({isSuccess: false, message:"Invalid or expired password reset token"});
     return;
   }
 
   const isValid = await bcrypt.compare(token, passwordResetToken.token);
   if (!isValid) {
     res.status(400);
-    res.send({message:"Invalid or expired password reset token"});
+    res.send({isSuccess: false, message:"Invalid or expired password reset token"});
     return;
   }
 
@@ -427,7 +427,7 @@ const resetPasswordController = async (req, res, next) => {
 
   const email_res = await send_email(msg);
   await passwordResetToken.deleteOne();
-  res.send({message: "Password has been reset successfully"});
+  res.send({isSuccess: true, message: "Password has been reset successfully"});
 };
 /**---------------End Pasword Reset --------------*/
 
