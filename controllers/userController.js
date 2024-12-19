@@ -372,7 +372,9 @@ const resetPasswordRequestController = async (req, res, next) => {
     createdAt: Date.now(),
   }).save();
 
-  const link = `${constants.client_url}/password-reset?token=${resetToken}&id=${user._id}`;
+  const client_url = (constants.environment.env === constants.environment.prod)
+                      ? constants.client_url : constants.dev_client_url;
+  const link = `${client_url}/password-reset?token=${resetToken}&id=${user._id}`;
 
   const msg = {
       to: user.email,

@@ -3,12 +3,13 @@ const cors = require('cors');
 require('dotenv').config();
 const app = express();
 const mongoose = require("mongoose");
+const environment = require("./environment");
 
 //Link to password reset: https://blog.logrocket.com/implementing-secure-password-reset-node-js/
 
 // Connect to DB
 mongoose
-  .connect(process.env.MONGO_DB_URL)
+  .connect(environment.getState().mongodb_svr_url)
   .then((result) => {
     console.log('Database Connected!');
     app.listen(3000);
@@ -56,4 +57,7 @@ app.use("/", (req, res, next)=>{res.send("Server Works")});
 app.use(errorHandler);
 
 // Run Server
-app.listen(PORT, ()=>console.log(`server started on port ${PORT}`));
+app.listen(PORT, ()=> {
+  console.log(`server started on port ${PORT}`);
+  console.log(`environment state: ${JSON.stringify(environment.getState())}`)
+});
