@@ -12,7 +12,7 @@ mongoose
   .connect(environment.getState().mongodb_svr_url)
   .then((result) => {
     console.log('Database Connected!');
-    app.listen(3000);
+    // code: app.listen(3000);
   })
   .catch((err) => {
     console.log(err);
