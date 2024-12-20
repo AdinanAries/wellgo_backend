@@ -1,6 +1,8 @@
 const User = require('../models/user');
 const PriceAlertSubscriber = require("../models/priceAlertSubscriber");
 const Token = require("../models/token");
+const EmailVerification = require("../models/emailVerification");
+const PhoneVerification = require("../models/phoneVerification");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const crypto = require("crypto");
@@ -342,7 +344,198 @@ const subScribeToPriceAlerts = asyncHandler( async (req, res, next) => {
 
 });
 
-/**---------------Start Pasword Reset --------------*/
+const requestEmailVerificationCode = asyncHandler( async (req, res, next) => {
+  try {
+
+      console.log(req.body);
+      const email = req.body.email;
+      const user = await User.findOne({ email });
+
+      if (!user) {
+        res.status(400);
+        res.send({isSuccess: false, message: 'User does not exist'});
+        return;
+      }
+
+      let e_verification = await EmailVerification.findOne({ userId: user._id });
+      if(e_verification)
+        await e_verification.deleteOne();
+
+      // Generate Random Verification Code Here
+      const v_code = "123456";
+
+      await new EmailVerification({
+        userId: user._id,
+        verificationCode: v_code,
+        createdAt: Date.now(),
+      }).save();
+
+      const msg = {
+          to: user.email,
+          from: constants.email.automated_from,
+          subject: "Welldugo - Email Verification Code",
+          text: `Dear ${user.name},`,
+          html: `<p>You have requested email verification code.</p>
+                  <p>Please use the code below to verify your email.</p>
+                  <h1>${v_code}</h1>`,
+      };
+
+      const email_res = await send_email(msg);
+      res.send({isSuccess: true, verificationCode: v_code});
+
+  } catch(e) {
+      console.log(e);
+      res.status(500);
+      res.send({message: "Server error"});
+  }
+});
+
+const requestMobileVerificationCode = asyncHandler( async (req, res, next) => {
+  try {
+
+    console.log(req.body);
+    const email = req.body.email;
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      res.status(400);
+      res.send({isSuccess: false, message: 'User does not exist'});
+      return;
+    }
+
+    let p_verification = await PhoneVerification.findOne({ userId: user._id });
+    if(p_verification)
+      await p_verification.deleteOne();
+
+    // Generate Random Verification Code Here
+    const v_code = "123456";
+
+    await new PhoneVerification({
+      userId: user._id,
+      verificationCode: v_code,
+      createdAt: Date.now(),
+    }).save();
+
+    // Send Text Message Here
+
+    res.send({isSuccess: true, verificationCode: v_code});
+
+  } catch(e) {
+      console.log(e);
+      res.status(500);
+      res.send({message: "Server error"});
+  }
+});
+
+const verifyEmail = asyncHandler( async (req, res, next) => {
+  try {
+    const {
+      email,
+      verification_code,
+    } = req.body;
+
+    const userId = req.user.id;
+
+    let e_verification = await EmailVerification.findOne({ userId });
+    if (!e_verification) {
+      res.status(400);
+      res.send({isSuccess: false, message:"No Verification Code Created for this User"});
+      return;
+    }
+
+    // Code verification
+    if(String(verification_code) !== e_verification.verificationCode) {
+      res.status(400);
+      res.send({isSuccess: false, message: 'Incorrect Verification Code'});
+      return;
+    }
+
+    if (!email) {
+      res.status(400);
+      res.send({isSuccess: false, message: 'Email field cannot be empty'});
+      return;
+    }
+
+    const user = await User.findById(userId);
+
+    if (!user) {
+      res.status(400);
+      res.send({isSuccess: false, message: 'User does not exist'});
+      return;
+    }
+
+    await User.updateOne(
+      { _id: userId },
+      { $set: {
+          phone_verified: true,
+          email: email
+        }
+      },
+      { new: true }
+    );
+
+  } catch(e) {
+      console.log(e);
+      res.status(500);
+      res.send({message: "Server error"});
+  }
+});
+
+const verifyMobile = asyncHandler( async (req, res, next) => {
+  try {
+    const {
+      phone,
+      verification_code,
+    } = req.body;
+
+    const userId = req.user.id;
+
+    let p_verification = await PhoneVerification.findOne({ userId });
+    if (!p_verification) {
+      res.status(400);
+      res.send({isSuccess: false, message:"No Verification Code Created for this User"});
+      return;
+    }
+
+    // Code verification
+    if(String(verification_code) !== e_verification.verificationCode) {
+      res.status(400);
+      res.send({isSuccess: false, message: 'Incorrect Verification Code'});
+      return;
+    }
+
+    if (!phone) {
+      res.status(400);
+      res.send({isSuccess: false, message: 'Phone field cannot be empty'});
+      return;
+    }
+
+    const user = await User.findById(userId);
+
+    if (!user) {
+      res.status(400);
+      res.send({isSuccess: false, message: 'User does not exist'});
+      return;
+    }
+
+    await User.updateOne(
+      { _id: userId },
+      { $set: {
+          phone_verified: true,
+          phone: phone
+        }
+      },
+      { new: true }
+    );
+
+
+
+  }catch(e){
+      console.log(e);
+      res.status(500);
+      res.send({message: "Server error"});
+  }
+});
 
 const resetPasswordRequestController = async (req, res, next) => {
 
@@ -431,7 +624,6 @@ const resetPasswordController = async (req, res, next) => {
   await passwordResetToken.deleteOne();
   res.send({isSuccess: true, message: "Password has been reset successfully"});
 };
-/**---------------End Pasword Reset --------------*/
 
 // Generate JWT
 const generateToken = (id) => {
@@ -447,7 +639,10 @@ module.exports = {
     updateUserDetails,
     updateUserPassword,
     subScribeToPriceAlerts,
-    /**Start Pasword Reset */
+    requestEmailVerificationCode,
+    requestMobileVerificationCode,
+    verifyEmail,
+    verifyMobile,
     resetPasswordRequestController,
     resetPasswordController,
 }
