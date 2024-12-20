@@ -34,6 +34,16 @@ const userSchema = new Schema({
         required: [true, "Please add email address"],
         unique: true,
     },
+    phone_verified: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    email_verified: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
     password: {
         type: String,
         required: [true, "Please add password"]
