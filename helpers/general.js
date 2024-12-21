@@ -10,7 +10,7 @@ const setBookingIntentStatuses = async (id, booking_status, payment_status, book
             }
         }
 
-        // Updating booking intent information    
+        // Updating booking intent information
         bi.booking_status = booking_status;
         bi.payment_status = payment_status;
 
@@ -44,7 +44,23 @@ const setBookingIntentStatuses = async (id, booking_status, payment_status, book
     }
 }
 
+const generateRandomCode = (size=6, type='numeric') => {
+  let upper = "1";
+  let lower = "9";
+  for(let i=1; i<size; i++){
+    upper+="0";
+    lower+="0";
+  }
+  if(type==='numeric'){
+    upper = parseInt(upper);
+    lower = parseInt(lower);
+  }
+  let randomNumber = Math.floor(lower + Math.random() * upper);
+
+  return randomNumber;
+}
 
 module.exports = {
     setBookingIntentStatuses,
+    generateRandomCode,
 }

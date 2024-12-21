@@ -8,6 +8,7 @@ const bcrypt = require("bcryptjs");
 const crypto = require("crypto");
 const asyncHandler = require("express-async-handler");
 const { send_email } = require('../helpers/Email');
+const { generateRandomCode } = require("../helpers/general");
 const constants = require('../constants');
 
 /**
@@ -361,8 +362,8 @@ const requestEmailVerificationCode = asyncHandler( async (req, res, next) => {
       if(e_verification)
         await e_verification.deleteOne();
 
-      // Generate Random Verification Code Here
-      const v_code = "123456";
+      // Generate Random Verification Code
+      const v_code = String(generateRandomCode());
 
       await new EmailVerification({
         userId: user._id,
@@ -377,7 +378,11 @@ const requestEmailVerificationCode = asyncHandler( async (req, res, next) => {
           text: `Dear ${user.name},`,
           html: `<p>You have requested email verification code.</p>
                   <p>Please use the code below to verify your email.</p>
-                  <h1>${v_code}</h1>`,
+                  <div style="background-color: green; border: 1px solid redorange; padding: 40px;">
+                    <h1 style="text-align: center; color: white">
+                      ${v_code}</h1>
+                  </div>
+                  `,
       };
 
       const email_res = await send_email(msg);
@@ -407,8 +412,8 @@ const requestMobileVerificationCode = asyncHandler( async (req, res, next) => {
     if(p_verification)
       await p_verification.deleteOne();
 
-    // Generate Random Verification Code Here
-    const v_code = "123456";
+    // Generate Random Verification Code
+    const v_code = String(generateRandomCode());
 
     await new PhoneVerification({
       userId: user._id,
