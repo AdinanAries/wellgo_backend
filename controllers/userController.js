@@ -348,7 +348,6 @@ const subScribeToPriceAlerts = asyncHandler( async (req, res, next) => {
 const requestEmailVerificationCode = asyncHandler( async (req, res, next) => {
   try {
 
-      console.log(req.body);
       const email = req.body.email;
       const user = await User.findOne({ email });
 
@@ -398,7 +397,6 @@ const requestEmailVerificationCode = asyncHandler( async (req, res, next) => {
 const requestMobileVerificationCode = asyncHandler( async (req, res, next) => {
   try {
 
-    console.log(req.body);
     const email = req.body.email;
     const user = await User.findOne({ email });
 
