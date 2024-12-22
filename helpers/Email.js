@@ -7,7 +7,7 @@ const send_email = async (payload) => {
         console.log('email sent:', sent);
         return sent;
     }catch(e){
-        console.log(e?.response?.body?.errors);
+        console.log(e);
         return {isError: true, message: e?.response?.body?.errors}
     }
 }

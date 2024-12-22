@@ -385,7 +385,7 @@ const requestEmailVerificationCode = asyncHandler( async (req, res, next) => {
       };
 
       const email_res = await send_email(msg);
-      res.send({isSuccess: true, verificationCode: v_code});
+      res.send({isSuccess: true/*, verificationCode: v_code*/});
 
   } catch(e) {
       console.log(e);
@@ -432,12 +432,25 @@ const requestMobileVerificationCode = asyncHandler( async (req, res, next) => {
 
 const verifyEmail = asyncHandler( async (req, res, next) => {
   try {
+    console.log(req.body);
     const {
       email,
       verification_code,
     } = req.body;
 
     const userId = req.user.id;
+
+    if (!email) {
+      res.status(400);
+      res.send({isSuccess: false, message: 'Email field cannot be empty'});
+      return;
+    }
+
+    if (!verification_code) {
+      res.status(400);
+      res.send({isSuccess: false, message: 'No verification code was submitted with this request'});
+      return;
+    }
 
     let e_verification = await EmailVerification.findOne({ userId });
     if (!e_verification) {
@@ -453,12 +466,6 @@ const verifyEmail = asyncHandler( async (req, res, next) => {
       return;
     }
 
-    if (!email) {
-      res.status(400);
-      res.send({isSuccess: false, message: 'Email field cannot be empty'});
-      return;
-    }
-
     const user = await User.findById(userId);
 
     if (!user) {
@@ -470,12 +477,14 @@ const verifyEmail = asyncHandler( async (req, res, next) => {
     await User.updateOne(
       { _id: userId },
       { $set: {
-          phone_verified: true,
+          email_verified: true,
           email: email
         }
       },
       { new: true }
     );
+
+    res.send({isSuccess: true, message: 'Email has been verified'});
 
   } catch(e) {
       console.log(e);
@@ -531,7 +540,7 @@ const verifyMobile = asyncHandler( async (req, res, next) => {
       { new: true }
     );
 
-
+    res.send({isSuccess: true, message: 'Phone has been verified'});
 
   }catch(e){
       console.log(e);
