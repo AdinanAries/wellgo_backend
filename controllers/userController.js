@@ -385,7 +385,7 @@ const requestEmailVerificationCode = asyncHandler( async (req, res, next) => {
       };
 
       const email_res = await send_email(msg);
-      res.send({isSuccess: true/*, verificationCode: v_code*/});
+      res.send({isSuccess: true, message: "Verification code has been sent"/*, verificationCode: v_code*/});
 
   } catch(e) {
       console.log(e);
@@ -421,7 +421,7 @@ const requestMobileVerificationCode = asyncHandler( async (req, res, next) => {
 
     // Send Text Message Here
 
-    res.send({isSuccess: true, verificationCode: v_code});
+    res.send({isSuccess: true, message: "Verification code has been sent", verificationCode: v_code});
 
   } catch(e) {
       console.log(e);
@@ -484,6 +484,7 @@ const verifyEmail = asyncHandler( async (req, res, next) => {
       { new: true }
     );
 
+    await e_verification.deleteOne();
     res.send({isSuccess: true, message: 'Email has been verified'});
 
   } catch(e) {
@@ -510,7 +511,7 @@ const verifyMobile = asyncHandler( async (req, res, next) => {
     }
 
     // Code verification
-    if(String(verification_code) !== e_verification.verificationCode) {
+    if(String(verification_code) !== p_verification.verificationCode) {
       res.status(400);
       res.send({isSuccess: false, message: 'Incorrect Verification Code'});
       return;
@@ -540,6 +541,7 @@ const verifyMobile = asyncHandler( async (req, res, next) => {
       { new: true }
     );
 
+    await p_verification.deleteOne();
     res.send({isSuccess: true, message: 'Phone has been verified'});
 
   }catch(e){
@@ -592,7 +594,7 @@ const resetPasswordRequestController = async (req, res, next) => {
   };
 
   const email_res = await send_email(msg);
-  res.send({isSuccess: true, passwordResetLink: link});
+  res.send({isSuccess: true, message: "Password reset link has been sent"/*, passwordResetLink: link*/});
 };
 
 const resetPasswordController = async (req, res, next) => {
