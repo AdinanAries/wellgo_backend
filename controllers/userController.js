@@ -349,7 +349,7 @@ const requestEmailVerificationCode = asyncHandler( async (req, res, next) => {
   try {
 
       const email = req.body.email;
-      const user = await User.findOne({ email });
+      const user = await User.findById(req.user.id);
 
       if (!user) {
         res.status(400);
@@ -367,15 +367,17 @@ const requestEmailVerificationCode = asyncHandler( async (req, res, next) => {
       await new EmailVerification({
         userId: user._id,
         verificationCode: v_code,
+        email: email,
         createdAt: Date.now(),
       }).save();
 
       const msg = {
-          to: user.email,
+          to: email,
           from: constants.email.automated_from,
           subject: "Welldugo - Email Verification Code",
-          text: `Dear ${user.name},`,
-          html: `<p>You have requested email verification code.</p>
+          text: `You have requested an email verification code!`,
+          html: `<h3>Dear ${user.name},</h3>
+                  <p>You have requested email verification code.</p>
                   <p>Please use the code below to verify your email.</p>
                   <div style="background-color: green; border: 1px solid redorange; padding: 40px;">
                     <h1 style="text-align: center; color: white">
@@ -397,8 +399,8 @@ const requestEmailVerificationCode = asyncHandler( async (req, res, next) => {
 const requestMobileVerificationCode = asyncHandler( async (req, res, next) => {
   try {
 
-    const email = req.body.email;
-    const user = await User.findOne({ email });
+    const phone = req.body.phone;
+    const user = await User.findById(req.user.id);
 
     if (!user) {
       res.status(400);
@@ -416,6 +418,7 @@ const requestMobileVerificationCode = asyncHandler( async (req, res, next) => {
     await new PhoneVerification({
       userId: user._id,
       verificationCode: v_code,
+      phone: phone,
       createdAt: Date.now(),
     }).save();
 
@@ -432,7 +435,6 @@ const requestMobileVerificationCode = asyncHandler( async (req, res, next) => {
 
 const verifyEmail = asyncHandler( async (req, res, next) => {
   try {
-    console.log(req.body);
     const {
       email,
       verification_code,
@@ -463,6 +465,13 @@ const verifyEmail = asyncHandler( async (req, res, next) => {
     if(String(verification_code) !== e_verification.verificationCode) {
       res.status(400);
       res.send({isSuccess: false, message: 'Incorrect Verification Code'});
+      return;
+    }
+
+    // Additional verification layer to ensure email wasn't tempered from UI
+    if(email !== e_verification.email) {
+      res.status(400);
+      res.send({isSuccess: false, message: 'Server did not find verification code associated with this email address'});
       return;
     }
 
@@ -514,6 +523,13 @@ const verifyMobile = asyncHandler( async (req, res, next) => {
     if(String(verification_code) !== p_verification.verificationCode) {
       res.status(400);
       res.send({isSuccess: false, message: 'Incorrect Verification Code'});
+      return;
+    }
+
+    // Additional verification layer to ensure phone wasn't tempered from UI
+    if(phone !== e_verification.phone) {
+      res.status(400);
+      res.send({isSuccess: false, message: 'Server did not find verification code associated with this phone'});
       return;
     }
 
@@ -587,8 +603,9 @@ const resetPasswordRequestController = async (req, res, next) => {
       to: user.email,
       from: constants.email.automated_from,
       subject: "Welldugo - Password Reset Request",
-      text: `Dear ${user.name},`,
-      html: `<p>You have requested password reset.</p>
+      text: `You have requested a password reset!`,
+      html: `<h3>Dear ${user.name},</h3>
+              <p>You have requested password reset.</p>
               <p>Please click on the following link in order to reset your password.</p>
               <p><a href="${link}" />${link}</a></p>`,
   };
