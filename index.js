@@ -20,6 +20,7 @@ mongoose
 
 // Error Handler
 const { errorHandler } = require("./middlewares/errorMiddleware");
+const { price_markup_percentage } = require('./constants');
 
 // Port
 const PORT = process.env.PORT || 4000;
@@ -51,7 +52,17 @@ app.use("/api/payment", require("./routes/paymentRoutes"));
 app.use("/api/stays", require("./routes/Stays/defaultRoutes"));
 
 // Fallback Routes
-app.use("/", (req, res, next)=>{res.send("Server Works")});
+app.use("/", (req, res, next)=>{res.send({
+    svr_env: {
+      active_env: environment.getState().active_env,
+      client_url: environment.getState().client_url,
+      payment_processor: environment.getState().payment_processor,
+      flights_api_provider: environment.getState().flights_api_provider,
+    },
+    price_markup_percentage,
+    message: "Server Works"
+  })
+});
 
 // Use Error Handler
 app.use(errorHandler);

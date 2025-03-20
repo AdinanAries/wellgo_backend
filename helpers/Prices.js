@@ -1,4 +1,4 @@
-const PERCENTAGE=15;
+const PERCENTAGE=require("../constants").price_markup_percentage;
 
 const markup = (price, percentage=PERCENTAGE) => {
     let f_price=parseFloat(price);
