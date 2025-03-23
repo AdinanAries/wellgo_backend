@@ -4,8 +4,9 @@ const stripe = require('stripe')('sk_test_51OdjZ3An0YMgH2TtcRebcqghzoyfEnf0Ezuo0
 // Import application helpers
 const { return_flight_search_obj, return_duffel_order_payload  } = require("../helpers/construct_search_obj");
 const { setBookingIntentStatuses } = require("../helpers/general");
-const { markup } = require("../helpers/Prices");
+const { markup, get_price_markup_percentage } = require("../helpers/Prices");
 const { send_email } = require('../helpers/Email');
+
 /**
  * @desc Get list of flights from data provider
  * @path POST /api/flights/
@@ -108,8 +109,11 @@ const create_flight_order = async (req, res, next) => {
             }
 
             // Checking order price against payment intent amount
+            // 1.1 Getting Price Markup
+            const price_markup_percentage = await get_price_markup_percentage();
+            console.log("Price Markup:", price_markup_percentage);
             if(
-                (markup(payload?.payments[0]?.amount).new_price.toFixed(0)*100)
+                (markup(payload?.payments[0]?.amount, price_markup_percentage).new_price.toFixed(0)*100)
                 !== paymentIntent?.amount
             ){
                 res.status(500).send({message: `
@@ -187,9 +191,21 @@ const create_flight_order = async (req, res, next) => {
     }
 }
 
+/**
+ * @desc Return booking prices markup percentage
+ * @path POST /api/flights/orders/create/
+ * @access private
+ * @type controller
+ */
+const get_prices_markup_percentage = async (req, res, next) =>  {
+    const price_markup_percentage = await get_price_markup_percentage();
+    res.send(price_markup_percentage);
+}
+
 module.exports = {
     get_flights,
     list_flight_offers,
     get_offer_info,
-    create_flight_order
+    create_flight_order,
+    get_prices_markup_percentage
 }
