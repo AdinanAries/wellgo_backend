@@ -4,6 +4,10 @@ const Schema = mongoose.Schema;
 const SchemaTypes = mongoose.SchemaTypes;
 
 const bookingHistorySchema = new Schema({
+    oc_user_id: {
+        type: String,
+        required: false,
+    },
     apiProvider: {
         type: String,
         required: true

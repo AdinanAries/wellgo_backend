@@ -3,6 +3,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const ratedPlacesSchema = new Schema({
+    oc_user_id: {
+        type: String,
+        required: false,
+    },
     place: {
         type: Object
     },

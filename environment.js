@@ -1,6 +1,11 @@
 const constants = require("./constants");
 
 module.exports = {
+  getOcApiHost: () => {
+    const active_env = constants.environment.env;
+    return (active_env === constants.environment.prod) ?
+      constants.environment.wellgo_oc_api_svr : constants.environment.wellgo_dev_oc_api_svr;
+  },
   getState: () => {
     const active_env = constants.environment.env;
     const client_url = (active_env === constants.environment.prod)

@@ -6,6 +6,8 @@ const { return_flight_search_obj, return_duffel_order_payload  } = require("../h
 const { setBookingIntentStatuses } = require("../helpers/general");
 const { markup, get_price_markup_percentage } = require("../helpers/Prices");
 const { send_email } = require('../helpers/Email');
+const { make_post_request } = require("../fetch_request/fetch_request");
+const { getOcApiHost }  = require("../environment");
 
 /**
  * @desc Get list of flights from data provider
@@ -14,14 +16,29 @@ const { send_email } = require('../helpers/Email');
  * @type controller
  */
 const get_flights = async(req, res, next)=>{
-    //console.log(req.body);
-    console.log(return_flight_search_obj(req.body));
-    console.log("Currency:", req.body.currency);
+    //console.log(req.body.activity);
+    //console.log(return_flight_search_obj(req.body));
+    //console.log("Currency:", req.body.currency);
     let offer_list;
     try{
         if(process.env.DATA_PROVIDER===constants.duffel){
             let offer_request = await require("../flight_providers/duffel").createOfferRequest(return_flight_search_obj(req.body));
             offer_list = await require("../flight_providers/duffel").listOffers(offer_request.data.id);
+            //Agent Activity
+            if(offer_list?.data?.length>0){
+                if(req?.body?.activity?.oc_user_id){
+                    let path = (req?.body?.activity?.booking_link_id
+                        ? "\\api\\wallets\\agent\\transaction\\visited-link\\create\\"
+                        : "\\api\\wallets\\agent\\transaction\\create\\"
+                     )
+                    let url = (getOcApiHost()+path);
+                    let _activity_res = await make_post_request(
+                        url,
+                        (req?.body?.activity || {})
+                    );
+                    console.log(_activity_res);
+                }
+            }
             res.status(200).json(offer_list);
         }else{
             res.status(500);
@@ -45,7 +62,60 @@ const list_flight_offers = async (req, res, next) => {
     try{
         if(process.env.DATA_PROVIDER===constants.duffel){
             offer_list = await require("../flight_providers/duffel").listOffers(payload.id);
+            //Agent Activity
+            if(offer_list?.data?.length>0){
+                if(req?.body?.activity?.oc_user_id){
+                    let path = (req?.body?.activity?.booking_link_id
+                        ? "\\api\\wallets\\agent\\transaction\\visited-link\\create\\"
+                        : "\\api\\wallets\\agent\\transaction\\create\\"
+                     )
+                    let url = (getOcApiHost()+path);
+                    let _activity_res = await make_post_request(
+                        url,
+                        (req?.body?.activity || {})
+                    );
+                    console.log(_activity_res);
+                }
+            }
             res.status(200).json(offer_list);
+        }else{
+            res.status(500);
+            throw new Error("No data provider has been set");
+        }
+    }catch(e){
+        console.log(e);
+        res.status(500).send(e);
+    }
+}
+
+/**
+ * @desc Post Version: Get complete, up-to-date information about an offer
+ * @path POST /api/flights/offers/:id
+ * @access private
+ * @type controller
+ */
+const get_offer_info_post_func = async (req, res, next) => {
+    let offer;
+    let id = req.params.id;
+    try{
+        if(process.env.DATA_PROVIDER===constants.duffel){
+            offer = await require("../flight_providers/duffel").getOffer(id);
+            //Agent Activity
+            if(offer){
+                if(req?.body?.activity?.oc_user_id){
+                    let path = (req?.body?.activity?.booking_link_id
+                        ? "\\api\\wallets\\agent\\transaction\\visited-link\\create\\"
+                        : "\\api\\wallets\\agent\\transaction\\create\\"
+                     )
+                    let url = (getOcApiHost()+path);
+                    let _activity_res = await make_post_request(
+                        url,
+                        (req?.body?.activity || {})
+                    );
+                    console.log(_activity_res);
+                }
+            }
+            res.status(200).json(offer);
         }else{
             res.status(500);
             throw new Error("No data provider has been set");
@@ -193,19 +263,25 @@ const create_flight_order = async (req, res, next) => {
 
 /**
  * @desc Return booking prices markup percentage
- * @path POST /api/flights/orders/create/
+ * @path GET /api/flights/price-markup-percentage/
  * @access private
  * @type controller
  */
 const get_prices_markup_percentage = async (req, res, next) =>  {
-    const price_markup_percentage = await get_price_markup_percentage();
-    res.send(price_markup_percentage);
+    try{
+        const price_markup_percentage = await get_price_markup_percentage();
+        res.send(price_markup_percentage);
+    }catch(e){
+        console.log(e);
+        res.status(500).send({message: (e?.errors && e?.errors[0]?.title) || "Server Error!"});
+    }
 }
 
 module.exports = {
     get_flights,
     list_flight_offers,
     get_offer_info,
+    get_offer_info_post_func,
     create_flight_order,
     get_prices_markup_percentage
 }

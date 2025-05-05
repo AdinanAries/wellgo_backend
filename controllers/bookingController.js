@@ -1,4 +1,6 @@
 const BookingHistory = require("../models/bookingHistory");
+const { make_post_request } = require("../fetch_request/fetch_request");
+const { getOcApiHost }  = require("../environment");
 
 const addLog = (req, res, next) => {
     const {
@@ -21,7 +23,14 @@ const addLog = (req, res, next) => {
         departure_date,
         return_date
     } = req.body;
+
+    // Travel Agent Related
+    let _activity=req?.body?.activity;
+
+    const oc_user_id = (req?.body?.oc_user_id || "welldugo-non-agent-booking");
+
     const booking = new BookingHistory({
+        oc_user_id,
         anonymous_id: anonymous_id,
         apiProvider: apiProvider,
         providerBookingID: providerBookingID,
@@ -42,8 +51,22 @@ const addLog = (req, res, next) => {
         departure_date: departure_date,
         return_date: return_date
     });
-    booking.save().then((result) => {
-        console.log(result);
+    booking.save().then(async (result) => {
+        // Add Agent Activity
+        if(_activity?.oc_user_id){
+            _activity.booking_log_id=result?._id;
+            let path = (_activity?.booking_link_id
+                ? "\\api\\wallets\\agent\\transaction\\booked-link\\create\\"
+                : "\\api\\wallets\\agent\\transaction\\create\\"
+             )
+            let url = (getOcApiHost()+path);
+            let _activity_res = await make_post_request(
+                url,
+                _activity,
+            );
+            console.log(_activity_res);
+        }
+        //console.log(result);
         res.status(200).send(result);
     }).catch((err) => {
         console.log(err);
@@ -72,7 +95,14 @@ const addLogAnonymous = (req, res, next) => {
         departure_date,
         return_date
     } = req.body;
+
+    // Travel Agent Related
+    let _activity=req?.body?.activity;
+
+    const oc_user_id = (req?.body?.oc_user_id || "welldugo-non-agent-booking");
+
     const booking = new BookingHistory({
+        oc_user_id,
         anonymous_id: anonymous_id,
         apiProvider: apiProvider,
         providerBookingID: providerBookingID,
@@ -92,8 +122,23 @@ const addLogAnonymous = (req, res, next) => {
         departure_date: departure_date,
         return_date: return_date
     });
-    booking.save().then((result) => {
-        console.log(result);
+    booking.save().then(async (result) => {
+        // Add Agent Activity
+        //console.log(_activity);
+        if(_activity){
+            _activity.booking_log_id=result?._id;
+            let path = (_activity?.booking_link_id
+                ? "\\api\\wallets\\agent\\transaction\\booked-link\\create\\"
+                : "\\api\\wallets\\agent\\transaction\\create\\"
+            )
+            let url = (getOcApiHost()+path);
+            let _activity_res = await make_post_request(
+                url,
+                _activity
+            );
+            console.log(_activity_res);
+        }
+        //console.log(result);
         res.status(200).send(result);
     }).catch((err) => {
         console.log(err);

@@ -23,7 +23,7 @@ mongoose
 const { errorHandler } = require("./middlewares/errorMiddleware");
 
 // Port
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 4005;
 
 // Use Cors
 app.use(cors({
