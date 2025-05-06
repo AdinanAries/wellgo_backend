@@ -159,7 +159,10 @@ const createBookingIntent = asyncHandler( async (req, res, next) =>{
             booking_order
         } = req.body;
 
+        const oc_user_id = (req?.body?.oc_user_id || "welldugo-non-agent-booking");
+
         let bookingIntent = new BookingIntentLog({
+            oc_user_id: oc_user_id,
             payment_status: payment_intent?.status,
             booking_status: "order_initiated",
             payment_intent: payment_intent,
