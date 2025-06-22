@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@duffel/api": "^2.3.0",
+    "@duffel/api": "^4.3.0",
     "@sendgrid/mail": "^8.1.0",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
