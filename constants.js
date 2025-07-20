@@ -14,12 +14,16 @@ module.exports = {
         }
     },
     price_markup_percentage: 15,
+    price_markup_types: {
+        percentage: "percentage",
+        flat_rate: "flat_rate"
+    },
     email: {
         automated_from: "adinanaries@outlook.com",
         admins_to: "welldugo.btc@gmail.com",
     },
     environment: {
-        env: "production", // For Setting Current Evironment State -> [ production, development, staging ]
+        env: "development",//"production", // For Setting Current Evironment State -> [ production, development, staging ]
         prod: "production",
         dev: "development",
         stage: "staging",

@@ -4,7 +4,7 @@ const stripe = require('stripe')('sk_test_51OdjZ3An0YMgH2TtcRebcqghzoyfEnf0Ezuo0
 // Import application helpers
 const { return_flight_search_obj, return_duffel_order_payload  } = require("../helpers/construct_search_obj");
 const { setBookingIntentStatuses } = require("../helpers/general");
-const { markup, get_price_markup_percentage } = require("../helpers/Prices");
+const { markup, get_price_markup } = require("../helpers/Prices");
 const { send_email } = require('../helpers/Email');
 const { make_post_request } = require("../fetch_request/fetch_request");
 const { getOcApiHost }  = require("../environment");
@@ -180,10 +180,10 @@ const create_flight_order = async (req, res, next) => {
 
             // Checking order price against payment intent amount
             // 1.1 Getting Price Markup
-            const price_markup_percentage = await get_price_markup_percentage();
-            console.log("Price Markup:", price_markup_percentage);
+            const _pm_obj = await get_price_markup();
+            console.log("Price Markup:", _pm_obj);
             if(
-                (markup(payload?.payments[0]?.amount, price_markup_percentage).new_price.toFixed(0)*100)
+                (markup(payload?.payments[0]?.amount, _pm_obj.value, _pm_obj.type).new_price.toFixed(0)*100)
                 !== paymentIntent?.amount
             ){
                 res.status(500).send({message: `
@@ -267,10 +267,10 @@ const create_flight_order = async (req, res, next) => {
  * @access private
  * @type controller
  */
-const get_prices_markup_percentage = async (req, res, next) =>  {
+const get_prices_markup = async (req, res, next) =>  {
     try{
-        const price_markup_percentage = await get_price_markup_percentage();
-        res.send(price_markup_percentage);
+        const _pm_obj = await get_price_markup();
+        res.status(200).json(_pm_obj);
     }catch(e){
         console.log(e);
         res.status(500).send({message: (e?.errors && e?.errors[0]?.title) || "Server Error!"});
@@ -283,5 +283,5 @@ module.exports = {
     get_offer_info,
     get_offer_info_post_func,
     create_flight_order,
-    get_prices_markup_percentage
+    get_prices_markup
 }
