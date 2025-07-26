@@ -9,6 +9,7 @@ const {
     addLog, 
     getLog, 
     getLogs, 
+    getLogByIdAndCustomerEmail,
     addLogAnonymous, 
     getLogAnonymous,
     setLogUserID
@@ -21,7 +22,8 @@ router.post("/add/", protect, addLog);
 router.put("/set-user-id/:booking_log_id", protect, setLogUserID);
 
 // Unprotected routes
-router.get("/anonymous-user/single/:ref/:email", getLogAnonymous)
+router.get("/anonymous-user/single/:ref/:email", getLogAnonymous);
+router.get("/by-id-and-email/:id/:email", getLogByIdAndCustomerEmail);
 router.post("/anonymous-user/add/", addLogAnonymous);
 
 module.exports = router;

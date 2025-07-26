@@ -159,6 +159,34 @@ const getLog = (req, res, next) => {
     });
 }
 
+const getLogByIdAndCustomerEmail = (req, res, next) => {
+    const id=req.params.id;
+    const email=req.params.email;
+    console.log("id", id);
+    console.log("email", email);
+    BookingHistory.findOne({_id: id})
+    .then((booking) => {
+        let email_found=false;
+        if(booking)
+        for(let i=0; i<booking?.originPayloads[0].passengers?.length; i++){
+            if(email===booking?.originPayloads[0].passengers[i].email){
+                email_found=true;
+            }
+        }
+       console.log(booking)
+        if(email_found){
+            res.status(200).send(booking);
+            return;
+        }else{
+            res.status(200).send({});
+        }
+    })
+    .catch((err) => {
+        console.log(err);
+        res.status(500).send("Error");
+    });
+}
+
 const getLogAnonymous = (req, res, next) => {
     console.log(req.params);
     const REF_NUMBER=req.params.ref;
@@ -288,6 +316,7 @@ module.exports = {
     addLog,
     addLogAnonymous,
     getLog,
+    getLogByIdAndCustomerEmail,
     getLogAnonymous,
     getLogs,
     setLogUserID
