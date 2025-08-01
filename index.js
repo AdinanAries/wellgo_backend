@@ -4,7 +4,7 @@ require('dotenv').config();
 const app = express();
 const mongoose = require("mongoose");
 const environment = require("./environment");
-const { get_price_markup_percentage } = require("./helpers/Prices");
+const { get_price_markup } = require("./helpers/Prices");
 
 //Link to password reset: https://blog.logrocket.com/implementing-secure-password-reset-node-js/
 
@@ -53,7 +53,7 @@ app.use("/api/stays", require("./routes/Stays/defaultRoutes"));
 
 // Fallback Routes
 app.use("/", async (req, res, next)=>{
-  const price_markup_percentage = await get_price_markup_percentage();
+  const price_markup = await get_price_markup();
   res.send({
     svr_env: {
       active_env: environment.getState().active_env,
@@ -61,7 +61,7 @@ app.use("/", async (req, res, next)=>{
       payment_processor: environment.getState().payment_processor,
       flights_api_provider: environment.getState().flights_api_provider,
     },
-    price_markup_percentage,
+    price_markup,
     message: "Server Works"
   })
 });
