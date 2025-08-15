@@ -7,6 +7,10 @@ const bookingIntentLogSchema = new Schema({
         type: String,
         required: false,
     },
+    product_type: {
+        type: String,
+        required: false,
+    },
     payment_status: {
         type: String
     },

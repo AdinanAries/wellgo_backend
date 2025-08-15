@@ -161,6 +161,7 @@ const create_flight_order = async (req, res, next) => {
     let fees = req?.body?.meta?.totalFees;
     let flight_order;
     try{
+        // To Do - Get from agent configs DB
         if(process.env.DATA_PROVIDER===constants.duffel){
             
             let payload = return_duffel_order_payload(req.body.data);
