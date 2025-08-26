@@ -6,7 +6,7 @@ const { return_flight_search_obj, return_duffel_order_payload  } = require("../h
 const { setBookingIntentStatuses } = require("../helpers/general");
 const { markup, get_price_markup } = require("../helpers/Prices");
 const { send_email } = require('../helpers/Email');
-const { make_post_request } = require("../fetch_request/fetch_request");
+const { make_post_request, make_get_request } = require("../fetch_request/fetch_request");
 const { getOcApiHost }  = require("../environment");
 
 /**
@@ -16,9 +16,6 @@ const { getOcApiHost }  = require("../environment");
  * @type controller
  */
 const get_flights = async(req, res, next)=>{
-    //console.log(req.body.activity);
-    //console.log(return_flight_search_obj(req.body));
-    //console.log("Currency:", req.body.currency);
     let offer_list;
     try{
         if(process.env.DATA_PROVIDER===constants.duffel){
@@ -159,6 +156,7 @@ const create_flight_order = async (req, res, next) => {
     let pi = req?.body?.meta?.paymentIntent;
     let bi = req?.body?.meta?.bookingIntent;
     let fees = req?.body?.meta?.totalFees;
+    let agent_id = req?.body?.meta?.agent_id;
     let flight_order;
     try{
         // To Do - Get from agent configs DB
@@ -181,11 +179,26 @@ const create_flight_order = async (req, res, next) => {
 
             // Checking order price against payment intent amount
             // 1.1 Getting Price Markup
-            const _pm_obj = await get_price_markup();
-            console.log("Price Markup:", _pm_obj);
+            const _pm_obj = await get_price_markup(agent_id);
+
+            let services_fees = [];
+            if(agent_id){
+                let path = "\\api\\service-fee\\of-agent-of-product-type\\";
+                let url = (getOcApiHost()+path+agent_id+"\\"+constants.app_services_fees.types.flights);
+                services_fees = await make_get_request(url);
+            }
+            let service_fees_total=0;
+            for(let i=0; i<services_fees?.length; i++){
+                service_fees_total+=parseFloat((services_fees[i].price));
+                console.log(services_fees[i]);
+            }
+
             if(
-                (markup(payload?.payments[0]?.amount, _pm_obj.value, _pm_obj.type).new_price.toFixed(0)*100)
-                !== paymentIntent?.amount
+                (
+                    (parseFloat(markup(payload?.payments[0]?.amount, _pm_obj.value, _pm_obj.type).new_price.toFixed(0))
+                    +service_fees_total)*100
+                )
+                 !== paymentIntent?.amount
             ){
                 res.status(500).send({message: `
                     The payment amount you've submitted for this booking is not adequate

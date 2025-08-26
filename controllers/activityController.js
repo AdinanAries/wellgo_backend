@@ -158,6 +158,12 @@ const createBookingIntent = asyncHandler( async (req, res, next) =>{
             payment_intent,
             booking_order,
             product_type,
+            is_package_item,
+            package_id,
+            is_booking_link_sale,
+            booking_link_id,
+            profits,
+            prices,
         } = req.body;
 
         const oc_user_id = (req?.body?.oc_user_id || "welldugo-non-agent-booking");
@@ -169,6 +175,12 @@ const createBookingIntent = asyncHandler( async (req, res, next) =>{
             booking_status: "order_initiated",
             payment_intent: payment_intent,
             booking_order: booking_order,
+            is_package_item: (is_package_item || false),
+            package_id: (package_id || ""),
+            is_booking_link_sale: (is_booking_link_sale || false),
+            booking_link_id: (booking_link_id || ""),
+            profits: (profits || {}),
+            prices: (prices || {}),
         });
 
         bookingIntent.save().then((result) => {
@@ -180,6 +192,12 @@ const createBookingIntent = asyncHandler( async (req, res, next) =>{
                 booking_status: result.booking_status,
                 payment_intent: result.payment_intent,
                 booking_order: result.booking_order,
+                is_package_item: result.is_package_item,
+                package_id: result.package_id,
+                is_booking_link_sale: result.is_booking_link_sale,
+                booking_link_id: result.booking_link_id,
+                profits: result.profits,
+                prices: result.prices,
             });
         }).catch((err) => {
             console.log(err);

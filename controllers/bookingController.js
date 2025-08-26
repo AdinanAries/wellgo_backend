@@ -21,7 +21,9 @@ const addLog = (req, res, next) => {
         destination_airport_code,
         destination_city,
         departure_date,
-        return_date
+        return_date,
+        prices,
+        profits,
     } = req.body;
 
     // Travel Agent Related
@@ -49,7 +51,9 @@ const addLog = (req, res, next) => {
         destination_airport_code: destination_airport_code,
         destination_city: destination_city,
         departure_date: departure_date,
-        return_date: return_date
+        return_date: return_date,
+        prices: prices,
+        profits: profits,
     });
     booking.save().then(async (result) => {
         // Add Agent Activity
@@ -93,7 +97,9 @@ const addLogAnonymous = (req, res, next) => {
         destination_airport_code,
         destination_city,
         departure_date,
-        return_date
+        return_date,
+        prices,
+        profits,
     } = req.body;
 
     // Travel Agent Related
@@ -120,7 +126,9 @@ const addLogAnonymous = (req, res, next) => {
         destination_airport_code: destination_airport_code,
         destination_city: destination_city,
         departure_date: departure_date,
-        return_date: return_date
+        return_date: return_date,
+        prices: prices,
+        profits: profits,
     });
     booking.save().then(async (result) => {
         // Add Agent Activity

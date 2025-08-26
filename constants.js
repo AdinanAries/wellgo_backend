@@ -23,12 +23,22 @@ module.exports = {
         admins_to: "welldugo.btc@gmail.com",
     },
     environment: {
-        env: "production",//"production", // For Setting Current Evironment State -> [ production, development, staging ]
+        env: "development", // "production", // For Setting Current Evironment State -> [ production, development, staging ]
         prod: "production",
         dev: "development",
         stage: "staging",
         wellgo_oc_api_svr: "https://welldugo-oc-prod-backend-b7f63faaa3a9.herokuapp.com",
         wellgo_dev_oc_api_svr: "http://localhost:4000"
+    },
+    app_services_fees: {
+        types: {
+            all_products: -1,
+            flights: 0,
+            stays: 1,
+            cars: 2,
+            packages: 3,
+            deals: 4
+        }
     },
     ai: {
         openai: {

@@ -11,6 +11,24 @@ const bookingIntentLogSchema = new Schema({
         type: String,
         required: false,
     },
+    is_package_item: {
+        type: Boolean,
+        required: true,
+        default: false,
+    },
+    package_id: {
+        type: String,
+        required: false,
+    },
+    is_booking_link_sale: {
+        type: Boolean,
+        required: true,
+        default: false, 
+    },
+    booking_link_id: {
+        type: String,
+        required: false,
+    },
     payment_status: {
         type: String
     },
@@ -29,6 +47,14 @@ const bookingIntentLogSchema = new Schema({
     booking_order: {
         type: Object
     },
+    prices: {
+        type: Object,
+        required: false
+    },
+    profits: { // type => [ flat-rate, percentage ] || amount => numeric value
+        type: Object,
+        required: false
+    }
 },
 {
     timestamps: true
