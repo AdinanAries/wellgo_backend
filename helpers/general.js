@@ -1,4 +1,8 @@
 const BookingIntentLog = require("../models/bookingIntentLog");
+const CustAppServerSettings = require("../models/custAppServerSettings");
+const CONSTANTS = require("../constants");
+const { getOcApiHost } = require("../environment");
+const { make_get_request } = require("../fetch_request/fetch_request");
 
 const setBookingIntentStatuses = async (id, booking_status, payment_status, booking_order_id="", isError=false, errObj={}) => {
     try{
@@ -60,7 +64,30 @@ const generateRandomCode = (size=6, type='numeric') => {
   return randomNumber;
 }
 
+const getDataProvider = async (agent_id) => {
+    let dataProvider = "";
+        if(agent_id){
+            let path = "\\api\\agents\\public\\data-provider\\";
+            let url = (getOcApiHost()+path+agent_id);
+            let _res = await make_get_request(url);
+            if(_res?.value){
+                dataProvider = _res.value;
+            } 
+        } else {
+            let _settings = await CustAppServerSettings.findOne({
+                property: "flights_data_provider",
+            }).catch(err => {
+                console.log(err);
+            });
+            if(_settings?.value){
+                dataProvider = _settings.value;
+            }
+        }
+        return dataProvider;
+}
+
 module.exports = {
     setBookingIntentStatuses,
     generateRandomCode,
+    getDataProvider,
 }

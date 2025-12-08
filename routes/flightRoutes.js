@@ -15,7 +15,7 @@ const {
 router.post("/", approveTransaction, get_flights);
 router.post("/list/offers/", approveTransaction,list_flight_offers);
 router.get("/offers/:id", approveTransaction, get_offer_info);
-router.post("/offers/:id", approveTransaction, get_offer_info_post_func);
+router.post("/offers/", approveTransaction, get_offer_info_post_func);
 router.post("/orders/create/", approveTransaction, create_flight_order);
 router.get("/price-markup/", get_prices_markup);
 

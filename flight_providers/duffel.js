@@ -22,9 +22,9 @@ const createOfferRequest = async (search_obj) => {
 }
 
 /**
- * @desc ...
- * @param {Object} search_obj 
- * @returns Offer ....
+ * @desc Lists Flight Offers
+ * @param {Object} offer_request_id 
+ * @returns Flights Offers List
  * @type library
  */
 const listOffers = async (
@@ -62,10 +62,9 @@ const getOffer = async (id, include_services=true) => {
 }
 
 /**
- * @desc ...
- * @param {*} id
- * @param {*}
- * @returns ....
+ * @desc Creates Flight Order
+ * @param {Object} payload
+ * @returns Order Confirmation Defails
  * @type library
  */
 const createOrder = async (payload) => {

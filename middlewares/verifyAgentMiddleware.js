@@ -38,7 +38,7 @@ const approveTransaction = asyncHandler(async (req, res, next)=>{
             res.send({message: res_message, status: 401});
             return;
         }
-        if(!is_compliant || !is_compliance_documents_ok){
+        if(!is_compliant /*|| !is_compliance_documents_ok*/){
             res_message="Agent account doesn't meet legal compliance";
             res.status(401);
             res.send({message: res_message, status: 401});
@@ -47,8 +47,8 @@ const approveTransaction = asyncHandler(async (req, res, next)=>{
 
         if(is_account_approved &&
             is_wallet_ok &&
-            is_compliant &&
-            is_compliance_documents_ok){
+            is_compliant /*&&
+            is_compliance_documents_ok*/){
             next();
         }
             

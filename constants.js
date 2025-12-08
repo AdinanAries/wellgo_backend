@@ -1,5 +1,7 @@
 module.exports = {
     duffel: "DUFFEL",
+    amadeus: "AMADEUS",
+    sabre: "SABRE",
     stripe: "STRIPE",
     dev: "DEVELOPMENT",
     prod: "PRODUCTION",
@@ -23,7 +25,7 @@ module.exports = {
         admins_to: "welldugo.btc@gmail.com",
     },
     environment: {
-        env: "production", // "production", // For Setting Current Evironment State -> [ production, development, staging ]
+        env: "development", // "production", // For Setting Current Evironment State -> [ production, development, staging ]
         prod: "production",
         dev: "development",
         stage: "staging",

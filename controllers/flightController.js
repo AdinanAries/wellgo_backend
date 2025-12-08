@@ -2,8 +2,14 @@ const constants = require("../constants");
 const stripe = require('stripe')('sk_test_51OdjZ3An0YMgH2TtcRebcqghzoyfEnf0Ezuo0HKbCvFDcSE2ECddCbGMddcCF5r5incz85NVn43mG5KkPSK9pgzh00E966NRQz');
 
 // Import application helpers
-const { return_flight_search_obj, return_duffel_order_payload  } = require("../helpers/construct_search_obj");
-const { setBookingIntentStatuses } = require("../helpers/general");
+const {
+    return_flight_search_obj, 
+    return_order_payload  
+} = require("../helpers/construct_search_obj");
+const { 
+    setBookingIntentStatuses,
+    getDataProvider,
+} = require("../helpers/general");
 const { markup, get_price_markup } = require("../helpers/Prices");
 const { send_email } = require('../helpers/Email');
 const { make_post_request, make_get_request } = require("../fetch_request/fetch_request");
@@ -16,31 +22,43 @@ const { getOcApiHost }  = require("../environment");
  * @type controller
  */
 const get_flights = async(req, res, next)=>{
-    let offer_list;
+    let offer_list={};
     try{
-        if(process.env.DATA_PROVIDER===constants.duffel){
-            let offer_request = await require("../flight_providers/duffel").createOfferRequest(return_flight_search_obj(req.body));
-            offer_list = await require("../flight_providers/duffel").listOffers(offer_request.data.id);
-            //Agent Activity
-            if(offer_list?.data?.length>0){
-                if(req?.body?.activity?.oc_user_id){
-                    let path = (req?.body?.activity?.booking_link_id
-                        ? "\\api\\wallets\\agent\\transaction\\visited-link\\create\\"
-                        : "\\api\\wallets\\agent\\transaction\\create\\"
-                     )
-                    let url = (getOcApiHost()+path);
-                    let _activity_res = await make_post_request(
-                        url,
-                        (req?.body?.activity || {})
-                    );
-                    console.log(_activity_res);
-                }
-            }
-            res.status(200).json(offer_list);
-        }else{
+        let data_provider = await getDataProvider(req?.body?.activity?.oc_user_id);
+
+        if(!data_provider){
             res.status(500);
             throw new Error("No data provider has been set");
         }
+
+        if(/*process.env.DATA_PROVIDER*/data_provider?.toUpperCase()===constants.duffel){
+            let offer_request = await require("../flight_providers/duffel").createOfferRequest(return_flight_search_obj(req.body, data_provider));
+            offer_list = await require("../flight_providers/duffel").listOffers(offer_request.data.id);
+            
+        }else if(data_provider?.toUpperCase()===constants.amadeus){
+            offer_list = await require("../flight_providers/amadeus").listOffers(return_flight_search_obj(req.body, data_provider));
+        }
+
+        offer_list.data_provider=data_provider;
+
+        //Agent Activity
+        if(offer_list?.data?.length>0){
+            if(req?.body?.activity?.oc_user_id){
+                let path = (req?.body?.activity?.booking_link_id
+                    ? "\\api\\wallets\\agent\\transaction\\visited-link\\create\\"
+                    : "\\api\\wallets\\agent\\transaction\\create\\"
+                    )
+                let url = (getOcApiHost()+path);
+                let _activity_res = await make_post_request(
+                    url,
+                    (req?.body?.activity || {})
+                );
+                console.log(_activity_res);
+            }
+        }
+
+        res.status(200).json(offer_list);
+        
     }catch(e){
         console.log(e);
         res.status(500).send(e);
@@ -92,31 +110,46 @@ const list_flight_offers = async (req, res, next) => {
  * @type controller
  */
 const get_offer_info_post_func = async (req, res, next) => {
-    let offer;
-    let id = req.params.id;
     try{
-        if(process.env.DATA_PROVIDER===constants.duffel){
-            offer = await require("../flight_providers/duffel").getOffer(id);
-            //Agent Activity
-            if(offer){
-                if(req?.body?.activity?.oc_user_id){
-                    let path = (req?.body?.activity?.booking_link_id
-                        ? "\\api\\wallets\\agent\\transaction\\visited-link\\create\\"
-                        : "\\api\\wallets\\agent\\transaction\\create\\"
-                     )
-                    let url = (getOcApiHost()+path);
-                    let _activity_res = await make_post_request(
-                        url,
-                        (req?.body?.activity || {})
-                    );
-                    console.log(_activity_res);
-                }
-            }
-            res.status(200).json(offer);
+
+        let offer={};
+        const flight_id = req?.body?.flight_id;
+        const oc_user_id = req?.body?.activity?.oc_user_id;
+        const flight_object = req?.body?.flight_object;
+
+        const data_provider = await getDataProvider(oc_user_id);
+
+        if(/*process.env.DATA_PROVIDER*/data_provider?.toUpperCase()===constants.duffel){
+            offer = await require("../flight_providers/duffel").getOffer(flight_id);
+        }else if(data_provider?.toUpperCase()===constants.amadeus){
+            offer = await require("../flight_providers/amadeus").getOffer(flight_object);
         }else{
             res.status(500);
             throw new Error("No data provider has been set");
         }
+
+        offer = {
+            ...offer,
+            data_provider
+        };
+
+        //Agent Activity
+        if(offer){
+            if(oc_user_id){
+                let path = (req?.body?.activity?.booking_link_id
+                    ? "\\api\\wallets\\agent\\transaction\\visited-link\\create\\"
+                    : "\\api\\wallets\\agent\\transaction\\create\\"
+                    )
+                let url = (getOcApiHost()+path);
+                let _activity_res = await make_post_request(
+                    url,
+                    (req?.body?.activity || {})
+                );
+                console.log(_activity_res);
+            }
+        }
+
+        res.status(200).json(offer);
     }catch(e){
         console.log(e);
         res.status(500).send(e);
@@ -159,112 +192,115 @@ const create_flight_order = async (req, res, next) => {
     let agent_id = req?.body?.meta?.agent_id;
     let flight_order;
     try{
-        // To Do - Get from agent configs DB
-        if(process.env.DATA_PROVIDER===constants.duffel){
-            
-            let payload = return_duffel_order_payload(req.body.data);
+        let data_provider = await getDataProvider(req?.body?.activity?.oc_user_id);
+        
+        let payload = return_order_payload(req.body.data, data_provider);
 
-            // 1. Checking payment status with intent before proceeding
-            const paymentIntent = await stripe.paymentIntents.retrieve(
-                pi?.id
-            );
-            if(!paymentIntent){
-                res.status(500).send({message: "Failed at payment verification"});
-                return;
-            }
-            if(paymentIntent?.status !== 'requires_capture'){
-                res.status(500).send({message: "Failed at payment verification"});
-                return;
-            }
+        // 1. Checking payment status with intent before proceeding
+        const paymentIntent = await stripe.paymentIntents.retrieve(
+            pi?.id
+        );
+        if(!paymentIntent){
+            res.status(500).send({message: "Failed at payment verification"});
+            return;
+        }
+        if(paymentIntent?.status !== 'requires_capture'){
+            res.status(500).send({message: "Failed at payment verification"});
+            return;
+        }
 
-            // Checking order price against payment intent amount
-            // 1.1 Getting Price Markup
-            const _pm_obj = await get_price_markup(agent_id);
+        // Checking order price against payment intent amount
+        // 1.1 Getting Price Markup
+        const _pm_obj = await get_price_markup(agent_id);
 
-            let services_fees = [];
-            if(agent_id){
-                let path = "\\api\\service-fee\\of-agent-of-product-type\\";
-                let url = (getOcApiHost()+path+agent_id+"\\"+constants.app_services_fees.types.flights);
-                services_fees = await make_get_request(url);
-            }
-            let service_fees_total=0;
-            for(let i=0; i<services_fees?.length; i++){
-                service_fees_total+=parseFloat((services_fees[i].price));
-                console.log(services_fees[i]);
-            }
+        let services_fees = [];
+        if(agent_id){
+            let path = "\\api\\service-fee\\of-agent-of-product-type\\";
+            let url = (getOcApiHost()+path+agent_id+"\\"+constants.app_services_fees.types.flights);
+            services_fees = await make_get_request(url);
+        }
+        let service_fees_total=0;
+        for(let i=0; i<services_fees?.length; i++){
+            service_fees_total+=parseFloat((services_fees[i].price));
+            console.log(services_fees[i]);
+        }
 
-            if(
-                (
-                    (parseFloat(markup(payload?.payments[0]?.amount, _pm_obj.value, _pm_obj.type).new_price.toFixed(0))
-                    +service_fees_total)*100
-                )
-                 !== paymentIntent?.amount
-            ){
-                res.status(500).send({message: `
-                    The payment amount you've submitted for this booking is not adequate
-                `
-                    /*ONLY FOR TESTING: `Server expects payment of ${(paymentIntent?.amount/100)}, and you submited
-                    ${(markup(payload?.payments[0]?.amount).new_price.toFixed(0))}`*/
-                });
-                return;
-            }
+        if(
+            (
+                (parseFloat(markup(payload?.payments[0]?.amount, _pm_obj.value, _pm_obj.type).new_price.toFixed(0))
+                +service_fees_total)*100
+            )
+                !== paymentIntent?.amount
+        ){
+            res.status(500).send({message: `
+                The payment amount you've submitted for this booking is not adequate
+            `
+                /*ONLY FOR TESTING: `Server expects payment of ${(paymentIntent?.amount/100)}, and you submited
+                ${(markup(payload?.payments[0]?.amount).new_price.toFixed(0))}`*/
+            });
+            return;
+        }
 
-            // 2.0 Remove Internal Fees
-            if(fees)
-                payload.payments[0].amount=(payload?.payments[0]?.amount-fees);
+        // 2.0 Remove Internal Fees
+        if(fees)
+            payload.payments[0].amount=(payload?.payments[0]?.amount-fees);
+        if(/*process.env.DATA_PROVIDER*/data_provider?.toUpperCase()===constants.duffel){
             // 2.1 Create order from Duffel
             flight_order = await require("../flight_providers/duffel").createOrder(payload);
-
-            // 3. Capture payment with Stripe
-            if(flight_order?.data?.id){
-
-                const intent = await stripe.paymentIntents.capture(paymentIntent?.id);
-                if(intent?.status==="succeeded"){
-                    // Updating booking intent statuses and booking id, and also clearing any errors
-                    setBookingIntentStatuses(bi._id, "confirmed", intent?.status, flight_order?.data?.id);
-                    //Send email to admins for Booking and Payment Success
-                    let _html = JSON.stringify(intent);
-                    _html += `<br/><br/>${JSON.stringify(flight_order)}`;
-
-                    const intent_sccs_msg = {
-                        to: constants.email.admins_to,
-                        from: constants.email.automated_from,
-                        subject: "Welldugo - Payment Success & Booking Confirmed",
-                        text: "Captured Payment And Booking Details Below:\n",
-                        html: _html,
-                    };
-                    send_email(intent_sccs_msg);
-                }else {
-                    // Setting error message for Confirmed booking and payment
-                    setBookingIntentStatuses(bi._id, "failed", paymentIntent?.status, "", true, {
-                        message: "Flight Booking Failure: Not-In-Catch()"
-                    });
-
-                    //Send email to admins for confirmed booking and failed payment.
-                    let _html2 = JSON.stringify(paymentIntent);
-                    _html2 += `<br/><br/>${JSON.stringify(flight_order)}`;
-                    const intent_fail_msg = {
-                        to: constants.email.admins_to,
-                        from: constants.email.automated_from,
-                        subject: "Welldugo - Failed Payment But Confirmed Flight",
-                        text: "New Flight Order Details Below:\n",
-                        html: _html2,
-                    };
-                    send_email(intent_fail_msg);
-                } 
-            }else{
-                // Setting error message for Booking Intent
-                setBookingIntentStatuses(bi._id, "confirmed", paymentIntent?.status, flight_order?.data?.id, true, {
-                    message: "Payment Capture Failure: Not-In-Catch()"
-                });
-            }
-
-            // 4. Reply to client
-            res.status(200).json(flight_order);
+        }else if(data_provider?.toUpperCase()===constants.amadeus){
+            // 2.1 Create order from Duffel
+            flight_order = await require("../flight_providers/amadeus").createOrder(payload);
         }else{
             res.status(500);
             throw new Error("No data provider has been set");
         }
+
+        // 3. Capture payment with Stripe
+        if(flight_order?.data?.id){
+
+            const intent = await stripe.paymentIntents.capture(paymentIntent?.id);
+            if(intent?.status==="succeeded"){
+                // Updating booking intent statuses and booking id, and also clearing any errors
+                setBookingIntentStatuses(bi._id, "confirmed", intent?.status, flight_order?.data?.id);
+                //Send email to admins for Booking and Payment Success
+                let _html = JSON.stringify(intent);
+                _html += `<br/><br/>${JSON.stringify(flight_order)}`;
+
+                const intent_sccs_msg = {
+                    to: constants.email.admins_to,
+                    from: constants.email.automated_from,
+                    subject: "Welldugo - Payment Success & Booking Confirmed",
+                    text: "Captured Payment And Booking Details Below:\n",
+                    html: _html,
+                };
+                send_email(intent_sccs_msg);
+            }else {
+                // Setting error message for Confirmed booking and payment
+                setBookingIntentStatuses(bi._id, "failed", paymentIntent?.status, "", true, {
+                    message: "Flight Booking Failure: Not-In-Catch()"
+                });
+
+                //Send email to admins for confirmed booking and failed payment.
+                let _html2 = JSON.stringify(paymentIntent);
+                _html2 += `<br/><br/>${JSON.stringify(flight_order)}`;
+                const intent_fail_msg = {
+                    to: constants.email.admins_to,
+                    from: constants.email.automated_from,
+                    subject: "Welldugo - Failed Payment But Confirmed Flight",
+                    text: "New Flight Order Details Below:\n",
+                    html: _html2,
+                };
+                send_email(intent_fail_msg);
+            } 
+        }else{
+            // Setting error message for Booking Intent
+            setBookingIntentStatuses(bi._id, "confirmed", paymentIntent?.status, flight_order?.data?.id, true, {
+                message: "Payment Capture Failure: Not-In-Catch()"
+            });
+        }
+
+        // 4. Reply to client
+        res.status(200).json(flight_order);
     }catch(e){
         console.log(e);
         // Setting error message for booking intent

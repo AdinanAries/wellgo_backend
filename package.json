@@ -13,6 +13,7 @@
   "dependencies": {
     "@duffel/api": "^4.3.0",
     "@sendgrid/mail": "^8.1.0",
+    "amadeus": "^11.0.0",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
