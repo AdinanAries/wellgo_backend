@@ -14,7 +14,7 @@ module.exports = {
                         ? process.env.MONGO_DB_PRODUCTION_URL : process.env.MONGO_DB_URL;
     const payment_processor = constants.stripe;
     const flights_api_provider = constants.duffel;
-    const ticket_issuer = "SVR N/A"
+    const ticket_issuer = "N/A"
     return {
       active_env,
       client_url,

@@ -25,7 +25,7 @@ module.exports = {
         admins_to: "welldugo.btc@gmail.com",
     },
     environment: {
-        env: "development", // "production", // For Setting Current Evironment State -> [ production, development, staging ]
+        env: "production", // "development", // For Setting Current Evironment State -> [ production, development, staging ]
         prod: "production",
         dev: "development",
         stage: "staging",
