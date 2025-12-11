@@ -60,6 +60,7 @@ app.use("/", async (req, res, next)=>{
       client_url: environment.getState().client_url,
       payment_processor: environment.getState().payment_processor,
       flights_api_provider: environment.getState().flights_api_provider,
+      ticket_issuer: environment.getState().ticket_issuer,
     },
     price_markup,
     message: "Server Works"

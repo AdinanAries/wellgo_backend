@@ -15,6 +15,8 @@ const { send_email } = require('../helpers/Email');
 const { make_post_request, make_get_request } = require("../fetch_request/fetch_request");
 const { getOcApiHost }  = require("../environment");
 
+const SalesProfitSplitterEngine = require("../helpers/SalesPofitSplitterEngine");
+
 /**
  * @desc Get list of flights from data provider
  * @path POST /api/flights/
@@ -186,12 +188,13 @@ const get_offer_info = async (req, res, next) => {
  * @type controller
  */
 const create_flight_order = async (req, res, next) => {
-    let pi = req?.body?.meta?.paymentIntent;
-    let bi = req?.body?.meta?.bookingIntent;
-    let fees = req?.body?.meta?.totalFees;
-    let agent_id = req?.body?.meta?.agent_id;
-    let flight_order;
     try{
+        let pi = req?.body?.meta?.paymentIntent;
+        let bi = req?.body?.meta?.bookingIntent;
+        let fees = req?.body?.meta?.totalFees;
+        let agent_id = req?.body?.meta?.agent_id;
+        let flight_order;
+
         let data_provider = await getDataProvider(req?.body?.activity?.oc_user_id);
         
         let payload = return_order_payload(req.body.data, data_provider);
@@ -244,63 +247,96 @@ const create_flight_order = async (req, res, next) => {
         // 2.0 Remove Internal Fees
         if(fees)
             payload.payments[0].amount=(payload?.payments[0]?.amount-fees);
-        if(/*process.env.DATA_PROVIDER*/data_provider?.toUpperCase()===constants.duffel){
-            // 2.1 Create order from Duffel
-            flight_order = await require("../flight_providers/duffel").createOrder(payload);
-        }else if(data_provider?.toUpperCase()===constants.amadeus){
-            // 2.1 Create order from Duffel
-            flight_order = await require("../flight_providers/amadeus").createOrder(payload);
+
+        const _SP_SE = new SalesProfitSplitterEngine({
+            oc_user_id: agent_id, 
+            booking_record: payload, 
+            data_provider, 
+            agent_profits: {
+                pm_object: _pm_obj,
+                amount: (parseFloat(markup(payload?.payments[0]?.amount, _pm_obj.value, _pm_obj.type).new_price.toFixed(0))),
+                services_fees,
+                service_fees_total,
+            }, 
+            booking_intent: bi,
+            payment_intent: paymentIntent,
+            product_type: "flight",
+        });
+
+        await _SP_SE.log_before_sale();
+        await _SP_SE.charge_customer();
+        await _SP_SE.book_item();
+        await _SP_SE.pay_agent();
+        await _SP_SE.order_ticket_issueance();
+        await _SP_SE.log_after_sale();
+
+        if(_SP_SE?.has_major_error){
+
         }else{
-            res.status(500);
-            throw new Error("No data provider has been set");
+            res.status(200).json(_SP_SE?.flight_order);
         }
 
-        // 3. Capture payment with Stripe
-        if(flight_order?.data?.id){
+        // Sales Profit Splitter Engine Took Over Here---------------------------------------------------------------------------
+        const USE_OLD_CODE=false;
+        if(USE_OLD_CODE){
+            if(/*process.env.DATA_PROVIDER*/data_provider?.toUpperCase()===constants.duffel){
+                // 2.1 Create order from Duffel
+                flight_order = await require("../flight_providers/duffel").createOrder(payload);
+            }else if(data_provider?.toUpperCase()===constants.amadeus){
+                // 2.1 Create order from Duffel
+                flight_order = await require("../flight_providers/amadeus").createOrder(payload);
+            }else{
+                res.status(500);
+                throw new Error("No data provider has been set");
+            }
 
-            const intent = await stripe.paymentIntents.capture(paymentIntent?.id);
-            if(intent?.status==="succeeded"){
-                // Updating booking intent statuses and booking id, and also clearing any errors
-                setBookingIntentStatuses(bi._id, "confirmed", intent?.status, flight_order?.data?.id);
-                //Send email to admins for Booking and Payment Success
-                let _html = JSON.stringify(intent);
-                _html += `<br/><br/>${JSON.stringify(flight_order)}`;
+            // 3. Capture payment with Stripe
+            if(flight_order?.data?.id){
 
-                const intent_sccs_msg = {
-                    to: constants.email.admins_to,
-                    from: constants.email.automated_from,
-                    subject: "Welldugo - Payment Success & Booking Confirmed",
-                    text: "Captured Payment And Booking Details Below:\n",
-                    html: _html,
-                };
-                send_email(intent_sccs_msg);
-            }else {
-                // Setting error message for Confirmed booking and payment
-                setBookingIntentStatuses(bi._id, "failed", paymentIntent?.status, "", true, {
-                    message: "Flight Booking Failure: Not-In-Catch()"
+                const intent = await stripe.paymentIntents.capture(paymentIntent?.id);
+                if(intent?.status==="succeeded"){
+                    // Updating booking intent statuses and booking id, and also clearing any errors
+                    setBookingIntentStatuses(bi._id, "confirmed", intent?.status, flight_order?.data?.id);
+                    //Send email to admins for Booking and Payment Success
+                    let _html = JSON.stringify(intent);
+                    _html += `<br/><br/>${JSON.stringify(flight_order)}`;
+
+                    const intent_sccs_msg = {
+                        to: constants.email.admins_to,
+                        from: constants.email.automated_from,
+                        subject: "Welldugo - Payment Success & Booking Confirmed",
+                        text: "Captured Payment And Booking Details Below:\n",
+                        html: _html,
+                    };
+                    send_email(intent_sccs_msg);
+                }else {
+                    // Setting error message for Confirmed booking and payment
+                    setBookingIntentStatuses(bi._id, "failed", paymentIntent?.status, "", true, {
+                        message: "Flight Booking Failure: Not-In-Catch()"
+                    });
+
+                    //Send email to admins for confirmed booking and failed payment.
+                    let _html2 = JSON.stringify(paymentIntent);
+                    _html2 += `<br/><br/>${JSON.stringify(flight_order)}`;
+                    const intent_fail_msg = {
+                        to: constants.email.admins_to,
+                        from: constants.email.automated_from,
+                        subject: "Welldugo - Failed Payment But Confirmed Flight",
+                        text: "New Flight Order Details Below:\n",
+                        html: _html2,
+                    };
+                    send_email(intent_fail_msg);
+                } 
+            }else{
+                // Setting error message for Booking Intent
+                setBookingIntentStatuses(bi._id, "confirmed", paymentIntent?.status, flight_order?.data?.id, true, {
+                    message: "Payment Capture Failure: Not-In-Catch()"
                 });
+            }
 
-                //Send email to admins for confirmed booking and failed payment.
-                let _html2 = JSON.stringify(paymentIntent);
-                _html2 += `<br/><br/>${JSON.stringify(flight_order)}`;
-                const intent_fail_msg = {
-                    to: constants.email.admins_to,
-                    from: constants.email.automated_from,
-                    subject: "Welldugo - Failed Payment But Confirmed Flight",
-                    text: "New Flight Order Details Below:\n",
-                    html: _html2,
-                };
-                send_email(intent_fail_msg);
-            } 
-        }else{
-            // Setting error message for Booking Intent
-            setBookingIntentStatuses(bi._id, "confirmed", paymentIntent?.status, flight_order?.data?.id, true, {
-                message: "Payment Capture Failure: Not-In-Catch()"
-            });
+            // 4. Reply to client
+            res.status(200).json(flight_order);
         }
-
-        // 4. Reply to client
-        res.status(200).json(flight_order);
     }catch(e){
         console.log(e);
         // Setting error message for booking intent
