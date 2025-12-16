@@ -16,6 +16,7 @@ const { make_post_request, make_get_request } = require("../fetch_request/fetch_
 const { getOcApiHost }  = require("../environment");
 
 const SalesProfitSplitterEngine = require("../helpers/SalesPofitSplitterEngine");
+const { commit_api_call_transaction } = require("../helpers/services_wallet_transactions");
 
 /**
  * @desc Get list of flights from data provider
@@ -56,6 +57,13 @@ const get_flights = async(req, res, next)=>{
                     (req?.body?.activity || {})
                 );
                 console.log(_activity_res);
+                let _api_charge_trans = await commit_api_call_transaction({
+                    oc_user_id: req?.body?.activity?.oc_user_id,
+                    unit_quantity: 1,
+                    unit_action_point_quantity: 1,
+                    description: `Your Server API Called For: ${req?.body?.activity?.description}`,
+                });
+                console.log(_api_charge_trans);
             }
         }
 
